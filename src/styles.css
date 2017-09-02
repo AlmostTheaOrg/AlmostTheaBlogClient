@@ -1,1 +1,190 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Comfortaa:700|Open+Sans:400,700');
+@font-face {
+  font-family: 'Winter Calligraphy';
+  src: url('fonts/Winter Calligraphy.ttf')
+}
+
+html {
+  font-family: 'Open Sans', Arial, sans-serif;
+  color: #5c5260;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  min-width: 240px;
+}
+
+header {
+    height: 25vh;
+}
+
+main {
+    height: 65vh;
+}
+
+
+.pagination-container {
+  background-color: #ffffff;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  position: relative;
+}
+
+.text-link {
+  display: inline-block;
+  padding: 0 15px;
+  color: inherit;
+}
+
+.page-numbers {
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+.pagination-container ul {
+  padding-left: 0;
+  margin: 20px auto;
+}
+
+.layout-container {
+  max-height: 400px;
+  width: 100%;
+  overflow-y: scroll;
+}
+
+.layout-container::-webkit-scrollbar {
+  width: 0px;
+}
+
+.layout-container img {
+  width: 100%;
+  height: 100%;
+}
+
+.post-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: white;
+  position: relative;
+  top: -130px;
+  padding: 20px 30px 0 30px;
+}
+
+.post-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.post-title, .about-us h1 {
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.single-post img {
+  width: 100%;
+}
+
+.single-post img.align-left {
+  width: calc(50% - 2.5px);
+}
+
+.single-post img.align-right {
+  width: calc(50% - 2.5px);
+}
+
+.about-us {
+  margin: 0px auto;
+  max-width: 800px;
+  text-align: justify;
+}
+
+.about-us h1 {
+  text-align: center;
+}
+
+.about-us p {
+  padding: 10px;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.author {
+  padding: 20px
+}
+
+.author p {
+  margin-top: 0px;
+  padding-top: 0px;
+}
+
+.author img {
+  max-height: 200px;
+  max-width: 200px;
+}
+
+.author-left img {
+  float: left;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.author-right img {
+  float: right;
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+@media screen and (max-width: 700px) {
+  .post {
+    max-width: calc(50% - 5px)
+  }
+}
+
+@media screen and (max-width: 510px) {
+  .layout-container {
+    display: none;
+  }
+  .post-wrapper {
+    position: static
+  }
+  .posts {
+    justify-content: center;
+  }
+  .post {
+    max-width: calc(100% - 10px);
+  }
+  .header-container .fa {
+    display: none;
+    margin: 0;
+  }
+  .brand-name {
+    text-align: center;
+  }
+  .nav-bar .search-box {
+    display: none;
+  }
+  .page-numbers {
+    display: none;
+  }
+  .text-link {
+    padding: 0px 0px;
+  }
+  .prev, .next {
+    padding: 0 15px;
+    display: inline-block;
+  }
+  .footer-container {
+    justify-content: center;
+  }
+  .copyright {
+    flex-grow: 0;
+    text-align: center;
+  }
+  .copyright p {
+    display: none;
+  }
+}
