@@ -42,7 +42,7 @@
 }
 
 .post:hover .description {
-  bottom: 80px;
+  bottom: 70px;
 }
 
 .description h3 {
@@ -52,12 +52,12 @@
 }
 
 .post .img-desc {
-  font-size: 0.8em;
+  font-size: 0.7em;
   font-weight: 400;
 }
 
 .post .date {
-  font-size: 0.6em;
+  font-size: 1.0em;
   font-weight: 400;
 }
 
@@ -67,7 +67,69 @@
 
 .wall {
   width: 100%;
-  padding: 10px;
+  padding: 20px;
   z-index: 15;
   background-color: #ffffff;
+}
+
+.pagination-container {
+  background-color: #ffffff;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  position: relative;
+  font-size: 1.2em;
+}
+
+.text-link {
+  display: inline-block;
+  padding: 0 15px;
+  color: inherit;
+}
+
+.text-link.current {
+  color: lightgray;
+}
+
+.page-numbers {
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+.pagination-container ul {
+  padding-left: 0;
+  margin: 20px auto;
+}
+
+@media screen and (max-width: 800px) {
+  .post {
+    width: calc(50% - 5px)
+  }
+}
+
+@media screen and (max-width: 510px) {
+  .layout-container {
+    display: none;
+  }
+  .post-wrapper {
+    position: static
+  }
+  .posts {
+    justify-content: center;
+  }
+  .post {
+    width: calc(100% - 10px);
+  }
+  .page-numbers {
+    display: none;
+  }
+  .text-link {
+    padding: 0px 0px;
+  }
+  .prev,
+  .next {
+    padding: 0 15px;
+    display: inline-block;
+  }
 }

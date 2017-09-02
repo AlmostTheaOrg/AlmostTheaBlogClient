@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+
 @import url('https://fonts.googleapis.com/css?family=Comfortaa:700|Open+Sans:400,700');
 @font-face {
   font-family: 'Winter Calligraphy';
@@ -10,44 +11,36 @@ html {
   color: #5c5260;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   min-width: 240px;
 }
 
 header {
-    height: 25vh;
+  height: 25vh;
 }
 
 main {
-    height: 65vh;
+  min-height: 65vh;
 }
 
-
-.pagination-container {
-  background-color: #ffffff;
-  max-width: 800px;
-  margin: 0 auto;
-  display: flex;
-  position: relative;
-}
-
-.text-link {
-  display: inline-block;
-  padding: 0 15px;
-  color: inherit;
-}
-
-.page-numbers {
+.brand-name span:hover,
+.header-container .fa:hover,
+.footer-container .fa:hover {
   cursor: pointer;
-  text-decoration: none;
-  color: inherit;
+  background-color: #C786CF;
 }
 
-.pagination-container ul {
-  padding-left: 0;
-  margin: 20px auto;
+.header-container .fa,
+.footer-container .fa {
+  display: inline-block;
+  margin-left: 30px;
+  padding: 10px;
+  text-align: center;
+  transition: background-color 1s;
+  border-radius: 50%;
 }
 
 .layout-container {
@@ -79,7 +72,8 @@ main {
   margin-bottom: 60px;
 }
 
-.post-title, .about-us h1 {
+.post-title,
+.about-us h1 {
   text-transform: uppercase;
   font-weight: 500;
 }
@@ -136,55 +130,4 @@ main {
   float: right;
   margin-left: 20px;
   margin-bottom: 20px;
-}
-
-@media screen and (max-width: 700px) {
-  .post {
-    max-width: calc(50% - 5px)
-  }
-}
-
-@media screen and (max-width: 510px) {
-  .layout-container {
-    display: none;
-  }
-  .post-wrapper {
-    position: static
-  }
-  .posts {
-    justify-content: center;
-  }
-  .post {
-    max-width: calc(100% - 10px);
-  }
-  .header-container .fa {
-    display: none;
-    margin: 0;
-  }
-  .brand-name {
-    text-align: center;
-  }
-  .nav-bar .search-box {
-    display: none;
-  }
-  .page-numbers {
-    display: none;
-  }
-  .text-link {
-    padding: 0px 0px;
-  }
-  .prev, .next {
-    padding: 0 15px;
-    display: inline-block;
-  }
-  .footer-container {
-    justify-content: center;
-  }
-  .copyright {
-    flex-grow: 0;
-    text-align: center;
-  }
-  .copyright p {
-    display: none;
-  }
 }
