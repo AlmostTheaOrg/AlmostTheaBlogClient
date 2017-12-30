@@ -1,0 +1,13 @@
+#home-image img {
+  width: 100%;
+  pointer-events: none;
+}
+
+#home-image {
+  text-align: center;
+}
+
+#content-wrapper {
+  display: flex;
+  align-items: center;
+}

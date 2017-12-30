@@ -1,14 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import url('https://fonts.googleapis.com/css?family=Comfortaa:700|Open+Sans:400,700');
-@font-face {
-  font-family: 'Winter Calligraphy';
-  src: url('fonts/Winter Calligraphy.ttf')
-}
 
 html {
   font-family: 'Open Sans', Arial, sans-serif;
-  color: #5c5260;
+  background-color: #ffffff
 }
 
 html,
@@ -19,11 +15,12 @@ body {
 }
 
 header {
-  height: 25vh;
+  height: 30vh;
 }
 
 main {
-  min-height: 65vh;
+  height: 65vh;
+  overflow: hidden;
 }
 
 .brand-name span:hover,

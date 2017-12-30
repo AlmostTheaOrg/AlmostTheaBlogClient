@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 
 import { SharedModule } from './shared-module/shared.module';
-import { PostModule } from './post-module/post.module';
+import { HomeModule } from './home-module/home.module';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 
 @NgModule({
@@ -13,7 +13,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    PostModule,
+    HomeModule,
     SharedModule
   ],
   exports: [

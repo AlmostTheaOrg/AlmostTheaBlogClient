@@ -1,53 +1,38 @@
 .nav-header {
   width: 100%;
-  min-height: 200px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-end;
   box-sizing: unset;
-  padding-bottom: 10px;
   box-sizing: border-box;
+  background-color: inherit;
+  /* font-family: Marianna; */
 }
 
 .header-container {
   padding: 0 10px;
   width: 1280px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   margin: 0 auto;
-}
-
-.brand-name {
-  display: inline-block;
-  flex-grow: 1;
-  font-family: Winter Calligraphy, serif;
-  font-size: 4em;
-  margin-bottom: 20px;
-}
-
-.brand-name span {
-  transition: all 0.5s;
-  border-radius: 50%;
+  text-align: center;
 }
 
 .nav-bar {
   width: 100%;
-  background-color: #ffdccd;
+  background-color: rgb(141, 233, 220);
 }
 
 .nav-bar-container {
   max-width: 1280px;
-  margin: 20px auto;
+  margin: 10px auto;
 }
 
 .nav-bar a {
-  padding: 20px;
+  padding: 10px;
   text-decoration: none;
   color: inherit;
-  font-size: 1.3em;
+  font-size: 0.9em;
 }
 
 .nav-bar a:first-of-type {
@@ -57,79 +42,29 @@
 .nav-bar ul {
   width: 100%;
   padding-left: 0;
-  display: flex;
-  justify-content: space-between;
+  text-align: center;
 }
 
-.nav-bar li,
-.nav-bar form {
+.nav-bar li{
   display: inline-block;
-  margin-right: 25px;
 }
 
 .nav-bar li:hover a {
   color: white;
 }
 
-.nav-bar .search-box {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  flex-grow: 1;
-  margin-right: 10px;
-}
-
-.search-box input {
-  padding-left: 10px;
-  letter-spacing: 1px;
-  width: 100px;
-  border-radius: 10px;
-  border: none;
-  border-style: none;
-  background-color: inherit;
-  transition: width 0.3s ease
-}
-
-.search-box input:focus {
-  outline: none;
-  background-color: #ffffff;
-  width: 160px;
-}
-
-.btn-search {
-  background: transparent;
-  border-style: none;
-  border: none;
-  padding: 0 6px;
-}
-
 @media screen and (max-width: 510px) {
-  .nav-bar li {
-    margin-right: 10px;
-  }
-  .header-container .fa {
-    display: none;
-    margin: 0;
-  }
-  .brand-name {
-    text-align: center;
-  }
-  .nav-bar .search-box {
-    display: none;
+  .nav-bar-container{
+    display: flex;
+    flex-direction: column;
   }
 }
 
 @media screen and (max-width: 350px) {
-  .nav-bar li {
-    margin-right: 0px;
-  }
+}
 
-  .nav-bar a{
-    padding-left: 0px;
-    padding-right: 10px;
-  }
-
-  .nav-bar li > a:first{
-    padding-left: 10px;
-  }
+#logo {
+  margin: 0 auto;
+  max-height: 144px;
+  max-width: 256px;
 }
