@@ -8,7 +8,6 @@
   box-sizing: unset;
   box-sizing: border-box;
   background-color: inherit;
-  /* font-family: Marianna; */
 }
 
 .header-container {
@@ -47,7 +46,6 @@
   display: none;
 }
 
-
 .nav-link:hover {
   color: white;
 }
@@ -62,7 +60,6 @@
   display: inline-block;
 }
 
-
 @media screen and (max-width: 510px) {
   .icon {
     display: inline-block;
@@ -74,6 +71,8 @@
 
   .nav-link {
     opacity: 0;
+    pointer-events: none;
+    cursor: default;
   }
 
   .nav-bar-container {
@@ -82,12 +81,14 @@
     flex-direction: column;
   }
 
-  .nav-bar-container.responsive{
+  .nav-bar-container.responsive {
     position: relative;
     background-color: inherit;
   }
   .nav-bar-container.responsive .nav-link {
     opacity: 1;
+    pointer-events: all;
+    cursor: pointer;
   }
 }
 
