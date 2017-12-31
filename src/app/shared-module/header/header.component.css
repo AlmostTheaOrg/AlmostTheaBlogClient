@@ -21,6 +21,8 @@
 .nav-bar {
   width: 100%;
   background-color: rgb(141, 233, 220);
+  z-index: 1;
+  overflow: visible;
 }
 
 .nav-bar-container {
@@ -28,15 +30,26 @@
   margin: 10px auto;
 }
 
-.nav-bar a {
-  padding: 10px;
+.nav-link {
+  display: inline-block;
+  transition: display 0s, opacity 0.5s linear;
+}
+
+.nav-link,
+.icon {
+  padding: 5px 10px;
   text-decoration: none;
   color: inherit;
   font-size: 0.9em;
 }
 
-.nav-bar a:first-of-type {
-  padding-left: 10px;
+.icon {
+  display: none;
+}
+
+
+.nav-link:hover {
+  color: white;
 }
 
 .nav-bar ul {
@@ -45,22 +58,37 @@
   text-align: center;
 }
 
-.nav-bar li{
+.nav-bar li {
   display: inline-block;
 }
 
-.nav-bar li:hover a {
-  color: white;
-}
 
 @media screen and (max-width: 510px) {
-  .nav-bar-container{
+  .icon {
+    display: inline-block;
+  }
+
+  .nav-bar {
+    max-height: 49px;
+  }
+
+  .nav-link {
+    opacity: 0;
+  }
+
+  .nav-bar-container {
+    position: relative;
     display: flex;
     flex-direction: column;
   }
-}
 
-@media screen and (max-width: 350px) {
+  .nav-bar-container.responsive{
+    position: relative;
+    background-color: inherit;
+  }
+  .nav-bar-container.responsive .nav-link {
+    opacity: 1;
+  }
 }
 
 #logo {
