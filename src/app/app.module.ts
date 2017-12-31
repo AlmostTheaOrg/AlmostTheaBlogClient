@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 
 import { SharedModule } from './shared-module/shared.module';
 import { HomeModule } from './home-module/home.module';
+import { AboutModule } from './about-module/about.module';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 
 @NgModule({
@@ -14,6 +15,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
     BrowserModule,
     AppRoutingModule,
     HomeModule,
+    AboutModule,
     SharedModule
   ],
   exports: [

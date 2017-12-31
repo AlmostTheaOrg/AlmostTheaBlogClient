@@ -1,0 +1,19 @@
+.card {
+    margin: 10px;
+    box-sizing: border-box;
+}
+
+.image-holder.left {
+    float: left;
+    padding-right: 10px;
+}
+
+.image-holder.right {
+    float: right;
+    padding-left: 10px;
+}
+
+.about-us {
+    height: 100%;
+    overflow-y: auto;
+}
