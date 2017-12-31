@@ -4,9 +4,9 @@
   </div>
 
   <nav class="nav-bar">
-    <ul id="nav" class="nav-bar-container">
+    <ul id="nav" [ngClass]="shouldBeVisible ?  'nav-bar-container responsive' : 'nav-bar-container'">
       <li>
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+        <a href="javascript:void(0);" class="icon" (click)="response()">&#9776;</a>
       </li>
       <li>
         <a href="#" class="nav-link">Home</a>
