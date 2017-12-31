@@ -1,3 +1,47 @@
-<p>
-  contacts works!
-</p>
+<div class="container contacts">
+
+  <div class="flex">
+    <section class="contact-form">
+      <form method="post">
+        <div class="flex col align-center">
+          <div class="input-group">
+            <label for="name">Name:</label>
+            <div class="input-field">
+              <input class="input" type="text" name="name" placeholder="e.g. Steven" required />
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="email">Email (optional):</label>
+            <div class="input-field">
+              <input class="input" type="email" name="name" placeholder="Email for further discussion (no spam)" />
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="text">Message:</label>
+            <div class="input-field">
+              <textarea class="input" name="text" placeholder="e.g. Steven" required rows="10" cols="30"></textarea>
+            </div>
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <section class="faq">
+      <h4>FAQ</h4>
+      <a class="load-more" href="javascript:void(0);">&#9776;</a>
+      <ul>
+        <li>
+          <h5 class="question">What kind of services you offer?</h5>
+          <p class="answer">We can photograph you for your personal photo session or venue you want to memorize with photos (like weddings, business events etc).</p>
+        </li>
+
+        <li>
+            <h5 class="question">I found a bug, where to submit it?</h5>
+            <p class="answer">You can submit <b>bugs</b> <a href="/bugs">here</a>.</p>
+          </li>
+      </ul>
+    </section>
+  </div>
+</div>

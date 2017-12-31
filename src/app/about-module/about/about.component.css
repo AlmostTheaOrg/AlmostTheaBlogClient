@@ -11,8 +11,6 @@
 .about-us {
     height: 100%;
     overflow-y: auto;
-    margin: 0 auto;
-    max-width: 780px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;

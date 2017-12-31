@@ -22,3 +22,8 @@ main {
   height: 65vh;
   overflow: hidden;
 }
+
+.container {
+  margin: 0 auto;
+  max-width: 780px;
+}

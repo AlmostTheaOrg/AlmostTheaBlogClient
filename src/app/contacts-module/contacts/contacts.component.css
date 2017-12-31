@@ -1,0 +1,78 @@
+.contacts {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+.flex {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.input-field {
+  margin-bottom: 10px;
+}
+
+.input {
+  width: 250px;
+  border-radius: 3px;
+  padding: 5px;
+  border: 1px solid #cccccc;
+}
+
+.contact-form {
+  width: 500px;
+}
+
+.faq {
+  width: 300px;
+  height: 40px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.faq.active {
+    height: 100%;
+}
+
+.faq h4 {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 5px;
+    display: inline-block;
+    font-size: 1.1rem;
+}
+
+.faq ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.col {
+    flex-direction: column;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.load-more {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+}
+
+.answer {
+    font-size: 0.9rem;
+    font-style: italic;
+    padding-left: 10px;
+    margin-top: 0;
+}
+
+.question {
+    font-weight: 600;
+    margin-bottom: 0;
+    font-size: 1em;
+}
