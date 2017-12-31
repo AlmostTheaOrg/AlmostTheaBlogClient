@@ -21,6 +21,4 @@ header {
 main {
   height: 65vh;
   overflow: hidden;
-  margin: 0 auto;
-  max-width: 780px;
 }
