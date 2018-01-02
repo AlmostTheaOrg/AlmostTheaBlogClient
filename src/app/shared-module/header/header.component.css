@@ -25,13 +25,15 @@
 }
 
 .nav-bar-container {
+  height: 30px;
+  max-height: 30px;
+  transition: max-height 1s ease-out;
   max-width: 1280px;
   margin: 10px auto;
 }
 
 .nav-link {
   display: inline-block;
-  transition: display 0s, opacity 0.5s linear;
 }
 
 .nav-link,
@@ -81,7 +83,21 @@
     flex-direction: column;
   }
 
+  .nav-bar-container li {
+    display: none;
+  }
+
+  .nav-bar-container li:first-child {
+    display: inline-block;
+  }
+
+  .nav-bar-container.responsive li {
+    display: inline-block;
+  }
+
   .nav-bar-container.responsive {
+    height: auto;
+    max-height: 500px;
     position: relative;
     background-color: inherit;
   }
