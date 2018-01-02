@@ -1,0 +1,30 @@
+.one-third {
+    width: 32%;
+    padding: 10px;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+.card {
+    height: 250px;
+    width: 250px;
+}
+
+.portrait img {
+    width: 100%;
+    height: 100%;
+}
+
+.portrait {
+    text-decoration: none;
+    color: inherit;
+}
+
+.portait p {
+    margin-bottom: 0;
+}
+
+div.container {
+    overflow-y: auto;
+    height: 100%;
+}

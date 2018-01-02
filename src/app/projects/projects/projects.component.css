@@ -1,0 +1,27 @@
+@media screen and (max-width: 768px) {
+    #portraits-wrapper {
+      width: 100%;
+    }
+  }
+  
+  @media screen and (max-width: 1200px) {
+    #portraits-wrapper {
+      width: 70%;
+    }
+  }
+  
+  #portraits-wrapper {
+    width: 85%;
+    float: right;
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+  }
+  
+  .portraits-gallery {
+    position: relative;
+    margin-bottom: 7em;
+    float: left;
+    width: 100%;
+  }
+  

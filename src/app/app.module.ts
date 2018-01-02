@@ -6,6 +6,7 @@ import { SharedModule } from './shared-module/shared.module';
 import { HomeModule } from './home-module/home.module';
 import { AboutModule } from './about-module/about.module';
 import { ContactsModule } from './contacts-module/contacts.module';
+import { PortraitsModule } from './portraits-module/portraits.module';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 
 @NgModule({
@@ -18,6 +19,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
     HomeModule,
     AboutModule,
     ContactsModule,
+    PortraitsModule,
     SharedModule
   ],
   exports: [
