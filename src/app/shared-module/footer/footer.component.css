@@ -9,17 +9,39 @@ footer {
   max-width: 780px;
   display: flex;
   justify-content: flex-start;
+  align-items: center;
   text-align: left;
+  flex-direction: column;
 }
+
 .copyright {
-  align-self: flex-start;
+  align-self: center;
   flex-grow: 1;
 }
 
+.social-media a {
+  text-decoration: none;
+}
+
+.social-media img {
+  padding-left: 5px;
+  padding-right: 5px;
+  height: 20px;
+  text-align: center;
+}
 .copyright p {
   display: inline-block;
   margin: 0 0;
   padding: 7px;
+}
+
+.social-media {
+  display: block;
+  height: auto;
+}
+
+.copyright p:first-of-type {
+  padding-right: 0px;
 }
 
 @media screen and (max-width: 510px) {
