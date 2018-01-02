@@ -22,57 +22,113 @@
 }
 
 .contact-form {
-  width: 500px;
+  padding-left: 60px;
+  width: 65%;
+  padding: 5px;
+  box-sizing: border-box;
 }
 
-.faq {
-  width: 300px;
-  height: 40px;
-  border: 1px solid #cccccc;
-  border-radius: 5px;
+.faq-wrapper {
+  width: 35%;
   padding: 5px;
 }
 
+.faq {
+  height: 44px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  padding: 5px;
+  box-sizing: border-box;
+  max-height: 44px;
+  transition: max-height 1s linear 500ms;
+}
+
 .faq.active {
-    height: 100%;
+  height: auto;
+  max-height: 350px;
+  transition: max-height 500ms linear;
 }
 
 .faq h4 {
-    margin-top: 0;
-    margin-bottom: 0;
-    padding: 5px;
-    display: inline-block;
-    font-size: 1.1rem;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 5px;
+  display: inline-block;
+  font-size: 1.1rem;
 }
 
 .faq ul {
-    list-style-type: none;
-    padding-left: 0;
+  list-style-type: none;
+  padding-left: 0;
 }
 
 .col {
-    flex-direction: column;
+  flex-direction: column;
 }
 
 .align-center {
-    align-items: center;
+  align-items: center;
 }
 
 .load-more {
-    text-decoration: none;
-    color: inherit;
-    display: inline-block;
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+  padding-top: 5px;
+  padding-right: 5px;
 }
 
 .answer {
-    font-size: 0.9rem;
-    font-style: italic;
-    padding-left: 10px;
-    margin-top: 0;
+  font-size: 0.9rem;
+  font-style: italic;
+  padding-left: 10px;
+  margin-top: 0;
 }
 
 .question {
-    font-weight: 600;
-    margin-bottom: 0;
-    font-size: 1em;
+  font-weight: 600;
+  margin-bottom: 0;
+  font-size: 1em;
+}
+
+.answer,
+.question {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 500ms linear, visibility 0s linear 500ms;
+}
+
+#header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.faq.active .question,
+.faq.active .answer {
+  height: auto;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 500ms linear, visibility 0s linear;
+}
+
+@media screen and (max-width: 510px) {
+  .faq-wrapper {
+    display: none;
+    height: 0;
+  }
+
+  #wrapper {
+    flex-direction: column;
+  }
+
+  .contact-form {
+    padding-top: 25px;
+    width: 100%;
+  }
+}
+
+#wrapper {
+  height: inherit;
+  overflow-y: auto;
+  box-sizing: border-box;
 }
