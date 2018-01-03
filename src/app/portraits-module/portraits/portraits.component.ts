@@ -10,11 +10,11 @@ export class PortraitsComponent implements OnInit {
   private nonSelected = "lightbox-target";
   private selected = this.nonSelected + " selected";
 
-  private image = { class: "lightbox-target", imageSrc: "" };
+  public image = { class: "lightbox-target", imageSrc: "" };
 
   private focused = false;
 
-  private portraits = [
+  public portraits = [
     { imgSrc: "assets/images/portrait-1.jpg", name: "Biktor" },
     { imgSrc: "assets/images/portrait-2.jpg", name: "Goshy" },
     { imgSrc: "assets/images/portrait-3.jpg", name: "Elly" },
