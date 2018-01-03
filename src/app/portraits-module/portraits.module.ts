@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { PortraitsComponent } from './portraits/portraits.component';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { PortraitsComponent } from "./portraits/portraits.component";
 
 @NgModule({
   imports: [
@@ -8,4 +8,4 @@ import { PortraitsComponent } from './portraits/portraits.component';
   ],
   declarations: [PortraitsComponent]
 })
-export class PortraitsModule { }
+export class PortraitsModule {}

@@ -1,45 +1,15 @@
 <div class="container">
     <section class="portraits">
-        <div class="one-third">
-            <a class="portrait card" href="/portraits/portrait-1">
-                <img src="assets/images/portrait-1.jpg" alt="Portrait-1">
-                <p>Bikrot</p>
+        <div *ngFor="let portrait of portraits" (click)="enlarge(portrait)" class="one-third portrait">
+            <a class="portrait card" href="javascript:void(0)">
+                <img [attr.src]="portrait.imgSrc" alt="Portrait">
+                <p>{{portrait.name}}</p>
             </a>
         </div>
-
-        <div class="one-third">
-            <a class="portrait card" href="/portraits/portrait-2">
-                <img src="assets/images/portrait-2.jpg" alt="Portrait-2">
-                <p>Goshy</p>
-            </a>
-        </div>
-
-        <div class="one-third">
-            <a class="portrait card" href="/portraits/portrait-3">
-                <img src="assets/images/portrait-3.jpg" alt="Portrait-3">
-                <p>Bikrot</p>
-            </a>
-        </div>
-
-        <div class="one-third">
-            <a class="portrait card" href="/portraits/portrait-1">
-                <img src="assets/images/portrait-1.jpg" alt="Portrait-1">
-                <p>Bikrot</p>
-            </a>
-        </div>
-
-        <div class="one-third">
-            <a class="portrait card" href="/portraits/portrait-1">
-                <img src="assets/images/portrait-1.jpg" alt="Portrait-1">
-                <p>Bikrot</p>
-            </a>
-        </div>
-
-        <div class="one-third">
-            <a class="portrait card" href="/portraits/portrait-1">
-                <img src="assets/images/portrait-1.jpg" alt="Portrait-1">
-                <p>Bikrot</p>
-            </a>
+        
+        <div [attr.class]="image.class">
+            <img [attr.src]="image.imageSrc" />
+            <a class="lightbox-close" href="javascript:void(0)" (click)="close()"></a>
         </div>
     </section>
 </div>
