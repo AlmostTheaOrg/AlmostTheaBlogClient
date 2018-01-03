@@ -21,12 +21,18 @@
 }
 
 .portrait p {
-  margin-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 10px;
   position: relative;
 }
 
 .portrait {
   z-index: 1;
+  transition: opacity 500ms ease-out;
+}
+
+.portrait:hover {
+  opacity: 0.7;
 }
 
 div.container {
