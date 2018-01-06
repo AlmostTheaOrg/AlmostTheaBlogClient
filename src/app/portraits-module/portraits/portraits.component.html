@@ -2,14 +2,27 @@
     <section class="portraits">
         <div *ngFor="let portrait of portraits" (click)="enlarge(portrait)" class="one-third portrait">
             <a class="portrait card" href="javascript:void(0)">
+                <span class="update-container">
+                    <a href="javascript:void(0)">
+                        <i class="fa fa-pencil fa-lg" aria-hidden="true"></i>
+                    </a>
+                    <a href="javascript:void(0)">
+                        <i class="fa fa-trash-o fa-lg" aria-hidden="true"></i>
+                    </a>
+                </span>
+
                 <img [attr.src]="portrait.imgSrc" alt="Portrait">
                 <p>{{portrait.name}}</p>
             </a>
         </div>
-        
+
         <div [attr.class]="image.class">
             <img [attr.src]="image.imageSrc" />
             <a class="lightbox-close" href="javascript:void(0)" (click)="close()"></a>
         </div>
+    </section>
+
+    <section class="add-portrait">
+        <a class="btn btn-success" href="/portraits/add">Add portrait</a>
     </section>
 </div>

@@ -20,6 +20,10 @@
   color: inherit;
 }
 
+.portrait.card{
+  position: relative;
+}
+
 .portrait p {
   margin-top: 0;
   margin-bottom: 10px;
@@ -140,9 +144,34 @@ a.lightbox-close:after {
   transform: rotate(-45deg);
 }
 
+.add-portrait {
+  padding-left: 10px;
+}
+
+a.btn {
+  text-decoration: none;
+}
+
 @media screen and (max-width: 510px) {
   .lightbox-target.selected img {
     max-height: 100%;
     max-width: 100%;
   }
+}
+
+.update-container {
+  position: absolute;
+  padding: 5px;
+  right: 0px;
+}
+
+.update-container i {
+  padding: 5px;
+  border-radius: 5px;
+  right: 0px;
+}
+
+.update-container i:hover {
+  background-color: white;
+  opacity: 1;
 }

@@ -55,3 +55,28 @@ header {
   background-color: #5cb85c;
   border-color: #4cae4c;
 }
+
+.flex {
+  display: flex;
+  height: 100%;
+  justify-content: space-around;
+}
+
+.input-field {
+  margin-bottom: 10px;
+}
+
+.input {
+  width: 250px;
+  border-radius: 3px;
+  padding: 5px;
+  border: 1px solid #cccccc;
+}
+
+.col {
+  flex-direction: column;
+}
+
+.align-center {
+  align-items: center;
+}
