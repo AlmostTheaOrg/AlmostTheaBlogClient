@@ -145,11 +145,8 @@ a.lightbox-close:after {
 }
 
 .add-portrait {
+  padding-top: 10px;
   padding-left: 10px;
-}
-
-a.btn {
-  text-decoration: none;
 }
 
 @media screen and (max-width: 510px) {

@@ -7,6 +7,7 @@ import { HomeModule } from './home-module/home.module';
 import { AboutModule } from './about-module/about.module';
 import { ContactsModule } from './contacts-module/contacts.module';
 import { PortraitsModule } from './portraits-module/portraits.module';
+import { ProjectsModule } from './projects-module/projects.module';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 
 @NgModule({
@@ -20,6 +21,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
     AboutModule,
     ContactsModule,
     PortraitsModule,
+    ProjectsModule,
     SharedModule
   ],
   exports: [

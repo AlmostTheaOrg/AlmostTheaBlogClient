@@ -5,6 +5,7 @@ import { HomeComponent } from '../home-module/home/home.component';
 import { AboutComponent } from '../about-module/about/about.component';
 import { ContactsComponent } from '../contacts-module/contacts/contacts.component';
 import { PortraitsComponent } from '../portraits-module/portraits/portraits.component';
+import { ProjectsComponent } from '../projects-module/projects/projects.component';
 import { AddPortraitComponent } from '../portraits-module/add-portrait/add-portrait.component';
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'contacts', component: ContactsComponent },
   { path: 'portraits', component: PortraitsComponent},
   { path: 'portraits/add', component: AddPortraitComponent},
+  { path: 'projects', component: ProjectsComponent},
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

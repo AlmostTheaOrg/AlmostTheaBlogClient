@@ -50,6 +50,10 @@ header {
   border-radius: 4px;
 }
 
+a.btn {
+  text-decoration: none;
+}
+
 .btn-success {
   color: #fff;
   background-color: #5cb85c;
