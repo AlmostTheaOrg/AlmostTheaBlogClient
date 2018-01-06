@@ -73,12 +73,12 @@ div.container {
 }
 
 .lightbox-target.selected {
-	display: inline-block;
+  display: inline-block;
   z-index: 1;
   opacity: 1;
   top: 0;
-	bottom: 0;
-	left: 0;
+  bottom: 0;
+  left: 0;
 }
 
 .lightbox-target.selected img {
@@ -88,7 +88,7 @@ div.container {
 
 .lightbox-target.selected a.lightbox-close {
   top: 0px;
-  right: 50px;
+  right: 0px;
 }
 
 /* Styles the close link, adds the slide down transition */
@@ -138,4 +138,11 @@ a.lightbox-close:after {
   -moz-transform: rotate(-45deg);
   -o-transform: rotate(-45deg);
   transform: rotate(-45deg);
+}
+
+@media screen and (max-width: 510px) {
+  .lightbox-target.selected img {
+    max-height: 100%;
+    max-width: 100%;
+  }
 }
