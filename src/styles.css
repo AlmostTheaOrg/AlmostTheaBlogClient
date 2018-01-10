@@ -66,6 +66,12 @@ a.btn {
   border-color: #eea236;
 }
 
+.btn-danger {
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+
 .flex {
   display: flex;
   height: 100%;

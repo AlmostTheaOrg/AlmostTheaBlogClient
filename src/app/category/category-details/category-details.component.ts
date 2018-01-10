@@ -1,15 +1,24 @@
-import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  EventEmitter,
+  Output,
+  Input
+} from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
 import { ImageRepository } from "../../data/ImageRepository";
 import { Image } from "../../data/Image";
-
 @Component({
-  selector: "app-portraits",
-  templateUrl: "./portraits.component.html",
-  styleUrls: ["./portraits.component.css"]
+  selector: "app-category",
+  templateUrl: "./category-details.component.html",
+  styleUrls: ["./category-details.component.css"]
 })
-export class PortraitsComponent implements OnInit {
+export class CategoryDetailsComponent implements OnInit, OnDestroy {
+  private category: string = "portraits";
+  private routeChangeSubscription: any;
+
   private readonly empty = "";
-  private readonly full = "Zdr";
 
   @Output() private classChange = new EventEmitter();
   private closed = "lightbox-target";
@@ -23,7 +32,10 @@ export class PortraitsComponent implements OnInit {
     view: this.empty
   };
 
-  constructor(private repository: ImageRepository) {
+  constructor(
+    private route: ActivatedRoute,
+    private repository: ImageRepository
+  ) {
     this.repository.add(new Image("Biktor", "assets/images/portrait-1.jpg"));
     this.repository.add(new Image("Goshy", "assets/images/portrait-2.jpg"));
     this.repository.add(new Image("Elly", "assets/images/portrait-3.jpg"));
@@ -32,14 +44,22 @@ export class PortraitsComponent implements OnInit {
     );
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.routeChangeSubscription = this.route.params.subscribe(params => {
+      this.category = params["category"];
+    });
+  }
+
+  ngOnDestroy() {
+    this.routeChangeSubscription.unsubscribe();
+  }
 
   @Input()
   get class(): Object {
     return this.box;
   }
 
-  get portraits(): Image[] {
+  get images(): Image[] {
     return this.repository.all();
   }
 
@@ -59,6 +79,11 @@ export class PortraitsComponent implements OnInit {
     this.classChange.emit(this.box);
   }
 
+  add() {
+    this.box.class = this.opened;
+    this.box.view = "add";
+  }
+
   edit(event: Event, portrait: Image) {
     this.box.class = this.opened;
     this.box.portrait = { id: portrait.getId(), name: portrait.getName() };
@@ -68,9 +93,9 @@ export class PortraitsComponent implements OnInit {
   }
 
   delete(event: Event, portrait: Image) {
-    if (confirm("Do you really want to delete this photo?")) {
-      this.repository.delete(portrait.getId());
-    }
+    this.box.class = this.opened;
+    this.box.portrait = { id: portrait.getId(), name: portrait.getName() };
+    this.box.view = "delete";
 
     event.stopPropagation();
   }
@@ -86,6 +111,11 @@ export class PortraitsComponent implements OnInit {
     }
 
     this.repository.edit(copy.id, new Image(name, imageSrc));
+    this.close();
+  }
+
+  onDelete() {
+    this.repository.delete(this.box.portrait.id);
     this.close();
   }
 }

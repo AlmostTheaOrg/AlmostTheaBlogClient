@@ -6,7 +6,7 @@ import { SharedModule } from "./shared/shared.module";
 import { HomeModule } from "./home/home.module";
 import { AboutModule } from "./about/about.module";
 import { ContactsModule } from "./contacts/contacts.module";
-import { PortraitsModule } from "./portraits/portraits.module";
+import { CategoryModule } from "./category/category.module";
 import { ProjectsModule } from "./projects/projects.module";
 import { AppRoutingModule } from "./app-routing/app-routing.module";
 import { ImageRepository } from "./data/ImageRepository";
@@ -19,9 +19,9 @@ import { ImageRepository } from "./data/ImageRepository";
     HomeModule,
     AboutModule,
     ContactsModule,
-    PortraitsModule,
     ProjectsModule,
-    SharedModule
+    SharedModule,
+    CategoryModule
   ],
   exports: [],
   providers: [ImageRepository],

@@ -1,0 +1,99 @@
+<div class="container">
+  <section class="add-image">
+    <a class="btn btn-success" (click)="add()" href="javascript:void(0)">
+      <i class="fa fa-plus" aria-hidden="true"></i> Add</a>
+  </section>
+
+  <section class="images">
+    <div *ngFor="let image of images" (click)="open(image)" class="one-third">
+      <a id="image-details" class="image card" href="javascript:void(0)">
+        <span class="update-container">
+          <span (click)="edit($event, image)">
+            <i class="fa fa-pencil fa-lg" aria-hidden="true"></i>
+          </span>
+          <span href="javascript:void(0)" (click)="delete($event, image)">
+            <i class="fa fa-trash-o fa-lg" aria-hidden="true"></i>
+          </span>
+        </span>
+
+        <img [attr.src]="image.getImageSrc()" alt="Image">
+        <p>{{image.name}}</p>
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <div [attr.class]="box.class">
+      <img *ngIf="box.view === 'image'" [attr.src]="box.imageSrc" />
+
+      <form *ngIf="box.view === 'edit'" (ngSubmit)="onSubmit()" #editForm="ngForm" class="flex align-center" method="post" enctype="multipart/form-data">
+        <div class="modal-wrapper">
+          <input type="hidden" name="id" [(ngModel)]="box.portrait.id" required />
+
+          <div class="input-group">
+            <label for="name">Name:</label>
+            <div class="input-field">
+              <input class="input" type="text" name="name" [(ngModel)]="box.portrait.name" required />
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="text">Image:</label>
+            <div class="input-field">
+              <input class="input" type="file" name="image" [(ngModel)]="box.portrait.image" required accept="image/*" />
+            </div>
+          </div>
+
+          <div class="input-group">
+            <div class="input-field">
+              <button class="btn btn-warning" type="submit">Edit</button>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <form *ngIf="box.view === 'add'" (ngSubmit)="onAdd()" #addForm="ngForm" class="flex align-center" method="post" enctype="multipart/form-data">
+        <div class="modal-wrapper">
+
+          <div class="input-group">
+            <label for="name">Name:</label>
+            <div class="input-field">
+              <input class="input" type="text" name="name" placeholder="Thea" required />
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="text">Image:</label>
+            <div class="input-field">
+              <input class="input" type="file" name="image" required accept="image/*" />
+            </div>
+          </div>
+
+          <div class="input-group">
+            <div class="input-field">
+              <input class="btn btn-success" type="submit" value="Add" />
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <form *ngIf="box.view === 'delete'" (ngSubmit)="onDelete()" #deleteForm="ngForm" class="flex align-center">
+        <div class="modal-wrapper">
+          <h4>Do you want to delete
+            <i> {{box.portrait.name}}</i>?
+          </h4>
+
+          <div class="input-group">
+            <div class="input-field">
+              <input class="btn btn-danger" type="submit" value="Delete" />
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <a class="lightbox-close" href="javascript:void(0)" (click)="close()"></a>
+    </div>
+
+
+  </section>
+</div>
