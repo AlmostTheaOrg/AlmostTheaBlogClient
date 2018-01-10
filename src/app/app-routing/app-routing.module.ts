@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { HomeComponent } from '../home-module/home/home.component';
-import { AboutComponent } from '../about-module/about/about.component';
-import { ContactsComponent } from '../contacts-module/contacts/contacts.component';
-import { PortraitsComponent } from '../portraits-module/portraits/portraits.component';
-import { ProjectsComponent } from '../projects-module/projects/projects.component';
-import { AddPortraitComponent } from '../portraits-module/add-portrait/add-portrait.component';
+import { HomeComponent } from '../home/home/home.component';
+import { AboutComponent } from '../about/about/about.component';
+import { ContactsComponent } from '../contacts/contacts/contacts.component';
+import { PortraitsComponent } from '../portraits/portraits/portraits.component';
+import { ProjectsComponent } from '../projects/projects/projects.component';
+import { AddPortraitComponent } from '../portraits/add-portrait/add-portrait.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },

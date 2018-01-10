@@ -20,7 +20,7 @@
   color: inherit;
 }
 
-.portrait.card{
+.portrait.card {
   position: relative;
 }
 
@@ -171,4 +171,11 @@ a.lightbox-close:after {
 .update-container i:hover {
   background-color: white;
   opacity: 1;
+}
+
+#input-wrapper {
+  padding: 40px;
+  text-align: center;
+  background: #ffffff;
+  border-radius: 5px;
 }

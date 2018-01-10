@@ -1,19 +1,18 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
+import { AppComponent } from "./app.component";
 
-import { SharedModule } from './shared-module/shared.module';
-import { HomeModule } from './home-module/home.module';
-import { AboutModule } from './about-module/about.module';
-import { ContactsModule } from './contacts-module/contacts.module';
-import { PortraitsModule } from './portraits-module/portraits.module';
-import { ProjectsModule } from './projects-module/projects.module';
-import { AppRoutingModule } from './app-routing/app-routing.module';
+import { SharedModule } from "./shared/shared.module";
+import { HomeModule } from "./home/home.module";
+import { AboutModule } from "./about/about.module";
+import { ContactsModule } from "./contacts/contacts.module";
+import { PortraitsModule } from "./portraits/portraits.module";
+import { ProjectsModule } from "./projects/projects.module";
+import { AppRoutingModule } from "./app-routing/app-routing.module";
+import { ImageRepository } from "./data/ImageRepository";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -24,9 +23,8 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
     ProjectsModule,
     SharedModule
   ],
-  exports: [
-  ],
-  providers: [],
+  exports: [],
+  providers: [ImageRepository],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
