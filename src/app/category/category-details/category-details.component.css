@@ -5,6 +5,10 @@
   display: inline-block;
 }
 
+/* .below {
+  z-index: auto;
+} */
+
 .card {
   height: 250px;
   width: 250px;
@@ -31,7 +35,7 @@
 }
 
 .image {
-  z-index: 1;
+  /* z-index: 1; */
   transition: opacity 500ms ease-out;
 }
 
