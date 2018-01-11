@@ -8,7 +8,7 @@ import { Image } from "../../data/Image";
   styleUrls: ["./image-edit.component.css"]
 })
 export class ImageEditComponent {
-  private image: { id: string; name: string; image: string };
+  public image: { id: string; name: string; image: string };
   private close;
 
   constructor(private injector: Injector, private repository: ImageRepository) {

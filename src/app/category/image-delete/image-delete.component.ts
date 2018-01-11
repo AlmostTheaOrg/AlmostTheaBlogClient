@@ -7,7 +7,7 @@ import { ImageRepository } from "../../data/ImageRepository";
   styleUrls: ["./image-delete.component.css"]
 })
 export class ImageDeleteComponent {
-  private image;
+  public image;
   private close;
 
   constructor(private injector: Injector, private repository: ImageRepository) {

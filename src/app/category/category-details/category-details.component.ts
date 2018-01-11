@@ -34,7 +34,7 @@ export class CategoryDetailsComponent implements OnInit, OnDestroy {
   private closed = "lightbox-target";
   private opened = this.closed + " selected";
   private focused = false;
-  private componentData: Object;
+  public componentData: Object;
   @ViewChild(DynamicComponent) private readonly child;
 
   public readonly box = {

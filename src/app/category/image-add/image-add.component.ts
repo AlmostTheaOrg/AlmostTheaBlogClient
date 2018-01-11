@@ -10,7 +10,7 @@ import { Image } from "../../data/Image";
 export class ImageAddComponent {
   private close: () => void;
 
-  private image: { name: string; image: string } = { name: "", image: '' };
+  public image: { name: string; image: string } = { name: "", image: '' };
 
   constructor(private injector: Injector, private repository: ImageRepository) {
     this.close = this.injector.get("close");

@@ -6,7 +6,7 @@ import { Component, OnInit, Injector } from "@angular/core";
   styleUrls: ["./image-details.component.css"]
 })
 export class ImageDetailsComponent {
-  private readonly imageSrc: string;
+  public readonly imageSrc: string;
 
   constructor(private injector: Injector) {
     this.imageSrc = this.injector.get("imageSrc");
