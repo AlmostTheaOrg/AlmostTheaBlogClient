@@ -1,10 +1,10 @@
-import { Component, OnInit, Injector } from "@angular/core";
-import { ImageRepository } from "../../data/ImageRepository";
+import { Component, OnInit, Injector } from '@angular/core';
+import { ImageRepository } from '../../data/ImageRepository';
 
 @Component({
-  selector: "app-image-delete",
-  templateUrl: "./image-delete.component.html",
-  styleUrls: ["./image-delete.component.css"]
+  selector: 'app-image-delete',
+  templateUrl: './image-delete.component.html',
+  styleUrls: ['./image-delete.component.css']
 })
 export class ImageDeleteComponent {
   public image;
@@ -12,8 +12,8 @@ export class ImageDeleteComponent {
 
   constructor(private injector: Injector, private repository: ImageRepository) {
     this.image = {
-      id: this.injector.get("id"),
-      name: this.injector.get("name")
+      id: this.injector.get('id'),
+      name: this.injector.get('name')
     };
 
     this.close = this.injector.get('close');

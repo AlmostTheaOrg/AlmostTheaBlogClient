@@ -1,46 +1,31 @@
-"use strict";
+import { Component, OnInit, OnDestroy, EventEmitter, Output, Input, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ImageRepository } from '../../data/ImageRepository';
+import { Image } from '../../data/Image';
+import { ImageAddComponent, ImageDetailsComponent, ImageEditComponent, ImageDeleteComponent } from '../index';
 
-import {
-  Component,
-  OnInit,
-  OnDestroy,
-  EventEmitter,
-  Output,
-  Input,
-  ViewChild
-} from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
-import { ImageRepository } from "../../data/ImageRepository";
-import { Image } from "../../data/Image";
-import {
-  ImageAddComponent,
-  ImageDetailsComponent,
-  ImageEditComponent,
-  ImageDeleteComponent
-} from "../index";
-
-import { DynamicComponent } from "../dynamic/dynamic.component";
+import { DynamicComponent } from '../dynamic/dynamic.component';
 @Component({
-  selector: "app-category",
-  templateUrl: "./category-details.component.html",
-  styleUrls: ["./category-details.component.css"]
+  selector: 'app-category',
+  templateUrl: './category-details.component.html',
+  styleUrls: ['./category-details.component.css']
 })
 export class CategoryDetailsComponent implements OnInit, OnDestroy {
-  private category: string = "portraits";
+  private category = 'portraits';
   private routeChangeSubscription: any;
 
-  private readonly empty = "";
+  private readonly empty = '';
 
-  private closed = "lightbox-target";
-  private opened = this.closed + " selected";
+  private closed = 'lightbox-target';
+  private opened = this.closed + ' selected';
   private focused = false;
   public componentData: Object;
   @ViewChild(DynamicComponent) private readonly child;
 
   public readonly box = {
-    class: "lightbox-target",
+    class: 'lightbox-target',
     imageSrc: this.empty,
-    portrait: { id: "0", name: this.empty },
+    portrait: { id: '0', name: this.empty },
     view: this.empty
   };
 
@@ -48,17 +33,17 @@ export class CategoryDetailsComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private repository: ImageRepository
   ) {
-    this.repository.add(new Image("Biktor", "assets/images/portrait-1.jpg"));
-    this.repository.add(new Image("Goshy", "assets/images/portrait-2.jpg"));
-    this.repository.add(new Image("Elly", "assets/images/portrait-3.jpg"));
+    this.repository.add(new Image('Biktor', 'assets/images/portrait-1.jpg'));
+    this.repository.add(new Image('Goshy', 'assets/images/portrait-2.jpg'));
+    this.repository.add(new Image('Elly', 'assets/images/portrait-3.jpg'));
     this.repository.add(
-      new Image("Doggie", "http://i.huffpost.com/gen/749263/original.jpg")
+      new Image('Doggie', 'http://i.huffpost.com/gen/749263/original.jpg')
     );
   }
 
   ngOnInit() {
     this.routeChangeSubscription = this.route.params.subscribe(params => {
-      this.category = params["category"];
+      this.category = params['category'];
     });
   }
 

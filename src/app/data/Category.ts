@@ -1,5 +1,5 @@
-import { IEntity } from "./IEntity";
-import { Image } from "./Image";
+import { IEntity } from './IEntity';
+import { Image } from './Image';
 
 export class Category implements IEntity {
   private id: string;

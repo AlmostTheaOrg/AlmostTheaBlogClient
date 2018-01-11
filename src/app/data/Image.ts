@@ -1,4 +1,4 @@
-import { IEntity } from "./IEntity";
+import { IEntity } from './IEntity';
 
 export class Image implements IEntity {
   private id: string;

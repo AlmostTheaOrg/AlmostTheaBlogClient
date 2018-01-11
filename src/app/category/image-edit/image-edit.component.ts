@@ -1,11 +1,11 @@
-import { Component, OnInit, Injector } from "@angular/core";
-import { ImageRepository } from "../../data/ImageRepository";
-import { Image } from "../../data/Image";
+import { Component, OnInit, Injector } from '@angular/core';
+import { ImageRepository } from '../../data/ImageRepository';
+import { Image } from '../../data/Image';
 
 @Component({
-  selector: "app-image-edit",
-  templateUrl: "./image-edit.component.html",
-  styleUrls: ["./image-edit.component.css"]
+  selector: 'app-image-edit',
+  templateUrl: './image-edit.component.html',
+  styleUrls: ['./image-edit.component.css']
 })
 export class ImageEditComponent {
   public image: { id: string; name: string; image: string };
@@ -13,12 +13,12 @@ export class ImageEditComponent {
 
   constructor(private injector: Injector, private repository: ImageRepository) {
     this.image = {
-      id: this.injector.get("id"),
-      name: this.injector.get("name"),
-      image: this.injector.get("imageSrc")
+      id: this.injector.get('id'),
+      name: this.injector.get('name'),
+      image: this.injector.get('imageSrc')
     };
 
-    this.close = this.injector.get("close");
+    this.close = this.injector.get('close');
   }
 
   onSubmit() {

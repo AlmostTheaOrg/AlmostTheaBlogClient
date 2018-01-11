@@ -1,7 +1,7 @@
-import { IRepository } from "./IRepository";
-import { IEntity } from "./IEntity";
-import { Injectable } from "@angular/core";
-import { Observable } from "rxjs/Observable";
+import { IRepository } from './IRepository';
+import { IEntity } from './IEntity';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
 export class DynamicRepository<Entity extends IEntity>
   implements IRepository<string, Entity> {
@@ -19,7 +19,7 @@ export class DynamicRepository<Entity extends IEntity>
   }
 
   all(): Entity[] {
-    let all: Entity[] = new Array<Entity>();
+    const all: Entity[] = new Array<Entity>();
     this.source.forEach((value, key) => {
       all.push(value);
     });
@@ -33,7 +33,7 @@ export class DynamicRepository<Entity extends IEntity>
   }
 
   delete(id: string): Entity {
-    let entity: Entity = this.source.get(id);
+    const entity: Entity = this.source.get(id);
     this.source.delete(id);
 
     return entity;
