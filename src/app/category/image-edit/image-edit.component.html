@@ -1,0 +1,25 @@
+<form (ngSubmit)="onSubmit()" #editForm="ngForm" class="flex align-center">
+  <div class="modal-wrapper">
+    <input type="hidden" name="id" [(ngModel)]="image.id" required />
+
+    <div class="input-group">
+      <label for="name">Name:</label>
+      <div class="input-field">
+        <input class="input" type="text" name="name" [(ngModel)]="image.name" required />
+      </div>
+    </div>
+
+    <div class="input-group">
+      <label for="text">Image:</label>
+      <div class="input-field">
+        <input class="input" type="text" name="image" [(ngModel)]="image.image" required />
+      </div>
+    </div>
+
+    <div class="input-group">
+      <div class="input-field">
+        <input type="submit" [disabled]="!editForm.form.valid" class="btn btn-warning" value="Edit" />
+      </div>
+    </div>
+  </div>
+</form>

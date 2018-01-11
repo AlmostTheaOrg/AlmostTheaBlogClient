@@ -1,14 +1,25 @@
+"use strict";
+
 import {
   Component,
   OnInit,
   OnDestroy,
   EventEmitter,
   Output,
-  Input
+  Input,
+  ViewChild
 } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { ImageRepository } from "../../data/ImageRepository";
 import { Image } from "../../data/Image";
+import {
+  ImageAddComponent,
+  ImageDetailsComponent,
+  ImageEditComponent,
+  ImageDeleteComponent
+} from "../index";
+
+import { DynamicComponent } from "../dynamic/dynamic.component";
 @Component({
   selector: "app-category",
   templateUrl: "./category-details.component.html",
@@ -20,12 +31,13 @@ export class CategoryDetailsComponent implements OnInit, OnDestroy {
 
   private readonly empty = "";
 
-  @Output() private classChange = new EventEmitter();
   private closed = "lightbox-target";
   private opened = this.closed + " selected";
   private focused = false;
+  private componentData: Object;
+  @ViewChild(DynamicComponent) private readonly child;
 
-  public box = {
+  public readonly box = {
     class: "lightbox-target",
     imageSrc: this.empty,
     portrait: { id: "0", name: this.empty },
@@ -63,59 +75,61 @@ export class CategoryDetailsComponent implements OnInit, OnDestroy {
     return this.repository.all();
   }
 
-  open(portrait: Image) {
+  public open() {
     this.box.class = this.opened;
-    this.box.imageSrc = portrait.getImageSrc();
-    this.box.view = "image";
-
-    this.classChange.emit(this.box);
   }
 
-  close() {
-    this.box.class = this.closed;
-    this.box.imageSrc = this.empty;
-    this.box.view = this.empty;
+  show(image: Image) {
+    this.open();
 
-    this.classChange.emit(this.box);
+    this.componentData = {
+      component: ImageDetailsComponent,
+      inputs: { imageSrc: image.getImageSrc() }
+    };
+  }
+
+  public close() {
+    this.box.class = this.closed;
+    this.child.destroy();
   }
 
   add() {
-    this.box.class = this.opened;
-    this.box.view = "add";
+    this.open();
+
+    this.componentData = {
+      component: ImageAddComponent,
+      inputs: {
+        close: this.close.bind(this)
+      }
+    };
   }
 
-  edit(event: Event, portrait: Image) {
-    this.box.class = this.opened;
-    this.box.portrait = { id: portrait.getId(), name: portrait.getName() };
-    this.box.view = "edit";
-
+  edit(event: Event, image: Image) {
+    this.open();
     event.stopPropagation();
+
+    this.componentData = {
+      component: ImageEditComponent,
+      inputs: {
+        id: image.getId(),
+        name: image.getName(),
+        imageSrc: image.getImageSrc(),
+        close: this.close.bind(this)
+      }
+    };
   }
 
-  delete(event: Event, portrait: Image) {
-    this.box.class = this.opened;
-    this.box.portrait = { id: portrait.getId(), name: portrait.getName() };
-    this.box.view = "delete";
-
+  delete(event: Event, image: Image) {
+    this.open();
     event.stopPropagation();
-  }
 
-  onSubmit() {
-    let original = this.repository.get(this.box.portrait.id);
-    let copy = this.box.portrait;
-    let name = original.getName();
-    let imageSrc = original.getImageSrc();
-
-    if (copy.name !== original.getName()) {
-      name = copy.name;
-    }
-
-    this.repository.edit(copy.id, new Image(name, imageSrc));
-    this.close();
-  }
-
-  onDelete() {
-    this.repository.delete(this.box.portrait.id);
-    this.close();
+    this.componentData = {
+      component: ImageDeleteComponent,
+      inputs: {
+        id: image.getId(),
+        name: image.getName(),
+        close: this.close.bind(this)
+      }
+    };
   }
 }
