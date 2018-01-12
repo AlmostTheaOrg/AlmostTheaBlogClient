@@ -7,11 +7,11 @@ import { ImageAddComponent, ImageDetailsComponent, ImageEditComponent, ImageDele
 import { DynamicComponent } from '../dynamic/dynamic.component';
 import { AuthenticationService } from '../../auth/AuthenticationService';
 @Component({
-	selector: 'app-category',
-	templateUrl: './category-details.component.html',
-	styleUrls: ['./category-details.component.css']
+	selector: 'app-portraits',
+	templateUrl: './portraits.component.html',
+	styleUrls: ['./portraits.component.css']
 })
-export class CategoryDetailsComponent implements OnInit, OnDestroy {
+export class PortraitsComponent implements OnInit, OnDestroy {
 	private category = 'portraits';
 	private routeChangeSubscription: any;
 

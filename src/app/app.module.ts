@@ -7,7 +7,7 @@ import { HomeModule } from './home/home.module';
 import { AboutModule } from './about/about.module';
 import { AuthModule } from './auth/auth.module';
 import { ContactsModule } from './contacts/contacts.module';
-import { CategoryModule } from './category/category.module';
+import { PortraitsModule } from './portraits/portraits.module';
 import { ProjectsModule } from './projects/projects.module';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { ImageRepository } from './data/ImageRepository';
@@ -24,7 +24,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 		ContactsModule,
 		ProjectsModule,
 		SharedModule,
-		CategoryModule,
+		PortraitsModule,
 		AuthModule
 	],
 	exports: [],
