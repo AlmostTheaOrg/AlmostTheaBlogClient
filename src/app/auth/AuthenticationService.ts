@@ -1,14 +1,17 @@
 import { User } from '../data/User';
+import { Injectable } from '@angular/core';
 
+@Injectable()
 export class AuthenticationService {
-	private currentUser: User;
-
 	public login(user: User): void {
-		this.currentUser = user;
+		// TODO: Validate.
+		window.sessionStorage.setItem('username', user.username);
+		window.sessionStorage.setItem('password', user.password);
 	}
 
 	public logout(): void {
-		this.currentUser = null;
+		// TODO: Validate.
+		this.save();
 	}
 
 	public get isLogged(): boolean {
@@ -16,6 +19,17 @@ export class AuthenticationService {
 	}
 
 	public get user(): User {
-		return this.currentUser;
+		const username = window.sessionStorage.getItem('username');
+		if (username === undefined || username === null || username === '') {
+			return null;
+		}
+
+		const password = window.sessionStorage.getItem('password');
+		return new User(username, password);
+	}
+
+	private save(username: string = '', password: string = '') {
+		window.sessionStorage.setItem('username', username);
+		window.sessionStorage.setItem('password', password);
 	}
 }

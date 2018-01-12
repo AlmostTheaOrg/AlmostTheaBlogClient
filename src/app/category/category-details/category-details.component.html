@@ -1,5 +1,5 @@
 <div class="container">
-  <section class="add-image">
+  <section *ngIf="isLoggedIn" class="add-image">
     <a class="btn btn-success" (click)="add()" href="javascript:void(0)">
       <i class="fa fa-plus" aria-hidden="true"></i> Add</a>
   </section>
@@ -7,7 +7,7 @@
   <section class="images">
     <div *ngFor="let image of images" (click)="show(image)" class="one-third">
       <a id="image-details" class="image card" href="javascript:void(0)">
-        <span class="update-container">
+        <span *ngIf="isLoggedIn" class="update-container">
           <span (click)="edit($event, image)">
             <i class="fa fa-pencil fa-lg" aria-hidden="true"></i>
           </span>

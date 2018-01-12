@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './home/home.module';
 import { AboutModule } from './about/about.module';
+import { AuthModule } from './auth/auth.module';
 import { ContactsModule } from './contacts/contacts.module';
 import { CategoryModule } from './category/category.module';
 import { ProjectsModule } from './projects/projects.module';
@@ -23,7 +24,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 		ContactsModule,
 		ProjectsModule,
 		SharedModule,
-		CategoryModule
+		CategoryModule,
+		AuthModule
 	],
 	exports: [],
 	providers: [ImageRepository, AuthenticationService],

@@ -54,9 +54,12 @@ footer {
   .copyright p {
     display: none;
   }
+}
+
+@media screen and (max-width: 780px) {
   .auth {
     position: absolute;
-    right: 0;
+    right: 10px;
   }
 }
 

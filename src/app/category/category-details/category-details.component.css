@@ -1,5 +1,5 @@
 .one-third {
-  width: 32%;
+  width: 33%;
   padding: 10px;
   box-sizing: border-box;
   display: inline-block;
@@ -154,10 +154,19 @@ a.lightbox-close:after {
   padding-left: 10px;
 }
 
+@media screen and (max-width: 780px) {
+  .one-third {
+    width: 50%;
+  }
+}
+
 @media screen and (max-width: 510px) {
   .lightbox-target.selected img {
     max-height: 100%;
     max-width: 100%;
+  }
+  .one-third {
+    width: 100%;
   }
 }
 

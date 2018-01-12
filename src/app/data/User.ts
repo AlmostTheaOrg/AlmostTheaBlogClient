@@ -1,8 +1,4 @@
 export class User {
-    constructor(private username: string, private password: string) {
-    }
-
-    get user() {
-        return this.username;
-    }
+	constructor(public readonly username: string, public readonly password: string) {
+	}
 }
