@@ -1,20 +1,31 @@
 <footer>
-	<div class="footer-container">
-		<div class="social-media">
-			<a href="facebook">
-				<img src="assets/images/facebook-circular-logo.png" alt="Facebok">
-			</a>
+  <div class="footer-container">
+    <div class="social-media">
+      <a href="facebook">
+        <img src="assets/images/facebook-circular-logo.png" alt="Facebok">
+      </a>
 
-			<a href="instagram">
-				<img src="assets/images/instagram.png" alt="Instagram">
-			</a>
-		</div>
-		
-		<div class="copyright">
-			<p>All rights reserved.</p>
-			<span> &copy; </span>
-			<p>2018 THEODORA TODOROVA</p>
-		</div>
-	</div>
+      <a href="instagram">
+        <img src="assets/images/instagram.png" alt="Instagram">
+      </a>
+    </div>
 
+    <div class="inline flex">
+      <div class="copyright">
+        <p>All rights reserved.</p>
+        <span> &copy; </span>
+        <p>2018 THEODORA TODOROVA</p>
+      </div>
+
+      <div class="auth">
+        <a *ngIf="!isLoggedIn" href="/login">
+          <i class="fa fa-sign-in" aria-hidden="true"></i>
+        </a>
+        <a *ngIf="isLoggedIn" href="">
+          <i class="fa fa-sign-out" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+
+  </div>
 </footer>

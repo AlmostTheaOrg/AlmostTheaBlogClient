@@ -10,21 +10,23 @@ import { CategoryModule } from './category/category.module';
 import { ProjectsModule } from './projects/projects.module';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { ImageRepository } from './data/ImageRepository';
+import { AuthenticationService } from './auth/AuthenticationService';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HomeModule,
-    AboutModule,
-    ContactsModule,
-    ProjectsModule,
-    SharedModule,
-    CategoryModule
-  ],
-  exports: [],
-  providers: [ImageRepository],
-  bootstrap: [AppComponent]
+	declarations: [AppComponent, NotFoundComponent],
+	imports: [
+		BrowserModule,
+		AppRoutingModule,
+		HomeModule,
+		AboutModule,
+		ContactsModule,
+		ProjectsModule,
+		SharedModule,
+		CategoryModule
+	],
+	exports: [],
+	providers: [ImageRepository, AuthenticationService],
+	bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

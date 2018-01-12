@@ -16,8 +16,8 @@ footer {
 }
 
 .copyright {
-  align-self: center;
   flex-grow: 1;
+  text-align: center;
 }
 
 .social-media a {
@@ -30,6 +30,7 @@ footer {
   height: 20px;
   text-align: center;
 }
+
 .copyright p {
   display: inline-block;
   margin: 0 0;
@@ -50,11 +51,21 @@ footer {
   .footer-container {
     justify-content: center;
   }
-  .copyright {
-    flex-grow: 0;
-    text-align: center;
-  }
   .copyright p {
     display: none;
   }
+  .auth {
+    position: absolute;
+    right: 0;
+  }
+}
+
+.inline {
+  display: flex;
+  justify-content: space-between;
+}
+
+footer a {
+  text-decoration: none;
+  color: inherit;
 }

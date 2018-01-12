@@ -1,0 +1,17 @@
+img {
+  height: 70%;
+}
+
+div.one-pager {
+  background: linear-gradient(135deg, #00C4FF, #9D1BB2)
+}
+
+div.container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+h2 {
+  color: #fce5eb;
+}
