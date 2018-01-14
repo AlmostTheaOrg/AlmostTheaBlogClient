@@ -4,14 +4,19 @@
   </section>
 
   <section id="projects">
-    <div class="projects-gallery">
+    <figure *ngFor="let project of projects" class="projects-gallery">
       <a class="gallery-item" href="#">
-        <img src="assets/images/home.jpg" alt="Gallery Thumbnail">
-        <span class="overlay">
-          <h2>Nature</h2>
-          <span>14 Photos</span>
-        </span>
+        <div class="thumbnail-wrapper">
+          <img [attr.src]="project.thumb" alt="Gallery Thumbnail" />
+
+          <div class="overlay">
+            <div class="text">
+              {{project.name}}
+              <br> {{project.pictures}} Photos
+            </div>
+          </div>
+        </div>
       </a>
-    </div>
+    </figure>
   </section>
 </div>

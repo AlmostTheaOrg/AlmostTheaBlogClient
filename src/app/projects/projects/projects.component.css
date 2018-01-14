@@ -1,5 +1,4 @@
 .gallery-item {
-  width: 32%;
 }
 
 #projects {
@@ -23,4 +22,60 @@ a.btn {
 .gallery-item h2 {
   margin-bottom: 5px;
   margin-top: 5px;
+}
+
+.thumbnail-wrapper {
+  display: block;
+  position: relative;
+  max-width: 100%;
+}
+
+.thumbnail-wrapper img {
+  display: block;
+  width: 100%;
+  height: auto;}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+  width: 0;
+  height: 100%;
+  transition: .5s ease;
+}
+
+.thumbnail-wrapper:hover .overlay {
+  width: 40%;
+  right: 0;
+  background: rgba(204, 204, 204, 0.5);
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 780px) {
+  .thumbnail-wrapper {
+    max-width: 100%;
+  }
+}
+
+#projects {
+  column-width: 320px;
+  column-gap: 0;
+	max-width: 1100px;
+}
+
+#projects figure {
+  margin: 0;
+	transition: opacity .4s ease-in-out;
+  display: block;
 }
