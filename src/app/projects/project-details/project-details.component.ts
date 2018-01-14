@@ -9,7 +9,7 @@ import { AuthenticationService } from '../../auth/AuthenticationService';
 })
 export class ProjectDetailsComponent {
 	private projectName: string;
-	private photos = [
+	public photos = [
 		{
 
 			imageSrc: 'https://images.pexels.com/photos/34950/pexels-photo.jpg?w=940&h=650&auto=compress&cs=tinysrgb'
