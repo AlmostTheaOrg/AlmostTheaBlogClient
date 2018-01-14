@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from '../../auth/AuthenticationService';
 
 @Component({
 	selector: 'app-projects',
@@ -34,7 +35,13 @@ export class ProjectsComponent implements OnInit {
 		}
 
 	];
-	constructor() { }
+
+	constructor(private authService: AuthenticationService) {
+	}
+
+	get isLoggedIn() {
+		return this.authService.isLogged;
+	}
 
 	ngOnInit() {
 	}

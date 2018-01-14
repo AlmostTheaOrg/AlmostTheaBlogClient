@@ -1,11 +1,11 @@
 <div class="container">
-  <section class="add-project">
+  <section *ngIf="isLoggedIn" class="add-project">
     <a class="btn btn-success" href="/projects/add">Add Project</a>
   </section>
 
   <section id="projects">
     <figure *ngFor="let project of projects" class="projects-gallery">
-      <a class="gallery-item" href="#">
+      <a class="gallery-item" [routerLink]="project.name">
         <div class="thumbnail-wrapper">
           <img [attr.src]="project.thumb" alt="Gallery Thumbnail" />
 

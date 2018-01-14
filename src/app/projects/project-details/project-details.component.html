@@ -1,0 +1,33 @@
+<section class="container controls" *ngIf="isLoggedIn">
+  <div class="image-controls">
+    <a class="btn btn-success" (click)="addImage()" href="javascript:void(0)">
+      <i class="fa fa-plus" aria-hidden="true"></i>
+      Image
+    </a>
+  </div>
+
+  <div class="project-controls">
+    <a class="btn btn-warning" (click)="editProject()" href="javascript:void(0)">
+      <i class="fa fa-pencil" aria-hidden="true"></i>
+      Edit
+    </a>
+
+    <a class="btn btn-danger" (click)="deleteProject()" href="javascript:void(0)">
+      <i class="fa fa-trash-o" aria-hidden="true"></i>
+      Delete
+    </a>
+  </div>
+
+</section>
+
+<section class="images">
+  <div class="selected">
+      <img [attr.src]="selected.imageSrc" alt="">
+  </div>
+  <div class="all">
+    <div *ngFor="let photo of photos">
+      <img [attr.src]="photo.imageSrc" alt="" (click)="select(photo)">
+    </div>
+  </div>
+
+</section>
