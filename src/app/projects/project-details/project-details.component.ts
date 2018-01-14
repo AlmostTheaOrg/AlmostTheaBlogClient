@@ -26,8 +26,10 @@ export class ProjectDetailsComponent {
 			imageSrc: 'https://images.pexels.com/photos/796611/pexels-photo-796611.jpeg?w=940&h=650&auto=compress&cs=tinysrgb'
 		},
 		{
-
 			imageSrc: 'https://images.pexels.com/photos/773736/pexels-photo-773736.jpeg?w=940&h=650&auto=compress&cs=tinysrgb'
+		},
+		{
+			imageSrc: 'https://images.pexels.com/photos/59599/pexels-photo-59599.jpeg?w=1280&h=851&auto=compress&cs=tinysrgb'
 		}
 	];
 
