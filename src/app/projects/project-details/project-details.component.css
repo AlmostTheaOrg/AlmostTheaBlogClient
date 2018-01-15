@@ -40,6 +40,16 @@
   cursor: pointer;
 }
 
+.background {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  background: rgba(204, 204, 204, 0.5);
+  opacity: 0;
+  transition: opacity linear 0.5s;
+}
+
 .listed i {
   font-size: 2em;
   width: 32px;
@@ -47,22 +57,21 @@
   margin: 0 auto;
   top: calc(50% - 16px);
   right: calc(50% - 16px);
-  opacity: 0;
   color: white;
 }
 
-.listed:hover i {
+.listed:hover .background {
   opacity: 1;
 }
 
 @media screen and (max-width: 780px) {
-  
   .selected img,
   .selected,
   .all {
     width: 100%;
   }
-  .selected, .selected >img {
+  .selected,
+  .selected>img {
     display: block;
   }
   .all {

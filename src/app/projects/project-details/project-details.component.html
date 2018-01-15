@@ -28,7 +28,9 @@
     <div *ngFor="let photo of photos">
       <div class="listed" (click)="select(photo)">
         <img [attr.src]="photo.imageSrc" alt="">
-        <i class="fa fa-search fa-2"></i>
+        <div class="background">
+          <i class="fa fa-search fa-2"></i>
+        </div>
       </div>
     </div>
   </div>
