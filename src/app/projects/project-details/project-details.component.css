@@ -42,13 +42,42 @@
 
 .listed i {
   font-size: 2em;
+  width: 32px;
   position: absolute;
-  top: 45%;
-  left: 50%;
+  margin: 0 auto;
+  top: calc(50% - 16px);
+  right: calc(50% - 16px);
   opacity: 0;
   color: white;
 }
 
 .listed:hover i {
   opacity: 1;
+}
+
+@media screen and (max-width: 780px) {
+  
+  .selected img,
+  .selected,
+  .all {
+    width: 100%;
+  }
+  .selected, .selected >img {
+    display: block;
+  }
+  .all {
+    display: flex;
+    height: initial;
+    overflow: hidden;
+    overflow-x: auto;
+  }
+  .images {
+    display: initial;
+  }
+  .all img {
+    width: 150px;
+  }
+  .all div {
+    display: inline-block;
+  }
 }

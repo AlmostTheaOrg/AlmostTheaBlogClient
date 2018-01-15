@@ -22,13 +22,13 @@
 
 <section class="images">
   <div class="selected">
-      <img [attr.src]="selected.imageSrc" alt="">
+    <img [attr.src]="selected.imageSrc" alt="">
   </div>
   <div class="all">
     <div *ngFor="let photo of photos">
-      <div class="listed">
-          <img [attr.src]="photo.imageSrc" alt="" (click)="select(photo)">
-          <i class="fa fa-search fa-2"></i>
+      <div class="listed" (click)="select(photo)">
+        <img [attr.src]="photo.imageSrc" alt="">
+        <i class="fa fa-search fa-2"></i>
       </div>
     </div>
   </div>
