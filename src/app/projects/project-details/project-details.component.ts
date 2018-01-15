@@ -9,7 +9,7 @@ import { AuthenticationService } from '../../auth/AuthenticationService';
 })
 export class ProjectDetailsComponent {
 	private projectName: string;
-	public photos = [
+	public photos: Array<any> = [
 		{
 
 			imageSrc: 'https://images.pexels.com/photos/34950/pexels-photo.jpg?w=940&h=650&auto=compress&cs=tinysrgb'
@@ -33,7 +33,7 @@ export class ProjectDetailsComponent {
 		}
 	];
 
-	public selected = { imageSrc: '' };
+	public selected = { imageSrc: '', previous: null, next: null };
 
 	constructor(private route: ActivatedRoute, private router: Router, private authService: AuthenticationService) {
 		this.route.params.subscribe(params => {
@@ -43,6 +43,16 @@ export class ProjectDetailsComponent {
 				this.router.navigateByUrl('/projects');
 			}
 		});
+
+		let previous: { imageSrc: string } = null;
+		this.photos.forEach(p => {
+			if (previous !== null) {
+				p.previous = previous;
+				p.previous.next = p;
+			}
+
+			previous = p;
+		});
 	}
 
 	get isLoggedIn() {
@@ -50,6 +60,26 @@ export class ProjectDetailsComponent {
 	}
 
 	select(photo) {
-		this.selected.imageSrc = photo.imageSrc;
+		this.selected = photo;
+	}
+
+	showPrevious() {
+		if (this.selected.imageSrc === '') {
+			return;
+		}
+
+		if (this.selected.previous) {
+			this.selected = this.selected.previous;
+		}
+	}
+
+	showNext() {
+		if (this.selected.imageSrc === '') {
+			return;
+		}
+
+		if (this.selected.next) {
+			this.selected = this.selected.next;
+		}
 	}
 }

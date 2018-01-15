@@ -15,6 +15,7 @@
 }
 
 .selected {
+  position: relative;
   width: 75%;
   display: flex;
   align-items: center;
@@ -89,4 +90,46 @@
   .all div {
     display: inline-block;
   }
+}
+
+.previous,
+.next {
+  height: 100%;
+  width: 20%;
+  position: absolute;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity linear 0.5s;
+  cursor: pointer;
+}
+
+.previous i,
+.next i {
+  font-size: 2em;
+}
+
+.previous {
+  left: 0
+}
+
+.next {
+  right: 0;
+  top: 0;
+}
+
+.selected:hover .next,
+.selected:hover .previous {
+  opacity: 1;
+  transition: opacity ease-out 0.5s;
+}
+
+.selected:hover .next {
+  background: linear-gradient(to right, rgba(255, 0, 0, 0), rgba(0, 0, 0, 0.5))
+}
+
+.selected:hover .previous {
+  background: linear-gradient(to left, rgba(255, 0, 0, 0), rgba(0, 0, 0, 0.5))
 }

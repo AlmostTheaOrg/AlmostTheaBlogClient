@@ -22,7 +22,9 @@
 
 <section class="images">
   <div class="selected">
+    <div class="previous" (click)="showPrevious()"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
     <img [attr.src]="selected.imageSrc" alt="">
+    <div class="next" (click)="showNext()"><i class="fa fa-chevron-right" aria-hidden="true"></i></div>    
   </div>
   <div class="all">
     <div *ngFor="let photo of photos">
