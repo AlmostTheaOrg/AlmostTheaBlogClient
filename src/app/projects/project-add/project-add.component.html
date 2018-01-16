@@ -1,0 +1,17 @@
+<form (ngSubmit)="onSubmit()" #addForm="ngForm" class="flex align-center">
+  <div class="modal-wrapper">
+
+    <div class="input-group">
+      <label for="name">Name:</label>
+      <div class="input-field">
+        <input class="input" type="text" name="name" [(ngModel)]="project.name" placeholder="Thea" required />
+      </div>
+    </div>
+
+    <div class="input-group">
+      <div class="input-field">
+        <input class="btn btn-success" type="submit" value="Add" />
+      </div>
+    </div>
+  </div>
+</form>
