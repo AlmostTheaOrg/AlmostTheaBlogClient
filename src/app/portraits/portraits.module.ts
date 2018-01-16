@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { PortraitsComponent } from './portraits/portraits.component';
 import { SharedModule } from '../shared/shared.module';
-import { DynamicComponent } from './dynamic/dynamic.component';
+import { ModalComponent } from '../shared/modal/modal.component';
 import {
 	ImageAddComponent,
 	ImageDetailsComponent,
@@ -16,7 +16,6 @@ import {
 	declarations: [
 		PortraitsComponent,
 		ImageDetailsComponent,
-		DynamicComponent,
 		ImageEditComponent,
 		ImageDeleteComponent,
 		ImageAddComponent

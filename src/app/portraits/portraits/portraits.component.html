@@ -21,11 +21,8 @@
       </a>
     </div>
   </section>
-
-  <section>
-    <div [attr.class]="box.class">
-      <app-dynamic-component [componentData]="componentData"></app-dynamic-component>
-      <a class="lightbox-close" href="javascript:void(0)" (click)="close()"></a>
-    </div>
-  </section>
 </div>
+
+<section>
+  <app-modal [componentData]="componentData"></app-modal>
+</section>

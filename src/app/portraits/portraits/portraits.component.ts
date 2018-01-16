@@ -4,7 +4,7 @@ import { ImageService } from '../../data/services';
 import { Image } from '../../data/models';
 import { ImageAddComponent, ImageDetailsComponent, ImageEditComponent, ImageDeleteComponent } from '../index';
 
-import { DynamicComponent } from '../dynamic/dynamic.component';
+import { ModalComponent } from '../../shared/modal/modal.component';
 import { AuthenticationService } from '../../auth/AuthenticationService';
 @Component({
 	selector: 'app-portraits',
@@ -21,7 +21,7 @@ export class PortraitsComponent implements OnInit, OnDestroy {
 	private opened = this.closed + ' selected';
 	private focused = false;
 	public componentData: Object;
-	@ViewChild(DynamicComponent) private readonly child;
+	@ViewChild(ModalComponent) private readonly child;
 
 	public readonly box = {
 		class: 'lightbox-target',

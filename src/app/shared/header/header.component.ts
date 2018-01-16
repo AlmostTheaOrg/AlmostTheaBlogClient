@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+	selector: 'app-header',
+	templateUrl: './header.component.html',
+	styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  public shouldBeVisible = false;
+	public shouldBeVisible = false;
 
-  constructor() { }
+	constructor() { }
 
-  ngOnInit() {
-  }
+	ngOnInit() {
+	}
 
-  public response () {
-    this.shouldBeVisible = !this.shouldBeVisible;
-  }
+	public response() {
+		this.shouldBeVisible = !this.shouldBeVisible;
+	}
 }
