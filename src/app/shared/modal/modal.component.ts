@@ -12,14 +12,15 @@ import {
 	ImageEditComponent,
 	ImageDeleteComponent
 } from '../../portraits/index';
-
+import { ProjectAddComponent } from '../../projects/project-add/project-add.component';
 @Component({
 	selector: 'app-modal',
 	entryComponents: [
 		ImageAddComponent,
 		ImageDetailsComponent,
 		ImageEditComponent,
-		ImageDeleteComponent
+		ImageDeleteComponent,
+		ProjectAddComponent
 	],
 	templateUrl: './modal.component.html',
 	styleUrls: ['./modal.component.css']
@@ -61,7 +62,6 @@ export class ModalComponent {
 		this.dynamicComponentContainer.insert(component.hostView);
 
 		// We can destroy the old component is we like by calling destroy
-		this.reverseView();
 		this.destroy();
 
 		this.currentComponent = component;
@@ -82,6 +82,8 @@ export class ModalComponent {
 		if (this.currentComponent) {
 			this.currentComponent.destroy();
 		}
+
+		this.reverseView();
 	}
 
 	constructor(private resolver: ComponentFactoryResolver) { }
