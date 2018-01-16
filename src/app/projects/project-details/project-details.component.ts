@@ -1,57 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../../auth/AuthenticationService';
-
+import { ProjectService } from '../../data/services';
+import { Project, Image } from '../../data/models';
+import { ProjectPhotoListViewModel } from '../../data/view-models/ProjectPhotoListViewModel';
 @Component({
 	selector: 'app-project-details',
 	templateUrl: './project-details.component.html',
 	styleUrls: ['./project-details.component.css']
 })
 export class ProjectDetailsComponent {
-	private projectName: string;
-	public photos: Array<any> = [
-		{
-
-			imageSrc: 'https://images.pexels.com/photos/34950/pexels-photo.jpg?w=940&h=650&auto=compress&cs=tinysrgb'
-		},
-		{
-			imageSrc: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/ls-sample6.jpg'
-		},
-		{
-
-			imageSrc: 'https://images.pexels.com/photos/798575/pexels-photo-798575.jpeg?w=940&h=650&auto=compress&cs=tinysrgb'
-		},
-		{
-
-			imageSrc: 'https://images.pexels.com/photos/796611/pexels-photo-796611.jpeg?w=940&h=650&auto=compress&cs=tinysrgb'
-		},
-		{
-			imageSrc: 'https://images.pexels.com/photos/773736/pexels-photo-773736.jpeg?w=940&h=650&auto=compress&cs=tinysrgb'
-		},
-		{
-			imageSrc: 'https://images.pexels.com/photos/59599/pexels-photo-59599.jpeg?w=1280&h=851&auto=compress&cs=tinysrgb'
-		}
-	];
+	private project: Project;
+	public photos: Array<ProjectPhotoListViewModel> = [];
 
 	public selected = { imageSrc: '', previous: null, next: null };
 
-	constructor(private route: ActivatedRoute, private router: Router, private authService: AuthenticationService) {
+	constructor(private route: ActivatedRoute,
+		private router: Router,
+		private authService: AuthenticationService,
+		private projectService: ProjectService) {
 		this.route.params.subscribe(params => {
-			this.projectName = params['name'];
-
-			if (this.projectName === 'not-found') {
+			const projectName = params['name'];
+			this.project = this.projectService.find(p => p.getName() === projectName);
+			if (this.project === null) {
 				this.router.navigateByUrl('/projects');
-			}
-		});
-
-		let previous: { imageSrc: string } = null;
-		this.photos.forEach(p => {
-			if (previous !== null) {
-				p.previous = previous;
-				p.previous.next = p;
+				return;
 			}
 
-			previous = p;
+			this.photos = this.getPhotos();
 		});
 	}
 
@@ -81,5 +57,39 @@ export class ProjectDetailsComponent {
 		if (this.selected.next) {
 			this.selected = this.selected.next;
 		}
+	}
+
+	deletePhoto(event: Event, photo: { imageSrc: string }) {
+		event.stopPropagation();
+		const index = this.project.getImages().findIndex(p => p.getImageSrc() === photo.imageSrc);
+		const images = this.project.getImages();
+		images.splice(index, 1);
+		this.project = new Project(this.project.getName(), this.project.getThumbnail(), images);
+
+		this.projectService.edit(this.project.getId(), this.project);
+		this.photos = this.getPhotos();
+
+		if (this.selected.imageSrc === photo.imageSrc) {
+			this.selected = { imageSrc: '', previous: null, next: null };
+		}
+	}
+
+	// Will return all images for a project (in their initial order).
+	private getPhotos(): Array<ProjectPhotoListViewModel> {
+		const photos = [];
+		let previous: { imageSrc: string; } = null;
+
+		for (const projectPhoto of this.project.getImages()) {
+			const photoViewModel: ProjectPhotoListViewModel = { imageSrc: projectPhoto.getImageSrc() };
+			if (previous !== null) {
+				photoViewModel.previous = previous;
+				photoViewModel.previous.next = photoViewModel;
+			}
+
+			photos.push(photoViewModel);
+			previous = photoViewModel;
+		}
+
+		return photos;
 	}
 }

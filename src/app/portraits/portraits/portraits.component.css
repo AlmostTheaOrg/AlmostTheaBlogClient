@@ -169,27 +169,3 @@ a.lightbox-close:after {
     width: 100%;
   }
 }
-
-.update-container {
-  position: absolute;
-  padding: 5px;
-  right: 0px;
-}
-
-.update-container i {
-  padding: 5px;
-  border-radius: 5px;
-  right: 0px;
-}
-
-.update-container i:hover {
-  background-color: white;
-  opacity: 1;
-}
-
-.modal-wrapper {
-  padding: 40px;
-  text-align: center;
-  background: #ffffff;
-  border-radius: 5px;
-}

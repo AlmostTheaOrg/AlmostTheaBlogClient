@@ -51,7 +51,7 @@
   transition: opacity linear 0.5s;
 }
 
-.listed i {
+.search {
   font-size: 2em;
   width: 32px;
   position: absolute;
@@ -132,4 +132,13 @@
 
 .selected:hover .previous {
   background: linear-gradient(to left, rgba(255, 0, 0, 0), rgba(0, 0, 0, 0.5))
+}
+
+.update-container {
+  color: white;
+  z-index: 1;
+}
+
+.update-container i:hover {
+  background-color: initial;
 }

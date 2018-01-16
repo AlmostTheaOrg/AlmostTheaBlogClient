@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, EventEmitter, Output, Input, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ImageRepository } from '../../data/ImageRepository';
-import { Image } from '../../data/Image';
+import { ImageService } from '../../data/services';
+import { Image } from '../../data/models';
 import { ImageAddComponent, ImageDetailsComponent, ImageEditComponent, ImageDeleteComponent } from '../index';
 
 import { DynamicComponent } from '../dynamic/dynamic.component';
@@ -32,16 +32,9 @@ export class PortraitsComponent implements OnInit, OnDestroy {
 
 	constructor(
 		private route: ActivatedRoute,
-		private repository: ImageRepository,
+		private imageRepository: ImageService,
 		private authService: AuthenticationService
-	) {
-		this.repository.add(new Image('Biktor', 'assets/images/portrait-1.jpg'));
-		this.repository.add(new Image('Goshy', 'assets/images/portrait-2.jpg'));
-		this.repository.add(new Image('Elly', 'assets/images/portrait-3.jpg'));
-		this.repository.add(
-			new Image('Doggie', 'http://i.huffpost.com/gen/749263/original.jpg')
-		);
-	}
+	) { }
 
 	ngOnInit() {
 		this.routeChangeSubscription = this.route.params.subscribe(params => {
@@ -59,7 +52,7 @@ export class PortraitsComponent implements OnInit, OnDestroy {
 	}
 
 	get images(): Image[] {
-		return this.repository.all();
+		return this.imageRepository.all();
 	}
 
 	get isLoggedIn() {

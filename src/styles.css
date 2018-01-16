@@ -103,3 +103,21 @@ a.btn {
   background: #ffffff;
   border-radius: 5px;
 }
+
+.update-container {
+  position: absolute;
+  padding: 5px;
+  right: 0px;
+}
+
+.update-container i {
+  padding: 5px;
+  border-radius: 5px;
+  right: 0px;
+  z-index: 1;
+}
+
+.update-container i:hover {
+  background-color: white;
+  opacity: 1;
+}

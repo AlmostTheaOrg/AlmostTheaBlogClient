@@ -10,7 +10,7 @@ import { ContactsModule } from './contacts/contacts.module';
 import { PortraitsModule } from './portraits/portraits.module';
 import { ProjectsModule } from './projects/projects.module';
 import { AppRoutingModule } from './app-routing/app-routing.module';
-import { ImageRepository } from './data/ImageRepository';
+import { ImageService, ProjectService } from './data/services';
 import { AuthenticationService } from './auth/AuthenticationService';
 import { NotFoundComponent } from './not-found/not-found.component';
 
@@ -28,7 +28,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 		AuthModule
 	],
 	exports: [],
-	providers: [ImageRepository, AuthenticationService],
+	providers: [ImageService, AuthenticationService, ProjectService],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

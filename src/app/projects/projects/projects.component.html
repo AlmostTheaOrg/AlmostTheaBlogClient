@@ -7,7 +7,7 @@
     <figure *ngFor="let project of projects" class="projects-gallery">
       <a class="gallery-item" [routerLink]="project.name">
         <div class="thumbnail-wrapper">
-          <img [attr.src]="project.thumb" alt="Gallery Thumbnail" />
+          <img [attr.src]="project.getThumbnail().getImageSrc()" alt="Gallery Thumbnail" />
 
           <div class="overlay">
             <div class="text">
