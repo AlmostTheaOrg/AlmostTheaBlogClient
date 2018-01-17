@@ -9,6 +9,7 @@ import { ProjectsComponent } from '../projects/projects/projects.component';
 import { ProjectDetailsComponent } from '../projects/project-details/project-details.component';
 import { NotFoundComponent } from '../not-found/not-found.component';
 import { LoginComponent } from '../auth/login/login.component';
+import { FeedbackComponent } from '../contacts/feedback/feedback.component';
 
 const routes: Routes = [
 	{ path: '', component: HomeComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
 	{ path: 'portraits', component: PortraitsComponent },
 	{ path: 'projects', component: ProjectsComponent },
 	{ path: 'projects/:name', component: ProjectDetailsComponent },
+	{ path: 'feedback', component: FeedbackComponent },
 	{ path: '404', component: NotFoundComponent },
 	{ path: '**', redirectTo: '/404' }
 ];

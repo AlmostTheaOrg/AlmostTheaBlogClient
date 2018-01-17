@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from '../../auth/AuthenticationService';
 
 @Component({
 	selector: 'app-header',
@@ -8,12 +9,16 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
 	public shouldBeVisible = false;
 
-	constructor() { }
+	constructor(private authService: AuthenticationService) { }
 
 	ngOnInit() {
 	}
 
 	public response() {
 		this.shouldBeVisible = !this.shouldBeVisible;
+	}
+
+	get isLoggedIn() {
+		return this.authService.isLogged;
 	}
 }
