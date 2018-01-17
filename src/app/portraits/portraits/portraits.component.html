@@ -5,7 +5,7 @@
   </section>
 
   <section class="images">
-    <div *ngFor="let image of images" (click)="show(image)" class="one-third">
+    <div *ngFor="let image of images" (click)="show(image)" class="portrait">
       <a id="image-details" class="image card" href="javascript:void(0)">
         <span *ngIf="isLoggedIn" class="update-container">
           <span (click)="edit($event, image)">

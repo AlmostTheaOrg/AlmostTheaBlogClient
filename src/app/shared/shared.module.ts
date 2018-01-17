@@ -16,7 +16,7 @@ import { ModalComponent } from './modal/modal.component';
 	exports: [
 		HeaderComponent,
 		FooterComponent,
-		ModalComponent
+		ModalComponent,
 	]
 })
 export class SharedModule { }

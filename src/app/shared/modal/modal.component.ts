@@ -1,18 +1,15 @@
+import { Component, Input, ViewContainerRef, ViewChild, ReflectiveInjector, ComponentFactoryResolver } from '@angular/core';
+import { ImageAddComponent, ImageDetailsComponent, ImageEditComponent, ImageDeleteComponent } from '../../portraits';
 import {
-	Component,
-	Input,
-	ViewContainerRef,
-	ViewChild,
-	ReflectiveInjector,
-	ComponentFactoryResolver
-} from '@angular/core';
-import {
-	ImageAddComponent,
-	ImageDetailsComponent,
-	ImageEditComponent,
-	ImageDeleteComponent
-} from '../../portraits/index';
-import { ProjectAddComponent } from '../../projects/project-add/project-add.component';
+	ProjectAddComponent,
+	ProjectEditComponent,
+	ProjectPhotoAddComponent,
+	ProjectDeleteComponent,
+	ProjectDetailsComponent,
+	ProjectPhotoRemoveComponent,
+	ProjectsComponent
+} from '../../projects';
+
 @Component({
 	selector: 'app-modal',
 	entryComponents: [
@@ -20,7 +17,13 @@ import { ProjectAddComponent } from '../../projects/project-add/project-add.comp
 		ImageDetailsComponent,
 		ImageEditComponent,
 		ImageDeleteComponent,
-		ProjectAddComponent
+		ProjectAddComponent,
+		ProjectEditComponent,
+		ProjectPhotoAddComponent,
+		ProjectDeleteComponent,
+		ProjectDetailsComponent,
+		ProjectPhotoRemoveComponent,
+		ProjectsComponent
 	],
 	templateUrl: './modal.component.html',
 	styleUrls: ['./modal.component.css']
@@ -31,6 +34,8 @@ export class ModalComponent {
 
 	@ViewChild('appModalContainer', { read: ViewContainerRef })
 	dynamicComponentContainer: ViewContainerRef;
+
+	constructor(private resolver: ComponentFactoryResolver) { }
 
 	// component: Class for the component you want to create
 	// inputs: An object with key/value pairs mapped to input name/input value
@@ -67,14 +72,6 @@ export class ModalComponent {
 		this.currentComponent = component;
 	}
 
-	private reverseView() {
-		if (this.viewClass === 'lightbox-target') {
-			this.viewClass = 'lightbox-target selected';
-		} else {
-			this.viewClass = 'lightbox-target';
-		}
-	}
-
   /**
    * destroy
    */
@@ -86,5 +83,11 @@ export class ModalComponent {
 		this.reverseView();
 	}
 
-	constructor(private resolver: ComponentFactoryResolver) { }
+	private reverseView() {
+		if (this.viewClass === 'lightbox-target') {
+			this.viewClass = 'lightbox-target selected';
+		} else {
+			this.viewClass = 'lightbox-target';
+		}
+	}
 }

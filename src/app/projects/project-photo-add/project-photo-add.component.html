@@ -1,0 +1,16 @@
+<form (ngSubmit)="onSubmit()" #addForm="ngForm" class="flex align-center">
+  <div class="modal-wrapper">
+    <div class="input-group">
+      <label for="image">Image:</label>
+      <div class="input-field">
+        <input class="input" type="text" name="image" [(ngModel)]="image.image" />
+      </div>
+    </div>
+
+    <div class="input-group">
+      <div class="input-field">
+        <input class="btn btn-success" type="submit" value="Add" />
+      </div>
+    </div>
+  </div>
+</form>
