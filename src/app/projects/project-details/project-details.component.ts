@@ -64,7 +64,7 @@ export class ProjectDetailsComponent extends ModalCreator {
 	deletePhoto(event: Event, photo: { imageSrc: string }) {
 		event.stopPropagation();
 
-		this.open(ProjectPhotoRemoveComponent, { photo: photo });
+		this.open(ProjectPhotoRemoveComponent, { photo: photo, project: this.project });
 	}
 
 	select(photo) {

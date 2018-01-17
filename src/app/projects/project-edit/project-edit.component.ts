@@ -7,7 +7,7 @@ import { ModalWindow } from '../../shared/modal/modal-window';
 	styleUrls: ['./project-edit.component.css']
 })
 export class ProjectEditComponent extends ModalWindow {
-	private project = { name: '' };
+	public project = { name: '', thumb: '' };
 
 	constructor(injector: Injector) {
 		super(injector);

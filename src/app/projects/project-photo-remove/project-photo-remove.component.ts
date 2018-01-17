@@ -2,6 +2,7 @@ import { Component, OnInit, Injector } from '@angular/core';
 import { ModalWindow } from '../../shared/modal/modal-window';
 import { Project } from '../../data/models';
 import { ProjectService } from '../../data/services/ProjectService';
+import { inherits } from 'util';
 
 @Component({
 	selector: 'app-project-photo-remove',
@@ -13,7 +14,8 @@ export class ProjectPhotoRemoveComponent extends ModalWindow {
 	private photo = { imageSrc: '' };
 	constructor(injector: Injector, private projectService: ProjectService) {
 		super(injector);
-
+		this.photo = injector.get('photo');
+		this.project = injector.get('project');
 	}
 
 	onSubmit() {
@@ -23,5 +25,6 @@ export class ProjectPhotoRemoveComponent extends ModalWindow {
 		this.project = new Project(this.project.getName(), this.project.getThumbnail(), images);
 
 		this.projectService.edit(this.project.getId(), this.project);
+		this.close();
 	}
 }

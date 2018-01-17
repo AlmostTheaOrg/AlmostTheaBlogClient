@@ -1,5 +1,5 @@
 export abstract class ModalCreator {
-	private componentData: { component: object, inputs: object };
+	public componentData: { component: object, inputs: object };
 
 	public open(component: any, inputs: any) {
 		inputs.close = this.close.bind(this);
