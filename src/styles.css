@@ -121,3 +121,11 @@ a.btn {
   background-color: white;
   opacity: 1;
 }
+
+.btn[disabled]:hover {
+  cursor: no-drop;
+}
+
+.btn[disabled] {
+  opacity: 0.5;
+}
