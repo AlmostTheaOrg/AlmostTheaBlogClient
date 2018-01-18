@@ -36,9 +36,9 @@ export class FeedbackComponent {
 		{ id: 9, name: 'Maria', email: 'maria@gmail.com', content: 'Climb leg rub face on everything give attitude nap all day.' },
 	];
 
-	private opened;
+	public opened;
 
-	private selected = new Set();
+	public selected = new Set();
 
 	constructor() { }
 
