@@ -6,6 +6,11 @@
   src: url(fonts/andantino-script_[allfont.net].ttf);
 }
 
+@font-face {
+  font-family: B52;
+  src: url(fonts/b52_[allfont.net].ttf);
+}
+
 html {
   font-family: Andantino;
   background-color: #ffffff;
@@ -21,6 +26,10 @@ body {
 header {
   font-family: Andantino;
   height: 30vh;
+}
+
+footer {
+  font-family: B52, sans-serif;
 }
 
 .one-pager {
