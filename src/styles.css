@@ -1,6 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import url("https://fonts.googleapis.com/css?family=Comfortaa:700|Open+Sans:400,700");
+@font-face {
+  font-family: Andantino;
+  src: url(fonts/andantino-script_[allfont.net].ttf);
+}
+
 html {
   font-family: "Open Sans", Arial, sans-serif;
   background-color: #ffffff;
@@ -14,6 +19,7 @@ body {
 }
 
 header {
+  font-family: Andantino;
   height: 30vh;
 }
 
