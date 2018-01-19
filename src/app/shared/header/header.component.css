@@ -30,7 +30,8 @@ header {
 
 .nav-bar-container {
   padding: 2px 0;
-  transition: max-height 1s ease-out;
+  max-height: 50px;
+  transition: max-height 0.25s linear;
   max-width: 1280px;
   margin: 0 auto;
   font-size: 1.5em;
