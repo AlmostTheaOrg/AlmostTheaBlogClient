@@ -22,7 +22,7 @@ export class ProjectDetailsComponent extends ModalCreator {
 	private project: Project;
 	public photos: Array<ProjectPhotoListViewModel> = [];
 
-	public selected = { imageSrc: '', previous: null, next: null };
+	public selected: ProjectPhotoListViewModel = { imageSrc: '', previous: null, next: null };
 
 	constructor(private route: ActivatedRoute,
 		private router: Router,
@@ -38,6 +38,7 @@ export class ProjectDetailsComponent extends ModalCreator {
 			}
 
 			this.photos = this.getPhotos();
+			this.selected = this.photos[0];
 		});
 	}
 
