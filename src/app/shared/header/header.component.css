@@ -1,7 +1,3 @@
-header {
-  height: 30vh;
-}
-
 .nav-header {
   width: 100%;
   display: flex;
@@ -107,6 +103,6 @@ header {
 
 #logo {
   margin: 0 auto;
-  max-height: 128px;
+  max-height: 114px;
   max-width: 256px;
 }

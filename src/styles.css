@@ -26,7 +26,7 @@ body {
 
 .one-pager {
   height: 60vh;
-  overflow: hidden;
+  overflow: auto;
 }
 
 .container {
