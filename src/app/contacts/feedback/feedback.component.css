@@ -1,3 +1,9 @@
+.content {
+  padding: 10px;
+  font-family: Comfortaa;
+  box-sizing: border-box;
+}
+
 .feedbacks {
   width: 40%;
 }
@@ -19,7 +25,6 @@
   height: 50px;
   border-bottom: 1px solid rgb(141, 233, 220);
 }
-
 
 .feedback h4 {
   display: inline-block;
@@ -111,11 +116,6 @@
   margin: 0;
 }
 
-.content {
-  padding: 10px;
-  box-sizing: border-box;
-}
-
 .scroll::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
@@ -140,4 +140,11 @@
   color: white;
   font-size: 2em;
   cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 0.5s linear;
 }
+
+.close:hover {
+  opacity: 1;
+}
+

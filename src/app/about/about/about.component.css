@@ -16,9 +16,21 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    font-family: B52;
+    font-size: 1.2em;
 }
 
 .profile {
     height: 128px;
     width: 128px;
+    border-radius: 64px;
+}
+
+.name {
+    font-family: Dulcelin;
+    margin: 0;
+}
+
+.description {
+    margin-top: 5px;
 }

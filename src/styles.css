@@ -1,14 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import url("https://fonts.googleapis.com/css?family=Comfortaa:700|Open+Sans:400,700");
-@font-face {
-  font-family: Andantino;
-  src: url(fonts/andantino-script_[allfont.net].ttf);
-}
 
 @font-face {
   font-family: Dulcelin;
   src: url(fonts/Dulcelin.otf);
+}
+
+@font-face {
+  font-family: B52;
+  src: url(fonts/b52.ttf);
 }
 
 html {
@@ -22,12 +23,6 @@ body {
   margin: 0;
   min-width: 240px;
 }
-
-header {
-  font-family: Dulcelin;
-  height: 30vh;
-}
-
 
 .one-pager {
   height: 60vh;
