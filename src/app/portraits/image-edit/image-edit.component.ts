@@ -1,6 +1,7 @@
 import { Component, OnInit, Injector } from '@angular/core';
 import { ImageService } from '../../data/services';
 import { Image } from '../../data/models';
+import { PortraitActions } from '../portrait.action';
 
 @Component({
 	selector: 'app-image-edit',
@@ -8,11 +9,11 @@ import { Image } from '../../data/models';
 	styleUrls: ['./image-edit.component.css']
 })
 export class ImageEditComponent {
-	public image: { id: string; name: string; image: string };
+	public portrait: { id: string; name: string; image: string };
 	private close;
 
-	constructor(private injector: Injector, private imageServices: ImageService) {
-		this.image = {
+	constructor(private injector: Injector, private portraitActions: PortraitActions) {
+		this.portrait = {
 			id: this.injector.get('id'),
 			name: this.injector.get('name'),
 			image: this.injector.get('imageSrc')
@@ -22,9 +23,9 @@ export class ImageEditComponent {
 	}
 
 	onSubmit() {
-		this.imageServices.edit(
-			this.image.id,
-			new Image(this.image.name, this.image.image)
+		this.portraitActions.editPortrait(
+			this.portrait.id,
+			new Image(this.portrait.name, this.portrait.image)
 		);
 
 		this.close();

@@ -13,11 +13,18 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { ImageService, ProjectService } from './data/services';
 import { AuthenticationService } from './auth/AuthenticationService';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { HttpModule } from '@angular/http';
+import { NgRedux, NgReduxModule } from 'ng2-redux';
+import { IAppState } from './store/IAppState';
+import { store } from './store/store';
+import { PortraitActions } from './portraits/portrait.action';
 
 @NgModule({
 	declarations: [AppComponent, NotFoundComponent],
 	imports: [
 		BrowserModule,
+		HttpModule,
+		NgReduxModule,
 		AppRoutingModule,
 		HomeModule,
 		AboutModule,
@@ -28,7 +35,11 @@ import { NotFoundComponent } from './not-found/not-found.component';
 		AuthModule
 	],
 	exports: [],
-	providers: [ImageService, AuthenticationService, ProjectService],
+	providers: [ImageService, AuthenticationService, ProjectService, PortraitActions],
 	bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+	constructor(private ngRedux: NgRedux<IAppState>) {
+		this.ngRedux.provideStore(store);
+	}
+}

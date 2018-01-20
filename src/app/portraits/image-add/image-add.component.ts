@@ -1,6 +1,6 @@
 import { Component, OnInit, Injector } from '@angular/core';
-import { ImageService } from '../../data/services';
 import { Image } from '../../data/models';
+import { PortraitActions } from '../portrait.action';
 
 @Component({
 	selector: 'app-image-add',
@@ -12,13 +12,13 @@ export class ImageAddComponent {
 
 	public image: { name: string; image: string } = { name: '', image: '' };
 
-	constructor(private injector: Injector, private imageService: ImageService) {
+	constructor(private injector: Injector, private portraitActions: PortraitActions) {
 		this.close = this.injector.get('close');
 	}
 
 	onSubmit() {
 		// TODO: Validate.
-		this.imageService.add(new Image(this.image.name, this.image.image));
+		this.portraitActions.addPortrait(new Image(this.image.name, this.image.image));
 		this.close();
 	}
 }

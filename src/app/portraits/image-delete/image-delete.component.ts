@@ -1,5 +1,5 @@
 import { Component, OnInit, Injector } from '@angular/core';
-import { ImageService } from '../../data/services';
+import { PortraitActions } from '../portrait.action';
 
 @Component({
 	selector: 'app-image-delete',
@@ -10,7 +10,7 @@ export class ImageDeleteComponent {
 	public image;
 	private close;
 
-	constructor(private injector: Injector, private imageRepository: ImageService) {
+	constructor(private injector: Injector, private portraitActions: PortraitActions) {
 		this.image = {
 			id: this.injector.get('id'),
 			name: this.injector.get('name')
@@ -22,7 +22,7 @@ export class ImageDeleteComponent {
 	onSubmit(event: Event) {
 		event.preventDefault();
 
-		this.imageRepository.delete(this.image.id);
+		this.portraitActions.deletePortrait(this.image.id);
 		this.close();
 	}
 }
