@@ -10,4 +10,6 @@
 #wrapper {
   margin: 0 auto;
   height: 100%;
+  padding-top: 10px;
+  box-sizing: border-box;
 }

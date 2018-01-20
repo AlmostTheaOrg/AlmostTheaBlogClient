@@ -1,36 +1,39 @@
 .image-holder.left {
-    float: left;
-    padding-right: 10px;
+  float: left;
+  padding-right: 10px;
 }
 
 .image-holder.right {
-    float: right;
-    padding-left: 10px;
+  float: right;
+  padding-left: 10px;
 }
 
 .card {
-    padding: 5px;
+  padding-top: 10px;
+  box-sizing: border-box;
+  padding: 5px;
 }
+
 .about-us {
-    overflow-y: auto;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    font-family: B52;
-    font-size: 1.2em;
+  overflow-y: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  font-family: B52;
+  font-size: 1.2em;
 }
 
 .profile {
-    height: 128px;
-    width: 128px;
-    border-radius: 64px;
+  height: 128px;
+  width: 128px;
+  border-radius: 64px;
 }
 
 .name {
-    font-family: Dulcelin;
-    margin: 0;
+  font-family: Dulcelin;
+  margin: 0;
 }
 
 .description {
-    margin-top: 5px;
+  margin-top: 5px;
 }
