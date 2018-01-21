@@ -17,7 +17,7 @@ import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 })
 export class PortraitsComponent extends ModalCreator implements OnInit {
 	@select('portraits')
-	private portraits: Observable<Image[]>;
+	public portraits: Observable<Image[]>;
 
 	@ViewChild(ModalComponent)
 	private readonly child;
