@@ -1,7 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import url("https://fonts.googleapis.com/css?family=Comfortaa:700|Open+Sans:400,700");
-
 @font-face {
   font-family: Dulcelin;
   src: url(fonts/Dulcelin.otf);
@@ -25,8 +24,8 @@ body {
 }
 
 .one-pager {
-  min-height: 60vh;
-  overflow: auto;
+  height: 60vh;
+  overflow: hidden;
 }
 
 .container {

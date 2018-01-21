@@ -1,3 +1,9 @@
+.scrollable {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
 .image-holder.left {
   float: left;
   padding-right: 10px;
@@ -36,4 +42,10 @@
 
 .description {
   margin-top: 5px;
+}
+
+@media screen and (max-height: 850px) {
+  .one-pager {
+    height: initial;
+  }
 }
