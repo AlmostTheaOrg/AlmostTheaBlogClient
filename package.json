@@ -8,6 +8,7 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint --type-check",
+    "lint-fix": "ng lint --type-check --fix",
     "e2e": "ng e2e",
     "postinstall": "ng build --aot -prod"
   },

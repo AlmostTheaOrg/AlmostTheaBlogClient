@@ -10,6 +10,7 @@ import { ProjectEditComponent } from './project-edit/project-edit.component';
 import { ProjectDeleteComponent } from './project-delete/project-delete.component';
 import { ProjectPhotoAddComponent } from './project-photo-add/project-photo-add.component';
 import { ProjectPhotoRemoveComponent } from './project-photo-remove/project-photo-remove.component';
+import { ProjectActions } from './project.actions';
 
 @NgModule({
 	imports: [
@@ -17,6 +18,9 @@ import { ProjectPhotoRemoveComponent } from './project-photo-remove/project-phot
 		RouterModule,
 		FormsModule,
 		SharedModule
+	],
+	providers: [
+		ProjectActions
 	],
 	declarations: [
 		ProjectsComponent,

@@ -1,8 +1,7 @@
 import { Component, OnInit, Injector } from '@angular/core';
 import { ModalWindow } from '../../shared/modal/modal-window';
 import { Project } from '../../data/models';
-import { ProjectService } from '../../data/services/ProjectService';
-import { inherits } from 'util';
+import { ProjectActions } from '../project.actions';
 
 @Component({
 	selector: 'app-project-photo-remove',
@@ -12,19 +11,23 @@ import { inherits } from 'util';
 export class ProjectPhotoRemoveComponent extends ModalWindow {
 	private project: Project;
 	private photo = { imageSrc: '' };
-	constructor(injector: Injector, private projectService: ProjectService) {
+	constructor(injector: Injector, private projectActions: ProjectActions) {
 		super(injector);
 		this.photo = injector.get('photo');
 		this.project = injector.get('project');
 	}
 
 	onSubmit() {
-		const index = this.project.getImages().findIndex(p => p.getImageSrc() === this.photo.imageSrc);
-		const images = this.project.getImages();
-		images.splice(index, 1);
-		this.project = new Project(this.project.getName(), this.project.getThumbnail(), images);
+		try {
+			const index = this.project.getImages().findIndex(p => p.getImageSrc() === this.photo.imageSrc);
+			const images = this.project.getImages();
+			images.splice(index, 1);
+			this.project = new Project(this.project.getName(), this.project.getThumbnail(), images);
 
-		this.projectService.edit(this.project.getId(), this.project);
-		this.close();
+			this.projectActions.editProject(this.project.getId(), this.project);
+			this.close();
+		} catch (error) {
+			console.log(error);
+		}
 	}
 }

@@ -1,5 +1,8 @@
 import { Component, OnInit, Injector } from '@angular/core';
 import { ModalWindow } from '../../shared/modal/modal-window';
+import { ProjectActions } from '../project.actions';
+import { Project } from '../../data/models/Project';
+import { Image } from '../../data/models/Image';
 
 @Component({
 	selector: 'app-project-edit',
@@ -9,7 +12,8 @@ import { ModalWindow } from '../../shared/modal/modal-window';
 export class ProjectEditComponent extends ModalWindow {
 	public project = { name: '', thumb: '' };
 
-	constructor(injector: Injector) {
+	constructor(injector: Injector,
+		private projectActions: ProjectActions) {
 		super(injector);
 		this.project.name = injector.get('name');
 	}

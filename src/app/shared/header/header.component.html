@@ -23,7 +23,7 @@
       <li>
         <a href="/contacts" class="nav-link">Contacts</a>
       </li>
-      <li *ngIf="isLoggedIn">
+      <li *ngIf="isAuthenticated | async">
         <a href="/feedback" class="nav-link">Feedback</a>
       </li>
     </ul>

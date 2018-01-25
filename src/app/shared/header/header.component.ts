@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from '../../auth/AuthenticationService';
+import { AuthActions } from '../../auth/auth.actions';
+import { select } from 'ng2-redux/lib/decorators/select';
 
 @Component({
 	selector: 'app-header',
@@ -9,16 +10,16 @@ import { AuthenticationService } from '../../auth/AuthenticationService';
 export class HeaderComponent implements OnInit {
 	public shouldBeVisible = false;
 
-	constructor(private authService: AuthenticationService) { }
+	@select('isAuthenticated')
+	public isAuthenticated;
+
+	constructor(private authActions: AuthActions) { }
 
 	ngOnInit() {
+		this.authActions.isAuthenticated();
 	}
 
 	public response() {
 		this.shouldBeVisible = !this.shouldBeVisible;
-	}
-
-	get isLoggedIn() {
-		return this.authService.isLogged;
 	}
 }

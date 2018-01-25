@@ -1,30 +1,37 @@
 import { Component, OnInit, ViewChild, forwardRef } from '@angular/core';
-import { AuthenticationService } from '../../auth/AuthenticationService';
 import { Project } from '../../data/models/Project';
 import { ProjectService } from '../../data/services/ProjectService';
 import { ProjectAddComponent } from '../project-add/project-add.component';
 import { ModalCreator } from '../../shared/modal/modal-creator';
 import { ModalComponent } from '../../shared/modal/modal.component';
+import { ProjectActions } from '../project.actions';
+import { Observable } from 'rxjs/Observable';
+import { select } from 'ng2-redux';
+import { AuthActions } from '../../auth/auth.actions';
 
 @Component({
 	selector: 'app-projects',
 	templateUrl: './projects.component.html',
 	styleUrls: ['./projects.component.css']
 })
-export class ProjectsComponent extends ModalCreator {
-	public projects: Array<Project>;
+export class ProjectsComponent extends ModalCreator implements OnInit {
+	@select('projects')
+	public projects: Observable<Project[]>;
+
+	@select('isAuthenticated')
+	public isAuthenticated;
 
 	@ViewChild(forwardRef(() => ModalComponent))
 	private readonly child;
 
-	constructor(private authService: AuthenticationService,
-		private projectService: ProjectService) {
+	constructor(private authActions: AuthActions,
+		private projectActions: ProjectActions) {
 		super();
-		this.projects = projectService.all();
 	}
 
-	get isLoggedIn() {
-		return this.authService.isLogged;
+	ngOnInit() {
+		this.projectActions.getProjects();
+		this.authActions.isAuthenticated();
 	}
 
 	addProject() {

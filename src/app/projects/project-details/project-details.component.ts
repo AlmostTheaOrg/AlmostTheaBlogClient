@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild, forwardRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthenticationService } from '../../auth/AuthenticationService';
 import { ProjectService } from '../../data/services';
 import { Project, Image } from '../../data/models';
 import { ProjectPhotoListViewModel } from '../../data/view-models/ProjectPhotoListViewModel';
@@ -10,36 +9,61 @@ import { ProjectPhotoAddComponent } from '../project-photo-add/project-photo-add
 import { ProjectEditComponent } from '../project-edit/project-edit.component';
 import { ProjectDeleteComponent } from '../project-delete/project-delete.component';
 import { ProjectPhotoRemoveComponent } from '../project-photo-remove/project-photo-remove.component';
+import { ProjectActions } from '../project.actions';
+import { select } from 'ng2-redux';
+import { Observable } from 'rxjs/Observable';
+import { AuthActions } from '../../auth/auth.actions';
 
 @Component({
 	selector: 'app-project-details',
 	templateUrl: './project-details.component.html',
 	styleUrls: ['./project-details.component.css']
 })
-export class ProjectDetailsComponent extends ModalCreator {
+export class ProjectDetailsComponent extends ModalCreator implements OnInit {
 	@ViewChild(forwardRef(() => ModalComponent))
 	private readonly child;
-	private project: Project;
+
+	@select('selectedProject')
+	private project: Observable<Project>;
+
+	@select('isAuthenticated')
+	public isAuthenticated;
+
+	private current: Project;
+
 	public photos: Array<ProjectPhotoListViewModel> = [];
 
 	public selected: ProjectPhotoListViewModel = { imageSrc: '', previous: null, next: null };
 
 	constructor(private route: ActivatedRoute,
 		private router: Router,
-		private authService: AuthenticationService,
-		private projectService: ProjectService) {
+		private authActions: AuthActions,
+		private projectActions: ProjectActions) {
 		super();
+
 		this.route.params.subscribe(params => {
 			const projectName = params['name'];
-			this.project = this.projectService.find(p => p.getName() === projectName);
-			if (this.project === null) {
-				this.router.navigateByUrl('/projects');
-				return;
-			}
+			this.projectActions.getProject(projectName);
 
-			this.photos = this.getPhotos();
-			this.selected = this.photos[0];
+			this.project.subscribe(p => {
+				if (p === null) {
+					this.router.navigateByUrl('/projects');
+					return;
+				}
+
+				this.current = p;
+				this.photos = this.getPhotos();
+				if (this.photos.length > 0) {
+					this.selected = this.photos[0];
+				} else {
+					this.selected = { imageSrc: '' };
+				}
+			});
 		});
+	}
+
+	ngOnInit() {
+		this.authActions.isAuthenticated();
 	}
 
 	public getModalComponent() {
@@ -47,25 +71,25 @@ export class ProjectDetailsComponent extends ModalCreator {
 	}
 
 	get isLoggedIn() {
-		return this.authService.isLogged;
+		return this.isAuthenticated;
 	}
 
 	addImage() {
-		this.open(ProjectPhotoAddComponent, { project: this.project });
+		this.open(ProjectPhotoAddComponent, { project: this.current });
 	}
 
 	editProject() {
-		this.open(ProjectEditComponent, { name: this.project.getName() });
+		this.open(ProjectEditComponent, { name: this.current.getName() });
 	}
 
 	deleteProject() {
-		this.open(ProjectDeleteComponent, { project: this.project });
+		this.open(ProjectDeleteComponent, { project: this.current });
 	}
 
 	deletePhoto(event: Event, photo: { imageSrc: string }) {
 		event.stopPropagation();
 
-		this.open(ProjectPhotoRemoveComponent, { photo: photo, project: this.project });
+		this.open(ProjectPhotoRemoveComponent, { photo: photo, project: this.current });
 	}
 
 	select(photo) {
@@ -97,7 +121,7 @@ export class ProjectDetailsComponent extends ModalCreator {
 		const photos = [];
 		let previous: { imageSrc: string; } = null;
 
-		for (const projectPhoto of this.project.getImages()) {
+		for (const projectPhoto of this.current.getImages()) {
 			const photoViewModel: ProjectPhotoListViewModel = { imageSrc: projectPhoto.getImageSrc() };
 			if (previous !== null) {
 				photoViewModel.previous = previous;

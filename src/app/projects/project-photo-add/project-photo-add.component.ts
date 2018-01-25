@@ -3,6 +3,7 @@ import { ModalWindow } from '../../shared/modal/modal-window';
 import { ProjectService } from '../../data/services/ProjectService';
 import { Project } from '../../data/models/Project';
 import { Image } from '../../data/models/Image';
+import { ProjectActions } from '../project.actions';
 
 @Component({
 	selector: 'app-project-photo-add',
@@ -13,7 +14,7 @@ export class ProjectPhotoAddComponent extends ModalWindow {
 	public image = { image: '' };
 	private project: Project;
 
-	constructor(injector: Injector, private projectService: ProjectService) {
+	constructor(injector: Injector, private projectActions: ProjectActions) {
 		super(injector);
 		this.project = injector.get('project');
 	}
@@ -22,7 +23,8 @@ export class ProjectPhotoAddComponent extends ModalWindow {
 		const photos = this.project.getImages();
 		photos.push(new Image('', this.image.image));
 		const newProject = new Project(this.project.getName(), this.project.getThumbnail(), photos);
-		this.projectService.edit(this.project.getId(), newProject);
+		this.projectActions.editProject(this.project.getId(), newProject);
 		this.close();
+
 	}
 }

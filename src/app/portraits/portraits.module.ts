@@ -11,8 +11,13 @@ import {
 	ImageDeleteComponent
 } from './';
 
+import { PortraitActions } from './portrait.actions';
+
 @NgModule({
 	imports: [CommonModule, FormsModule, SharedModule],
+	providers: [
+		PortraitActions
+	],
 	declarations: [
 		PortraitsComponent,
 		ImageDetailsComponent,
@@ -21,4 +26,4 @@ import {
 		ImageAddComponent
 	]
 })
-export class PortraitsModule {}
+export class PortraitsModule { }

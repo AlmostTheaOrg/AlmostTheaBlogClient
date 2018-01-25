@@ -1,7 +1,7 @@
 import { Component, OnInit, Injector } from '@angular/core';
 import { ImageService } from '../../data/services';
 import { Image } from '../../data/models';
-import { PortraitActions } from '../portrait.action';
+import { PortraitActions } from '../portrait.actions';
 
 @Component({
 	selector: 'app-image-edit',

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
+import { HttpModule } from '@angular/http';
+import { NgRedux, NgReduxModule } from 'ng2-redux';
 
 import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './home/home.module';
@@ -10,14 +11,14 @@ import { ContactsModule } from './contacts/contacts.module';
 import { PortraitsModule } from './portraits/portraits.module';
 import { ProjectsModule } from './projects/projects.module';
 import { AppRoutingModule } from './app-routing/app-routing.module';
-import { ImageService, ProjectService } from './data/services';
-import { AuthenticationService } from './auth/AuthenticationService';
+
+import { AppComponent } from './app.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { HttpModule } from '@angular/http';
-import { NgRedux, NgReduxModule } from 'ng2-redux';
+
+import { ImageService, ProjectService, AuthenticationService } from './data/services';
 import { IAppState } from './store/IAppState';
 import { store } from './store/store';
-import { PortraitActions } from './portraits/portrait.action';
+import { AuthActions } from './auth/auth.actions';
 
 @NgModule({
 	declarations: [AppComponent, NotFoundComponent],
@@ -35,7 +36,7 @@ import { PortraitActions } from './portraits/portrait.action';
 		AuthModule
 	],
 	exports: [],
-	providers: [ImageService, AuthenticationService, ProjectService, PortraitActions],
+	providers: [ImageService, AuthenticationService, ProjectService, AuthActions],
 	bootstrap: [AppComponent]
 })
 export class AppModule {

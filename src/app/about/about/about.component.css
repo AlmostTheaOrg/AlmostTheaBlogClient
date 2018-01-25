@@ -44,7 +44,7 @@
   margin-top: 5px;
 }
 
-@media screen and (max-height: 850px) {
+@media screen and (max-height: 560px) {
   .one-pager {
     height: initial;
   }

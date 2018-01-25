@@ -1,4 +1,4 @@
-<section class="container controls" *ngIf="isLoggedIn">
+<section class="container controls" *ngIf="isAuthenticated | async">
   <div class="image-controls">
     <a class="btn btn-success" (click)="addImage()" href="javascript:void(0)">
       <i class="fa fa-plus" aria-hidden="true"></i>

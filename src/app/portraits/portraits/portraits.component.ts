@@ -1,15 +1,14 @@
-import { Component, EventEmitter, Output, Input, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Output, Input, ViewChild, OnInit } from '@angular/core';
 import { ImageService } from '../../data/services';
 import { Image } from '../../data/models';
 import { ImageAddComponent, ImageDetailsComponent, ImageEditComponent, ImageDeleteComponent } from '../index';
 
 import { ModalComponent } from '../../shared/modal/modal.component';
-import { AuthenticationService } from '../../auth/AuthenticationService';
 import { ModalCreator } from '../../shared/modal/modal-creator';
 import { select } from 'ng2-redux';
 import { Observable } from 'rxjs/Observable';
-import { PortraitActions } from '../portrait.action';
-import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
+import { PortraitActions } from '../portrait.actions';
+import { AuthActions } from '../../auth/auth.actions';
 @Component({
 	selector: 'app-portraits',
 	templateUrl: './portraits.component.html',
@@ -19,12 +18,15 @@ export class PortraitsComponent extends ModalCreator implements OnInit {
 	@select('portraits')
 	public portraits: Observable<Image[]>;
 
+	@select('isAuthenticated')
+	public isAuthenticated: Observable<boolean>;
+
 	@ViewChild(ModalComponent)
 	private readonly child;
 
 	constructor(
 		private imageRepository: PortraitActions,
-		private authService: AuthenticationService,
+		private authActions: AuthActions,
 		private portraitActions: PortraitActions) {
 		super();
 	}
@@ -35,10 +37,6 @@ export class PortraitsComponent extends ModalCreator implements OnInit {
 
 	public getModalComponent() {
 		return this.child;
-	}
-
-	get isLoggedIn() {
-		return this.authService.isLogged;
 	}
 
 	show(image: Image) {

@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-contacts',
-  templateUrl: './contacts.component.html',
-  styleUrls: ['./contacts.component.css']
+	selector: 'app-contacts',
+	templateUrl: './contacts.component.html',
+	styleUrls: ['./contacts.component.css']
 })
 export class ContactsComponent implements OnInit {
-  public shouldBeVisible = false;
+	public shouldBeVisible = false;
 
-  constructor() { }
+	constructor() { }
 
-  ngOnInit() {
-  }
+	ngOnInit() {
+	}
 
-  public response () {
-    this.shouldBeVisible = !this.shouldBeVisible;
-  }
+	public response () {
+		this.shouldBeVisible = !this.shouldBeVisible;
+	}
 }

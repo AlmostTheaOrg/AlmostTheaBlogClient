@@ -1,5 +1,5 @@
 import { Component, OnInit, Injector } from '@angular/core';
-import { PortraitActions } from '../portrait.action';
+import { PortraitActions } from '../portrait.actions';
 
 @Component({
 	selector: 'app-image-delete',
