@@ -60,7 +60,7 @@
     "no-inferrable-types": [
       true,
       "ignore-params"
-    ],
+		],
     "no-misused-new": true,
     "no-non-null-assertion": true,
     "no-shadowed-variable": true,
@@ -136,7 +136,7 @@
     "use-pipe-transform-interface": true,
     "component-class-suffix": true,
     "directive-class-suffix": true,
-    "no-access-missing-member": true,
+    "no-access-missing-member": false,
     "templates-use-public": true,
     "invoke-injectable": true
   }
