@@ -1,11 +1,11 @@
 import { Component, OnInit, Injector } from '@angular/core';
 
 @Component({
-	selector: 'app-image-details',
-	templateUrl: './image-details.component.html',
-	styleUrls: ['./image-details.component.css']
+	selector: 'app-portrait-details',
+	templateUrl: './portrait-details.component.html',
+	styleUrls: ['./portrait-details.component.css']
 })
-export class ImageDetailsComponent {
+export class PortraitDetailsComponent {
 	public readonly imageSrc: string;
 
 	constructor(private injector: Injector) {

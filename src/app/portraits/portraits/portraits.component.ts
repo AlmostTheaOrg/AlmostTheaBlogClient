@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output, Input, ViewChild, OnInit } from '@angular/core';
 import { ImageService } from '../../data/services';
 import { Image } from '../../data/models';
-import { ImageAddComponent, ImageDetailsComponent, ImageEditComponent, ImageDeleteComponent } from '../index';
+import { PortraitAddComponent, PortraitDetailsComponent, PortraitEditComponent, PortraitDeleteComponent } from '../index';
 
 import { ModalComponent } from '../../shared/modal/modal.component';
 import { ModalCreator } from '../../shared/modal/modal-creator';
@@ -40,22 +40,22 @@ export class PortraitsComponent extends ModalCreator implements OnInit {
 	}
 
 	show(image: Image) {
-		this.open(ImageDetailsComponent, { imageSrc: image.getImageSrc() });
+		this.open(PortraitDetailsComponent, { imageSrc: image.getImageSrc() });
 	}
 
 	add() {
-		this.open(ImageAddComponent, {});
+		this.open(PortraitAddComponent, {});
 	}
 
 	edit(event: Event, image: Image) {
 		event.stopPropagation();
 
-		this.open(ImageEditComponent, { id: image.getId(), name: image.getName(), imageSrc: image.getImageSrc() });
+		this.open(PortraitEditComponent, { id: image.getId(), name: image.getName(), imageSrc: image.getImageSrc() });
 	}
 
 	delete(event: Event, image: Image) {
 		event.stopPropagation();
 
-		this.open(ImageDeleteComponent, { id: image.getId(), name: image.getName() });
+		this.open(PortraitDeleteComponent, { id: image.getId(), name: image.getName() });
 	}
 }

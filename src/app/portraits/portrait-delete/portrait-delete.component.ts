@@ -2,11 +2,11 @@ import { Component, OnInit, Injector } from '@angular/core';
 import { PortraitActions } from '../portrait.actions';
 
 @Component({
-	selector: 'app-image-delete',
-	templateUrl: './image-delete.component.html',
-	styleUrls: ['./image-delete.component.css']
+	selector: 'app-portrait-delete',
+	templateUrl: './portrait-delete.component.html',
+	styleUrls: ['./portrait-delete.component.css']
 })
-export class ImageDeleteComponent {
+export class PortraitDeleteComponent {
 	public image;
 	private close;
 

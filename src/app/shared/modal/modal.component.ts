@@ -1,5 +1,5 @@
 import { Component, Input, ViewContainerRef, ViewChild, ReflectiveInjector, ComponentFactoryResolver } from '@angular/core';
-import { ImageAddComponent, ImageDetailsComponent, ImageEditComponent, ImageDeleteComponent } from '../../portraits';
+import { PortraitAddComponent, PortraitDetailsComponent, PortraitEditComponent, PortraitDeleteComponent } from '../../portraits';
 import {
 	ProjectAddComponent,
 	ProjectEditComponent,
@@ -13,10 +13,10 @@ import {
 @Component({
 	selector: 'app-modal',
 	entryComponents: [
-		ImageAddComponent,
-		ImageDetailsComponent,
-		ImageEditComponent,
-		ImageDeleteComponent,
+		PortraitAddComponent,
+		PortraitDetailsComponent,
+		PortraitEditComponent,
+		PortraitDeleteComponent,
 		ProjectAddComponent,
 		ProjectEditComponent,
 		ProjectPhotoAddComponent,

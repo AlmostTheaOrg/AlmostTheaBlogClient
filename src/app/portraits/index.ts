@@ -1,4 +1,4 @@
-export { ImageAddComponent } from './image-add/image-add.component';
-export { ImageDetailsComponent } from './image-details/image-details.component';
-export { ImageEditComponent } from './image-edit/image-edit.component';
-export { ImageDeleteComponent } from './image-delete/image-delete.component';
+export { PortraitAddComponent } from './portrait-add/portrait-add.component';
+export { PortraitDetailsComponent } from './portrait-details/portrait-details.component';
+export { PortraitEditComponent } from './portrait-edit/portrait-edit.component';
+export { PortraitDeleteComponent } from './portrait-delete/portrait-delete.component';

@@ -5,10 +5,10 @@ import { PortraitsComponent } from './portraits/portraits.component';
 import { SharedModule } from '../shared/shared.module';
 import { ModalComponent } from '../shared/modal/modal.component';
 import {
-	ImageAddComponent,
-	ImageDetailsComponent,
-	ImageEditComponent,
-	ImageDeleteComponent
+	PortraitAddComponent,
+	PortraitDetailsComponent,
+	PortraitEditComponent,
+	PortraitDeleteComponent
 } from './';
 
 import { PortraitActions } from './portrait.actions';
@@ -20,10 +20,10 @@ import { PortraitActions } from './portrait.actions';
 	],
 	declarations: [
 		PortraitsComponent,
-		ImageDetailsComponent,
-		ImageEditComponent,
-		ImageDeleteComponent,
-		ImageAddComponent
+		PortraitDetailsComponent,
+		PortraitEditComponent,
+		PortraitDeleteComponent,
+		PortraitAddComponent
 	]
 })
 export class PortraitsModule { }

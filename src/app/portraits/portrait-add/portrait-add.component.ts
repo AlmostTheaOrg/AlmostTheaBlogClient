@@ -3,11 +3,11 @@ import { Image } from '../../data/models';
 import { PortraitActions } from '../portrait.actions';
 
 @Component({
-	selector: 'app-image-add',
-	templateUrl: './image-add.component.html',
-	styleUrls: ['./image-add.component.css']
+	selector: 'app-portrait-add',
+	templateUrl: './portrait-add.component.html',
+	styleUrls: ['./portrait-add.component.css']
 })
-export class ImageAddComponent {
+export class PortraitAddComponent {
 	private close: () => void;
 
 	public image: { name: string; image: string } = { name: '', image: '' };

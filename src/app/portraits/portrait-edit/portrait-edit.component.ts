@@ -4,11 +4,11 @@ import { Image } from '../../data/models';
 import { PortraitActions } from '../portrait.actions';
 
 @Component({
-	selector: 'app-image-edit',
-	templateUrl: './image-edit.component.html',
-	styleUrls: ['./image-edit.component.css']
+	selector: 'app-portrait-edit',
+	templateUrl: './portrait-edit.component.html',
+	styleUrls: ['./portrait-edit.component.css']
 })
-export class ImageEditComponent {
+export class PortraitEditComponent {
 	public portrait: { id: string; name: string; image: string };
 	private close;
 

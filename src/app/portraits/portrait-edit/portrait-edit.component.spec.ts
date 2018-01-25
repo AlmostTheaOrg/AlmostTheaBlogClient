@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ImageDeleteComponent } from './image-delete.component';
+import { PortraitEditComponent } from './portrait-edit.component';
 
-describe('ImageDeleteComponent', () => {
-	let component: ImageDeleteComponent;
-	let fixture: ComponentFixture<ImageDeleteComponent>;
+describe('ImageEditComponent', () => {
+	let component: PortraitEditComponent;
+	let fixture: ComponentFixture<PortraitEditComponent>;
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [ ImageDeleteComponent ]
+			declarations: [ PortraitEditComponent ]
 		})
 		.compileComponents();
 	}));
 
 	beforeEach(() => {
-		fixture = TestBed.createComponent(ImageDeleteComponent);
+		fixture = TestBed.createComponent(PortraitEditComponent);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
 	});
