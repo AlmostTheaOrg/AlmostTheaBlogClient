@@ -11,9 +11,15 @@ import {
 } from './';
 
 import { PortraitActions } from './portrait.actions';
+import { ModalModule } from '../modal/modal.module';
 
 @NgModule({
-	imports: [CommonModule, FormsModule, SharedModule],
+	imports: [
+		CommonModule,
+		FormsModule,
+		SharedModule,
+		ModalModule
+	],
 	providers: [
 		PortraitActions
 	],

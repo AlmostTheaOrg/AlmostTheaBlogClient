@@ -11,13 +11,15 @@ import { ProjectDeleteComponent } from './project-delete/project-delete.componen
 import { ProjectPhotoAddComponent } from './project-photo-add/project-photo-add.component';
 import { ProjectPhotoRemoveComponent } from './project-photo-remove/project-photo-remove.component';
 import { ProjectActions } from './project.actions';
+import { ModalModule } from '../modal/modal.module';
 
 @NgModule({
 	imports: [
 		CommonModule,
 		RouterModule,
 		FormsModule,
-		SharedModule
+		SharedModule,
+		ModalModule
 	],
 	providers: [
 		ProjectActions
