@@ -38,8 +38,9 @@
     "zone.js": "0.8.14"
   },
   "devDependencies": {
-    "@angular/cli": "1.6.5",
-    "codelyzer": "3.1.1",
+    "@angular-devkit/core": "0.0.29",
+    "@angular/cli": "1.6.1",
+    "codelyzer": "^3.1.1",
     "jasmine-core": "2.6.2",
     "jasmine-spec-reporter": "4.1.0",
     "karma": "1.7.1",
