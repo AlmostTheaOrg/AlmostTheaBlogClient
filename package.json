@@ -6,7 +6,7 @@
     "ng": "ng",
     "start": "node index.js",
     "build": "ng build",
-    "test": "ng test",
+    "test": "ng test --sourcemap=false",
     "lint": "ng lint --type-check",
     "lint-fix": "ng lint --type-check --fix",
     "e2e": "ng e2e",
@@ -38,11 +38,11 @@
     "zone.js": "0.8.14"
   },
   "devDependencies": {
-    "@angular/cli": "^1.6.5",
+    "@angular/cli": "1.6.5",
     "codelyzer": "3.1.1",
     "jasmine-core": "2.6.2",
     "jasmine-spec-reporter": "4.1.0",
-    "karma": "1.7.0",
+    "karma": "1.7.1",
     "karma-chrome-launcher": "2.1.1",
     "karma-cli": "1.0.1",
     "karma-coverage-istanbul-reporter": "1.2.1",

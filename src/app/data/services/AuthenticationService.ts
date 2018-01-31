@@ -5,8 +5,7 @@ import { Injectable } from '@angular/core';
 export class AuthenticationService {
 	public login(user: User): void {
 		// TODO: Validate.
-		window.sessionStorage.setItem('username', user.username);
-		window.sessionStorage.setItem('password', user.password);
+		this.save(user.username, user.password);
 	}
 
 	public logout(): void {

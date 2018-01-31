@@ -10,7 +10,9 @@ import { Observable } from 'rxjs/Observable';
 	styleUrls: ['./footer.component.css']
 })
 export class FooterComponent implements OnInit {
-	constructor(private router: Router, private authActions: AuthActions) { }
+	constructor(
+		private router: Router,
+		private authActions: AuthActions) { }
 
 	@select('isAuthenticated')
 	public isAuthenticated: Observable<boolean>;

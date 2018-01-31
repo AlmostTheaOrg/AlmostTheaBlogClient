@@ -3,8 +3,8 @@ import { ImageService } from '../../data/services';
 import { Image } from '../../data/models';
 import { PortraitAddComponent, PortraitDetailsComponent, PortraitEditComponent, PortraitDeleteComponent } from '../index';
 
-import { ModalComponent } from '../../shared/modal/modal.component';
-import { ModalCreator } from '../../shared/modal/modal-creator';
+import { ModalComponent } from '../../modal/modal/modal.component';
+import { ModalCreator } from '../../modal/modal/modal-creator';
 import { select } from 'ng2-redux';
 import { Observable } from 'rxjs/Observable';
 import { PortraitActions } from '../portrait.actions';

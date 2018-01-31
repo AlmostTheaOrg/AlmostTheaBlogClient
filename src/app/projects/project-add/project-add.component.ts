@@ -1,6 +1,6 @@
 import { Component, OnInit, Injector } from '@angular/core';
 import { Project, Image } from '../../data/models';
-import { ModalWindow } from '../../shared/modal/modal-window';
+import { ModalWindow } from '../../modal/modal/modal-window';
 import { ProjectActions } from '../project.actions';
 
 @Component({

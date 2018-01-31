@@ -19,6 +19,7 @@ import { ImageService, ProjectService, AuthenticationService } from './data/serv
 import { IAppState } from './store/IAppState';
 import { store } from './store/store';
 import { AuthActions } from './auth/auth.actions';
+import { ModalModule } from './modal/modal.module';
 
 @NgModule({
 	declarations: [AppComponent, NotFoundComponent],
@@ -33,7 +34,8 @@ import { AuthActions } from './auth/auth.actions';
 		ProjectsModule,
 		SharedModule,
 		PortraitsModule,
-		AuthModule
+		AuthModule,
+		ModalModule
 	],
 	exports: [],
 	providers: [ImageService, AuthenticationService, ProjectService, AuthActions],
