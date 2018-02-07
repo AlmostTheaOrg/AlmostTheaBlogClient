@@ -23,6 +23,7 @@ import { ModalModule } from './modal/modal.module';
 import { RecaptchaValidator, RECAPTCHA_VALIDATION } from './utilities/recaptcha-validator';
 import { RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
 import { environment } from '../environments/environment';
+const settings = { siteKey: environment.recaptcha_site_key };
 
 @NgModule({
 	declarations: [AppComponent, NotFoundComponent],
@@ -49,7 +50,7 @@ import { environment } from '../environments/environment';
 		RecaptchaValidator,
 		{
 			provide: RECAPTCHA_SETTINGS,
-			useValue: { siteKey: environment.recaptcha_site_key } as RecaptchaSettings,
+			useValue: settings,
 		},
 		{
 			provide: RECAPTCHA_VALIDATION,
