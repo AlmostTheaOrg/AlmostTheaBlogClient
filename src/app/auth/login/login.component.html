@@ -1,28 +1,33 @@
 <div class="container one-pager">
-  <div class="scrollable">
-    <div class="flex align-center">
-      <form (ngSubmit)="onSubmit()" #addForm="ngForm" class="">
+	<div class="scrollable">
+		<div class="flex align-center">
+			<form (ngSubmit)="onSubmit()" #loginForm="ngForm" class="">
 
-        <div class="input-group">
-          <label for="username">Username:</label>
-          <div class="input-field">
-            <input class="input" type="text" name="username" [(ngModel)]="user.username" placeholder="Thea" required />
-          </div>
-        </div>
+				<div class="input-group">
+					<label for="username">Username:</label>
+					<div class="input-field">
+						<input class="input" type="text" name="username" [(ngModel)]="user.username" required />
+					</div>
+				</div>
 
-        <div class="input-group">
-          <label for="text">Password:</label>
-          <div class="input-field">
-            <input class="input" type="password" name="password" [(ngModel)]="user.password" required />
-          </div>
-        </div>
+				<div class="input-group">
+					<label for="text">Password:</label>
+					<div class="input-field">
+						<input class="input" type="password" name="password" [(ngModel)]="user.password" required />
+					</div>
+				</div>
 
-        <div class="input-group">
-          <div class="input-field">
-            <input class="btn btn-success" type="submit" value="Login" />
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
+				<div class="input-group">
+					<re-captcha (resolved)="resolved($event)" [(ngModel)]="user.captcha" name="captcha" #captchaControl="ngModel" required ></re-captcha>
+				</div>
+
+				<div class="input-group">
+					<div class="input-field">
+						<input class="btn btn-success" type="submit" [disabled]="!loginForm.form.valid || !isRecaptchaValid" value="Login" />
+					</div>
+				</div>
+
+			</form>
+		</div>
+	</div>
 </div>

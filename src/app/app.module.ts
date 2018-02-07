@@ -20,6 +20,9 @@ import { IAppState } from './store/IAppState';
 import { store } from './store/store';
 import { AuthActions } from './auth/auth.actions';
 import { ModalModule } from './modal/modal.module';
+import { RecaptchaValidator, RECAPTCHA_VALIDATION } from './utilities/recaptcha-validator';
+import { RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
+import { environment } from '../environments/environment';
 
 @NgModule({
 	declarations: [AppComponent, NotFoundComponent],
@@ -38,7 +41,21 @@ import { ModalModule } from './modal/modal.module';
 		ModalModule
 	],
 	exports: [],
-	providers: [ImageService, AuthenticationService, ProjectService, AuthActions],
+	providers: [
+		ImageService,
+		AuthenticationService,
+		ProjectService,
+		AuthActions,
+		RecaptchaValidator,
+		{
+			provide: RECAPTCHA_SETTINGS,
+			useValue: { siteKey: environment.recaptcha_site_key } as RecaptchaSettings,
+		},
+		{
+			provide: RECAPTCHA_VALIDATION,
+			useValue: environment.backend_url,
+		},
+	],
 	bootstrap: [AppComponent]
 })
 export class AppModule {
