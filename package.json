@@ -6,12 +6,11 @@
     "ng": "ng",
     "start": "node index.js",
     "build": "ng build",
-    "build:prod": "ng build --backend_url=$BACKEND_URL --recaptcha_site_key=$RECAPTCHA_SITE_KEY",
     "test": "ng test --sourcemap=false",
     "lint": "ng lint --type-check",
     "lint-fix": "ng lint --type-check --fix",
     "e2e": "ng e2e",
-    "postinstall": "ng build --aot -prod"
+    "postinstall": "ng build --aot -prod --backend_url=$BACKEND_URL --recaptcha_site_key=$RECAPTCHA_SITE_KEY"
   },
   "private": true,
   "dependencies": {
