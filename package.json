@@ -5,11 +5,8 @@
   "scripts": {
     "ng": "ng",
     "start": "node index.js",
-    "set-env": "replace '%RECAPTCHA_VALIDATION_URL%' $RECAPTCHA_VALIDATION_URL src/environments/environment.ts",
-    "unset-env": "replace $RECAPTCHA_VALIDATION_URL '%RECAPTCHA_VALIDATION_URL%' src/environments/environment.ts",
-    "prebuild": "set-env",
     "build": "ng build",
-    "postbuild": "unset-env",
+    "build:prod": "ng build --backend_url=$BACKEND_URL --recaptcha_site_key=$RECAPTCHA_SITE_KEY",
     "test": "ng test --sourcemap=false",
     "lint": "ng lint --type-check",
     "lint-fix": "ng lint --type-check --fix",

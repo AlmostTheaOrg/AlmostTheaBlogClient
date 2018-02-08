@@ -5,6 +5,6 @@
 
 export const environment = {
 	production: false,
-	recaptcha_site_key: '6LeGMUQUAAAAAO9WIM_XysIDiJO1V8nkRkFSAUvl',
+	recaptcha_site_key: '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',
 	backend_url: 'http://localhost:5000/api/'
 };
