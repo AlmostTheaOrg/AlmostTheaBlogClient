@@ -1,22 +1,8 @@
-.contacts {
-  display: flex;
-  align-items: center;
+.scrollable {
+	display: flex;
 }
 
-.contact-form {
-  font-size: 1.3em;
-}
-
-#wrapper {
-  margin: 0 auto;
-  height: 100%;
-  padding-top: 10px;
-  box-sizing: border-box;
-}
-
-
-@media screen and (max-height: 600px) {
-  .one-pager {
-    height: initial;
-  }
+form {
+	padding: 10px;
+	margin: auto;
 }

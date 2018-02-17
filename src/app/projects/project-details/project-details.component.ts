@@ -101,7 +101,7 @@ export class ProjectDetailsComponent extends ModalCreator implements OnInit {
 			return;
 		}
 
-		if (this.selected.previous) {
+		if (this.hasPrevious()) {
 			this.selected = this.selected.previous;
 		}
 	}
@@ -111,11 +111,18 @@ export class ProjectDetailsComponent extends ModalCreator implements OnInit {
 			return;
 		}
 
-		if (this.selected.next) {
+		if (this.hasNext()) {
 			this.selected = this.selected.next;
 		}
 	}
 
+	hasNext() {
+		return !!this.selected.next;
+	}
+
+	hasPrevious() {
+		return !!this.selected.previous;
+	}
 	// Will return all images for a project (in their initial order).
 	private getPhotos(): Array<ProjectPhotoListViewModel> {
 		const photos = [];

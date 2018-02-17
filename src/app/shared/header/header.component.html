@@ -1,33 +1,35 @@
 <header class="nav-header">
-  <div class="header-container">
+	<div class="header-container">
 		<a href="/">
-				<img id="logo" src="assets/images/logo.png" alt="Logo">
+			<img id="logo" src="assets/images/logo.png" alt="Logo">
 		</a>
-  </div>
+	</div>
 
-  <nav class="nav-bar">
-    <ul id="nav" [ngClass]="shouldBeVisible ?  'nav-bar-container responsive' : 'nav-bar-container'">
-      <li>
-        <a href="javascript:void(0);" class="icon" (click)="response()">&#9776;</a>
-      </li>
-      <li>
-        <a href="/" class="nav-link">Home</a>
-      </li>
-      <li>
-        <a href="/portraits" class="nav-link">Portraits</a>
-      </li>
-      <li>
-        <a href="/projects" class="nav-link">Projects</a>
-      </li>
-      <li>
-        <a href="/about" class="nav-link">About</a>
-      </li>
-      <li>
-        <a href="/contacts" class="nav-link">Contacts</a>
-      </li>
-      <li *ngIf="isAuthenticated | async">
-        <a href="/feedback" class="nav-link">Feedback</a>
-      </li>
-    </ul>
-  </nav>
+	<nav class="nav-bar">
+		<div class="nav-bar-inner-wrapper">
+			<ul id="nav" [ngClass]="shouldBeVisible ?  'nav-bar-container responsive ' : 'nav-bar-container'">
+				<li>
+					<a href="javascript:void(0);" class="icon" (click)="response()">&#9776;</a>
+				</li>
+				<li>
+					<a href="/" class="nav-link">Home</a>
+				</li>
+				<li>
+					<a href="/portraits" class="nav-link">Portraits</a>
+				</li>
+				<li>
+					<a href="/projects" class="nav-link">Projects</a>
+				</li>
+				<li>
+					<a href="/about" class="nav-link">About</a>
+				</li>
+				<li>
+					<a href="/contacts" class="nav-link">Contacts</a>
+				</li>
+				<li *ngIf="isAuthenticated | async">
+					<a href="/feedback" class="nav-link">Feedback</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
 </header>

@@ -1,36 +1,34 @@
-<div class="container contacts one-pager">
-  <div class="scrollable" id="wrapper">
-    <section class="contact-form">
-      <form id="contact-us" method="post">
-        <div class="flex col align-center">
-          <div class="input-group">
-            <label for="name">Name:</label>
-            <div class="input-field">
-              <input class="input" type="text" name="name" placeholder="e.g. Steven" required />
-            </div>
-          </div>
+<div class="container one-pager flex-center">
+	<form #contactUsForm="ngForm">
+		<div class="input-group">
+			<label for="name">Name:</label>
+			<div class="input-field">
+				<input class="input" type="text" name="name" placeholder="e.g. Steven" required />
+			</div>
+		</div>
 
-          <div class="input-group">
-            <label for="email">Email (optional):</label>
-            <div class="input-field">
-              <input class="input" type="email" name="name" placeholder="Email for further discussion (no spam)" />
-            </div>
-          </div>
+		<div class="input-group">
+			<label for="email">Email (optional):</label>
+			<div class="input-field">
+				<input class="input" type="email" name="name" placeholder="Email for further discussion" />
+			</div>
+		</div>
 
-          <div class="input-group">
-            <label for="text">Message:</label>
-            <div class="input-field">
-              <textarea class="input" name="text" placeholder="I was wondering ..." required rows="8" cols="30"></textarea>
-            </div>
-          </div>
+		<div class="input-group">
+			<label for="text">Message:</label>
+			<div class="input-field">
+				<textarea class="input" name="text" placeholder="I was wondering ..." required rows="8" cols="30"></textarea>
+			</div>
+		</div>
 
-          <div class="input-group">
-            <div class="input-field">
-              <input class="btn btn-success" type="submit" value="Submit" />
-            </div>
-          </div>
-        </div>
-      </form>
-    </section>
-  </div>
+		<div class="input-group">
+			<re-captcha (resolved)="resolved($event)" name="captcha" required></re-captcha>
+		</div>
+
+		<div class="input-group">
+			<div class="input-field">
+				<input class="btn btn-success" type="submit" value="Submit" />
+			</div>
+		</div>
+	</form>
 </div>

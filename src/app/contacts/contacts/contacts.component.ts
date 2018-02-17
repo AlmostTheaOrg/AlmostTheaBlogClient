@@ -6,14 +6,12 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./contacts.component.css']
 })
 export class ContactsComponent implements OnInit {
-	public shouldBeVisible = false;
-
+	public feedback: { captcha: ''};
 	constructor() { }
 
 	ngOnInit() {
 	}
 
-	public response () {
-		this.shouldBeVisible = !this.shouldBeVisible;
+	public resolved (str) {
 	}
 }

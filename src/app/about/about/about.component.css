@@ -1,9 +1,3 @@
-.scrollable {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-}
-
 .image-holder.left {
   float: left;
   padding-right: 10px;

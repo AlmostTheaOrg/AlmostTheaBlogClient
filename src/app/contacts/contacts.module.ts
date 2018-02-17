@@ -2,10 +2,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ContactsComponent } from './contacts/contacts.component';
 import { FeedbackComponent } from './feedback/feedback.component';
+import { FormsModule } from '@angular/forms';
+import { RecaptchaModule } from 'ng-recaptcha';
+import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 
 @NgModule({
 	imports: [
-		CommonModule
+		CommonModule,
+		FormsModule,
+		RecaptchaModule.forRoot(),
+		RecaptchaFormsModule,
 	],
 	declarations: [ContactsComponent, FeedbackComponent]
 })

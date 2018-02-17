@@ -16,7 +16,6 @@ export class LoginComponent {
 	constructor(
 		private router: Router,
 		private recaptchaValidator: RecaptchaValidator,
-		private recaptcha: RecaptchaValidator,
 		private authActions: AuthActions) { }
 
 	public onSubmit() {
