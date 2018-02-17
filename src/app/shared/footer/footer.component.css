@@ -80,5 +80,6 @@ footer a {
 @media screen and (max-width: 780px) {
 	.auth {
 		position: absolute;
+		right: 0;
 	}
 }
