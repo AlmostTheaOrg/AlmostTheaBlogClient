@@ -1,79 +1,85 @@
 footer {
-  font-family: B52;
-  padding-top: 10px;
-  width: 100%;
-  background-color: #ffffff;
-  font-size: 13px;
+	width: 100%;
+	max-width: 1280;
+	height: 10vh;
+	font-family: B52;
+	font-size: 13px;
+	background-color: #ffffff;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
 }
 
 .footer-container {
-  margin: 0 auto;
-  max-width: 780px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  text-align: left;
-  flex-direction: column;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	text-align: left;
+	flex-direction: column;
 }
 
 .copyright {
-  flex-grow: 1;
-  text-align: center;
+	flex-grow: 1;
+	text-align: center;
 }
 
 .social-media a {
-  text-decoration: none;
+	text-decoration: none;
 }
 
 .social-media img {
-  padding-left: 5px;
-  padding-right: 5px;
-  height: 20px;
-  text-align: center;
+	padding-left: 5px;
+	padding-right: 5px;
+	height: 20px;
+	text-align: center;
 }
 
 .copyright-symbol {
-  font-family: Comfortaa;
+	font-family: Comfortaa;
 }
 
 .copyright p {
-  display: inline-block;
-  margin: 0 0;
-  padding: 7px;
-  padding-top: 0px;
+	display: inline-block;
+	margin: 0 0;
+	padding: 7px;
+	padding-top: 0px;
 }
 
 .social-media {
-  display: block;
-  height: auto;
+	display: block;
+	height: auto;
 }
 
 .copyright p:first-of-type {
-  padding-right: 0px;
-}
-
-@media screen and (max-width: 510px) {
-  .footer-container {
-    justify-content: center;
-  }
-  .copyright p {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 780px) {
-  .auth {
-    position: absolute;
-    right: 10px;
-  }
+	padding-right: 0px;
 }
 
 .inline {
-  display: flex;
-  justify-content: space-between;
+	display: flex;
+	justify-content: space-between;
 }
 
 footer a {
-  text-decoration: none;
-  color: inherit;
+	text-decoration: none;
+	color: inherit;
+}
+
+.auth {
+	padding-right: 10px;
+}
+
+@media screen and (max-width: 510px) {
+	.footer-container {
+		justify-content: center;
+	}
+	.copyright p {
+		display: none;
+	}
+}
+
+@media screen and (max-width: 780px) {
+	.auth {
+		position: absolute;
+		right: 10px;
+	}
 }
