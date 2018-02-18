@@ -39,11 +39,7 @@
     "ng2-redux": "5.1.2",
     "redux": "3.7.2",
     "rxjs": "5.4.2",
-<<<<<<< HEAD
-    "zone.js": "0.8.14"
-=======
 		"zone.js": "0.8.14"
->>>>>>> master
   },
   "devDependencies": {
     "codelyzer": "^3.2.2",
