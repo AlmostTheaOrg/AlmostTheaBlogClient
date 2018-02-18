@@ -14,13 +14,8 @@
   },
   "private": true,
   "dependencies": {
-<<<<<<< HEAD
-		"@angular/animations": "4.0.0",
-		"@angular/cli": "1.6.1",
-=======
     "@angular/animations": "4.0.0",
     "@angular/cli": "1.6.1",
->>>>>>> master
     "@angular/common": "4.0.0",
     "@angular/compiler": "4.0.0",
     "@angular/compiler-cli": "4.0.0",
