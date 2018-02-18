@@ -14,8 +14,13 @@
   },
   "private": true,
   "dependencies": {
+<<<<<<< HEAD
 		"@angular/animations": "4.0.0",
 		"@angular/cli": "1.6.1",
+=======
+    "@angular/animations": "4.0.0",
+    "@angular/cli": "1.6.1",
+>>>>>>> master
     "@angular/common": "4.0.0",
     "@angular/compiler": "4.0.0",
     "@angular/compiler-cli": "4.0.0",
@@ -26,7 +31,8 @@
     "@angular/language-service": "4.0.0",
     "@angular/platform-browser": "4.0.0",
     "@angular/platform-browser-dynamic": "4.0.0",
-    "@angular/router": "4.0.0",
+		"@angular/router": "4.0.0",
+		"typescript": "2.3.3",
     "@types/jasmine": "2.5.53",
     "@types/jasminewd2": "2.0.2",
     "@types/node": "6.0.60",
@@ -38,7 +44,11 @@
     "ng2-redux": "5.1.2",
     "redux": "3.7.2",
     "rxjs": "5.4.2",
+<<<<<<< HEAD
     "zone.js": "0.8.14"
+=======
+		"zone.js": "0.8.14"
+>>>>>>> master
   },
   "devDependencies": {
     "codelyzer": "^3.2.2",
@@ -54,7 +64,6 @@
     "replace": "0.3.0",
     "ts-node": "3.0.4",
     "tslint": "5.3.2",
-    "typescript": "2.3.3"
   },
   "engines": {
     "node": "6.11.1",
