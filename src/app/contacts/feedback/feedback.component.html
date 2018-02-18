@@ -1,39 +1,37 @@
-<div class="container one-pager">
-  <div class="content flex">
-    <section class="feedbacks">
-      <button class="btn btn-danger" [disabled]="!selected.size" (click)="delete()">Delete</button>
-      <ul class="feedback-list scroll">
-        <li class="feedback flex" *ngFor="let feedback of feedbacks">
-          <div class="select-box-container" >
-            <label [attr.for]="feedback.id"></label>
-            <input [attr.id]="feedback.id" class="select-box" type="checkbox" (click)="markOrUnmark(feedback)">
-          </div>
-          <h4 (click)="select(feedback)">{{feedback.name}}</h4>
-        </li>
-      </ul>
-    </section>
+<div class="container one-pager flex page-holder">
+	<section class="feedbacks content">
+		<button class="btn btn-danger" [disabled]="!selected.size" (click)="delete()">Delete</button>
+		<ul class="feedback-list scroll">
+			<li class="feedback flex" *ngFor="let feedback of feedbacks">
+				<div class="select-box-container">
+					<label [attr.for]="feedback.id"></label>
+					<input [attr.id]="feedback.id" class="select-box" type="checkbox" (click)="markOrUnmark(feedback)">
+				</div>
+				<h4 (click)="select(feedback)">{{feedback.name}}</h4>
+			</li>
+		</ul>
+	</section>
 
-    <section class="opened">
-      <div class="opened-feedback col" *ngIf="opened">
-        <i class="fa fa-times-circle-o close" (click)="close()" aria-hidden="true"></i>
+	<section class="opened content">
+		<div class="opened-feedback col" *ngIf="opened">
+			<i class="fa fa-times-circle-o close" (click)="close()" aria-hidden="true"></i>
 
-        <div class="feedback-property">
-          <span>Name:</span>
-          <h4>{{opened.name}}</h4>
-        </div>
+			<div class="feedback-property">
+				<span>Name:</span>
+				<h4>{{opened.name}}</h4>
+			</div>
 
-        <div class="feedback-property">
-          <span>Email:</span>
-          <h4>{{opened.email}}</h4>
-        </div>
+			<div class="feedback-property">
+				<span>Email:</span>
+				<h4>{{opened.email}}</h4>
+			</div>
 
-        <div class="separator"></div>
-        <div class="feedback-content scroll">
-          <p>
-            {{opened.content}}
-          </p>
-        </div>
-      </div>
-    </section>
-  </div>
+			<div class="separator"></div>
+			<div class="feedback-content scroll">
+				<p>
+					{{opened.content}}
+				</p>
+			</div>
+		</div>
+	</section>
 </div>

@@ -34,6 +34,9 @@ export class FeedbackComponent {
 		{ id: 7, name: 'Pesho', email: 'tudor@gmail.com', content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.' },
 		{ id: 8, name: 'Gosho', email: 'gosho@gmail.com', content: 'Lorizzle ipsizzle dolizzle pizzle go to hizzle, fo shizzle.' },
 		{ id: 9, name: 'Maria', email: 'maria@gmail.com', content: 'Climb leg rub face on everything give attitude nap all day.' },
+		{ id: 10, name: 'Maria', email: 'maria@gmail.com', content: 'Climb leg rub face on everything give attitude nap all day.' },
+		{ id: 11, name: 'Maria', email: 'maria@gmail.com', content: 'Climb leg rub face on everything give attitude nap all day.' },
+		{ id: 12, name: 'Maria', email: 'maria@gmail.com', content: 'Climb leg rub face on everything give attitude nap all day.' },
 	];
 
 	public opened;
@@ -47,7 +50,6 @@ export class FeedbackComponent {
 	}
 
 	markOrUnmark(feedback) {
-		console.log('click');
 		if (this.selected.has(feedback.id)) {
 			this.selected.delete(feedback.id);
 		} else {
