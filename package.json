@@ -10,7 +10,7 @@
     "lint": "ng lint --type-check",
     "lint-fix": "ng lint --type-check --fix",
     "e2e": "ng e2e",
-    "postinstall": "ng build --aot -prod"
+    "heroku-postbuild": "ng build --aot -prod"
   },
   "private": true,
   "dependencies": {
@@ -18,8 +18,8 @@
     "@angular/common": "4.0.0",
     "@angular/compiler": "4.0.0",
 		"@angular/compiler-cli": "4.0.0",
+		"@angular/core": "4.0.0",
 		"@angular/cli": "1.6.1",
-    "@angular/core": "4.0.0",
     "@angular/forms": "4.0.0",
     "@angular/http": "4.0.0",
     "@angular/language-service": "4.0.0",
