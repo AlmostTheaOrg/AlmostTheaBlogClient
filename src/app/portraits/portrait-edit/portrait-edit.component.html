@@ -12,6 +12,7 @@
     <div class="input-group">
       <label for="text">Image:</label>
       <div class="input-field">
+				<img [src]="portrait.image" class="preview-image" alt="">
         <input class="input" type="text" name="image" [(ngModel)]="portrait.image" required />
       </div>
     </div>

@@ -1,24 +1,24 @@
-<form (ngSubmit)="onSubmit()" #addForm="ngForm" class="flex align-center">
-  <div class="modal-wrapper">
+<form (ngSubmit)="onSubmit()" #addPortrait="ngForm" class="flex align-center">
+	<div class="modal-wrapper">
+		<div class="input-group">
+			<label for="name">Name:</label>
+			<div class="input-field">
+				<input class="input" type="text" id="name" name="name" #name="ngModel" [(ngModel)]="portrait.name" placeholder="Thea" required
+				  minlength="4" maxlength="32" />
+			</div>
+		</div>
 
-    <div class="input-group">
-      <label for="name">Name:</label>
-      <div class="input-field">
-        <input class="input" type="text" name="name" [(ngModel)]="image.name" placeholder="Thea" required />
-      </div>
-    </div>
+		<div class="input-group">
+			<label for="text">Image:</label>
+			<div class="input-field">
+				<input class="input" type="file" [ngModel]="portrait.file" name="file" #file="ngModel" requireFile/>
+			</div>
+		</div>
 
-    <div class="input-group">
-      <label for="text">Image:</label>
-      <div class="input-field">
-        <input class="input" type="text" name="image" [(ngModel)]="image.image" required />
-      </div>
-    </div>
-
-    <div class="input-group">
-      <div class="input-field">
-        <input class="btn btn-success" type="submit" value="Add" />
-      </div>
-    </div>
-  </div>
+		<div class="input-group">
+			<div class="input-field">
+				<input class="btn btn-success" type="submit" value="Add" [disabled]="!addPortrait.form.valid"/>
+			</div>
+		</div>
+	</div>
 </form>

@@ -120,6 +120,7 @@ a.btn {
 	text-align: center;
 	background: #ffffff;
 	border-radius: 5px;
+	min-width: 300px;
 }
 
 .update-container {
@@ -155,7 +156,8 @@ form {
 .input-group input,
 .input-group textarea {
 	font-size: 0.6em;
-	width: calc(100% - 12px);
+	width: 100%;
+	box-sizing: border-box;
 }
 
 .input-group input[type="submit"] {
@@ -164,4 +166,23 @@ form {
 
 .input-group {
 	margin-bottom: 10px;
+}
+
+.ng-invalid:not(form) {
+	border-left: 5px solid #d9534f;
+}
+
+.ng-valid[required],
+.ng-valid.required,
+.ng-valid[requireFile] {
+	border-left: 5px solid #5cb85c;
+}
+
+re-captcha.ng-valid[required],
+re-captcha.ng-invalid[required] {
+	border-left: 0;
+}
+
+.highlight {
+	color: indigo;
 }

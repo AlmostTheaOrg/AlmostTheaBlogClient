@@ -1,4 +1,4 @@
-import { Component, OnInit, Injector } from '@angular/core';
+import { Component, OnInit, Injector, ElementRef, ViewChild } from '@angular/core';
 import { Image } from '../../data/models';
 import { PortraitActions } from '../portrait.actions';
 
@@ -9,8 +9,9 @@ import { PortraitActions } from '../portrait.actions';
 })
 export class PortraitAddComponent {
 	private close: () => void;
+	@ViewChild('fileInput') public fileInput: ElementRef;
 
-	public image: { name: string; image: string } = { name: '', image: '' };
+	portrait: { name: string, file: any } = { name: '', file: null };
 
 	constructor(private injector: Injector, private portraitActions: PortraitActions) {
 		this.close = this.injector.get('close');
@@ -18,7 +19,17 @@ export class PortraitAddComponent {
 
 	onSubmit() {
 		// TODO: Validate.
-		this.portraitActions.addPortrait(new Image(this.image.name, this.image.image));
+		const file = <File>this.fileInput.nativeElement.files[0];
+		if (!this.portrait.name || !file || !this.isImageType(file.type)) {
+			// TODO: Notify for error!
+			return;
+		}
+
+		// this.portraitActions.addPortrait({ name: this.image.name, file: portraitImage });
 		this.close();
+	}
+
+	private isImageType(type: string) {
+		return type.startsWith('image');
 	}
 }

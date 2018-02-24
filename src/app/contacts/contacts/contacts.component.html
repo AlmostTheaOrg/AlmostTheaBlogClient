@@ -1,33 +1,36 @@
 <div class="container one-pager flex-center">
-	<form #contactUsForm="ngForm">
+	<form (ngSubmit)="onSubmit()" #contactUs="ngForm">
 		<div class="input-group">
 			<label for="name">Name:</label>
 			<div class="input-field">
-				<input class="input" type="text" name="name" placeholder="e.g. Steven" required />
+				<input class="input" type="text" name="name" #name="ngModel" [(ngModel)]="contact.name" placeholder="e.g. Steven" minlength="3"
+				  maxlength="32" required />
 			</div>
 		</div>
 
 		<div class="input-group">
-			<label for="email">Email (optional):</label>
+			<label for="email">Email:</label>
 			<div class="input-field">
-				<input class="input" type="email" name="name" placeholder="Email for further discussion" />
+				<input class="input" type="email" name="email" #email="ngModel" [(ngModel)]="contact.email" placeholder="Email for further discussion"
+				/>
 			</div>
 		</div>
 
 		<div class="input-group">
 			<label for="text">Message:</label>
 			<div class="input-field">
-				<textarea class="input" name="text" placeholder="I was wondering ..." required rows="8" cols="30"></textarea>
+				<textarea class="input" id="message" name="message" #message="ngModel" [(ngModel)]="contact.message" minlength="30" maxlength="200"
+				  placeholder="I was wondering ..." required rows="8" cols="30"></textarea>
 			</div>
 		</div>
 
 		<div class="input-group">
-			<re-captcha (resolved)="resolved($event)" name="captcha" required></re-captcha>
+			<re-captcha (resolved)="resolved($event)" name="captcha" #captcha="ngModel" [(ngModel)]="contact.captcha" required></re-captcha>
 		</div>
 
 		<div class="input-group">
 			<div class="input-field">
-				<input class="btn btn-success" type="submit" value="Submit" />
+				<input class="btn btn-success" type="submit" value="Submit" [disabled]="!contactUs.form.valid" />
 			</div>
 		</div>
 	</form>

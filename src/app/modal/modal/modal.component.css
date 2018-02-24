@@ -35,7 +35,7 @@ a.lightbox-close {
   text-decoration: none;
   position: absolute;
   top: -80px;
-  right: 0;
+  right: 10px;
   -webkit-transition: 0.5s ease-in-out;
   -moz-transition: 0.5s ease-in-out;
   -o-transition: 0.5s ease-in-out;

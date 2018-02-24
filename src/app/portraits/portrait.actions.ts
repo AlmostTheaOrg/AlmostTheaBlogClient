@@ -3,6 +3,7 @@ import { IAppState } from '../store/IAppState';
 import { NgRedux } from 'ng2-redux';
 import { ImageService } from '../data/services';
 import { Image } from '../data/models';
+import { MutablePortrait } from '../data/models/portrait';
 
 export const GET_PORTRAITS = 'portrait/ALL';
 export const ADD_PORTRAIT = 'portrait/ADD';
@@ -19,12 +20,11 @@ export class PortraitActions {
 		this.ngRedux.dispatch({ type: GET_PORTRAITS, portraits: this.portraitsService.all() });
 	}
 
-	addPortrait(portrait: Image) {
+	addPortrait(portrait: MutablePortrait) {
 		this.ngRedux.dispatch({ type: ADD_PORTRAIT, portrait });
 	}
 
-	editPortrait(id: string, portrait: Image) {
-		portrait.setId(id);
+	editPortrait(id: string, portrait: MutablePortrait) {
 		this.ngRedux.dispatch({ type: EDIT_PORTRAIT, portrait });
 	}
 
