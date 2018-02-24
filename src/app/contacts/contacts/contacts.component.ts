@@ -5,13 +5,18 @@ import { Component, OnInit } from '@angular/core';
 	templateUrl: './contacts.component.html',
 	styleUrls: ['./contacts.component.css']
 })
-export class ContactsComponent implements OnInit {
-	public feedback: { captcha: ''};
-	constructor() { }
+export class ContactsComponent {
+	contact: {
+		name: string,
+		email?: string,
+		captcha?: '',
+		message: string
+	} = { name: '', message: '' };
 
-	ngOnInit() {
+	public resolved(str) {
 	}
 
-	public resolved (str) {
+	public onSubmit() {
+
 	}
 }

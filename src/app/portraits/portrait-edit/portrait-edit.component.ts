@@ -25,7 +25,7 @@ export class PortraitEditComponent {
 	onSubmit() {
 		this.portraitActions.editPortrait(
 			this.portrait.id,
-			new Image(this.portrait.name, this.portrait.image)
+			{ name: this.portrait.name, file: null}
 		);
 
 		this.close();
