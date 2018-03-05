@@ -11,7 +11,7 @@
     <div class="input-group">
       <label for="thumb">Thumbnail:</label>
       <div class="input-field">
-        <input class="input" type="text" name="thumb" [(ngModel)]="project.thumb" />
+        <input class="input" type="file" name="file" [(ngModel)]="project.file" requireFile />
       </div>
     </div>
 

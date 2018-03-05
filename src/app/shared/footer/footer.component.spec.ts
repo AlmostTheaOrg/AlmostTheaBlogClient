@@ -2,12 +2,12 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FooterComponent } from './footer.component';
 import { AuthActions } from '../../auth/auth.actions';
-import { AuthenticationService } from '../../data/services';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NgZone } from '@angular/core';
 import { AppModule } from '../../app.module';
 import { Observable } from 'rxjs/Observable';
 import { NgRedux } from 'ng2-redux';
+import { AuthenticationService } from '../../services';
 
 // Mock out the NgRedux class with just enough to test what we want.
 class MockRedux extends NgRedux<any> {
@@ -19,7 +19,7 @@ class MockRedux extends NgRedux<any> {
 
 class MockAuthenticationService extends AuthenticationService {
 	constructor() {
-		super();
+		super(null, null);
 	}
 }
 

@@ -1,10 +1,5 @@
-export interface MutablePortrait {
+export interface Portrait {
+	id: string;
 	name: string;
-	file: File;
-}
-
-export interface ImmutablePortrait {
-	readonly id: string;
-	readonly name: string;
-	readonly imageSource: string;
+	imageUrl: string;
 }

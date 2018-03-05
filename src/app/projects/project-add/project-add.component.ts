@@ -9,7 +9,7 @@ import { ProjectActions } from '../project.actions';
 	styleUrls: ['./project-add.component.css']
 })
 export class ProjectAddComponent extends ModalWindow {
-	public project = { name: '', thumb: '' };
+	public project = { name: '', file: null };
 
 	constructor(injector: Injector,
 		private projectActions: ProjectActions) {
@@ -17,8 +17,7 @@ export class ProjectAddComponent extends ModalWindow {
 	}
 
 	onSubmit() {
-		const project = new Project(this.project.name, new Image('thumb', this.project.thumb));
-		this.projectActions.addProject(project);
+		this.projectActions.addProject(this.project);
 		this.close();
 	}
 }

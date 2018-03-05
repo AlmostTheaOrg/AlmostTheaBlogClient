@@ -9,8 +9,6 @@ import { NG_VALIDATORS, Validator, FormControl } from '@angular/forms';
 })
 export class FileValidator implements Validator {
 	static validate(c: FormControl): { [key: string]: any } {
-		console.log(c.value);
-		console.log(c.value == null || c.value.length === 0 ? { 'required': true } : null);
 		return c.value == null || c.value.length === 0 ? { 'required': true } : null;
 	}
 

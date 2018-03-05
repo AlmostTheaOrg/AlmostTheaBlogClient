@@ -1,4 +1,5 @@
-export class User {
-	constructor(public readonly username: string, public readonly password: string) {
-	}
+export interface User {
+	username: string;
+	password?: string;
+	token?: string;
 }

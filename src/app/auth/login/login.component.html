@@ -1,22 +1,22 @@
 <div class="container one-pager flex-center">
 	<div class="flex align-center">
-		<form (ngSubmit)="onSubmit()" #loginForm="ngForm" class="">
+		<form (ngSubmit)="onSubmit()" #loginForm="ngForm" class="form">
 			<div class="input-group">
 				<label for="username">Username:</label>
 				<div class="input-field">
-					<input class="input" type="text" name="username" [(ngModel)]="user.username" required />
+					<input class="input" type="text" name="username" [(ngModel)]="user.username" minlength="6" maxlength="30" required />
 				</div>
 			</div>
 
 			<div class="input-group">
 				<label for="text">Password:</label>
 				<div class="input-field">
-					<input class="input" type="password" name="password" [(ngModel)]="user.password" required />
+					<input class="input" type="password" name="password" [(ngModel)]="user.password" minlength="6" maxlength="30" required />
 				</div>
 			</div>
 
 			<div class="input-group">
-				<re-captcha (resolved)="resolved($event)" [(ngModel)]="user.captcha" name="captcha" #captchaControl="ngModel" required></re-captcha>
+				<re-captcha (resolved)="resolve($event)" [(ngModel)]="user.captcha" name="captcha" #captchaControl="ngModel" required></re-captcha>
 			</div>
 
 			<div class="input-group">

@@ -1,0 +1,8 @@
+.tooltip-text {
+	visibility: hidden;
+	position: absolute;
+}
+
+.tooltip:hover .tooltip-text {
+	visibility: visible;
+}

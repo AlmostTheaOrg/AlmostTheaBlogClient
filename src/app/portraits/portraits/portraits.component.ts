@@ -1,6 +1,4 @@
 import { Component, EventEmitter, Output, Input, ViewChild, OnInit } from '@angular/core';
-import { ImageService } from '../../data/services';
-import { Image } from '../../data/models';
 import { PortraitAddComponent, PortraitDetailsComponent, PortraitEditComponent, PortraitDeleteComponent } from '../index';
 
 import { ModalComponent } from '../../modal/modal/modal.component';
@@ -9,6 +7,8 @@ import { select } from 'ng2-redux';
 import { Observable } from 'rxjs/Observable';
 import { PortraitActions } from '../portrait.actions';
 import { AuthActions } from '../../auth/auth.actions';
+import { Portrait } from '../../data/models/Portrait';
+
 @Component({
 	selector: 'app-portraits',
 	templateUrl: './portraits.component.html',
@@ -16,7 +16,7 @@ import { AuthActions } from '../../auth/auth.actions';
 })
 export class PortraitsComponent extends ModalCreator implements OnInit {
 	@select('portraits')
-	public portraits: Observable<Image[]>;
+	public portraits: Observable<Portrait[]>;
 
 	@select('isAuthenticated')
 	public isAuthenticated: Observable<boolean>;
@@ -39,23 +39,21 @@ export class PortraitsComponent extends ModalCreator implements OnInit {
 		return this.child;
 	}
 
-	show(image: Image) {
-		this.open(PortraitDetailsComponent, { imageSrc: image.getImageSrc() });
+	show(image: Portrait) {
+		this.open(PortraitDetailsComponent, { imageSrc: image.imageUrl });
 	}
 
 	add() {
 		this.open(PortraitAddComponent, {});
 	}
 
-	edit(event: Event, image: Image) {
+	edit(event: Event, portrait: Portrait) {
 		event.stopPropagation();
-
-		this.open(PortraitEditComponent, { id: image.getId(), name: image.getName(), imageSrc: image.getImageSrc() });
+		this.open(PortraitEditComponent, { id: portrait.id, name: portrait.name, imageUrl: portrait.imageUrl });
 	}
 
-	delete(event: Event, image: Image) {
+	delete(event: Event, portrait: Portrait) {
 		event.stopPropagation();
-
-		this.open(PortraitDeleteComponent, { id: image.getId(), name: image.getName() });
+		this.open(PortraitDeleteComponent, { id: portrait.id, name: portrait.name });
 	}
 }

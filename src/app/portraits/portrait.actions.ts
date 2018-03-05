@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { IAppState } from '../store/IAppState';
 import { NgRedux } from 'ng2-redux';
-import { ImageService } from '../data/services';
-import { Image } from '../data/models';
-import { MutablePortrait } from '../data/models/portrait';
+import { PortraitService } from '../services';
+import { AddPortraitViewModel, EditPortraitViewModel } from '../services/portrait-service';
+import { Portrait } from '../data/models/Portrait';
 
 export const GET_PORTRAITS = 'portrait/ALL';
 export const ADD_PORTRAIT = 'portrait/ADD';
@@ -12,23 +12,33 @@ export const DELETE_PORTRAIT = 'portrait/DELETE';
 
 @Injectable()
 export class PortraitActions {
-	constructor(private ngRedux: NgRedux<IAppState>, private portraitsService: ImageService) {
-		// TODO: User HTTP backend service.
+	constructor(private ngRedux: NgRedux<IAppState>,
+		private portraitsService: PortraitService) {
 	}
 
 	getPortraits() {
-		this.ngRedux.dispatch({ type: GET_PORTRAITS, portraits: this.portraitsService.all() });
+		this.portraitsService.all().then((portraits: Portrait[]) => {
+			this.ngRedux.dispatch({ type: GET_PORTRAITS, portraits: portraits });
+		});
 	}
 
-	addPortrait(portrait: MutablePortrait) {
-		this.ngRedux.dispatch({ type: ADD_PORTRAIT, portrait });
+	addPortrait(portraitViewModel: AddPortraitViewModel) {
+		this.portraitsService.add(portraitViewModel).then((portrait: any) => {
+			this.ngRedux.dispatch({ type: ADD_PORTRAIT, portrait });
+		});
 	}
 
-	editPortrait(id: string, portrait: MutablePortrait) {
-		this.ngRedux.dispatch({ type: EDIT_PORTRAIT, portrait });
+	editPortrait(portraitEditViewModel: EditPortraitViewModel) {
+		this.portraitsService.edit(portraitEditViewModel).then(portrait => {
+			this.ngRedux.dispatch({ type: EDIT_PORTRAIT, portrait });
+		});
 	}
 
 	deletePortrait(id: string) {
-		this.ngRedux.dispatch({ type: DELETE_PORTRAIT, id });
+		this.portraitsService.delete(id).then((result) => {
+			if (result.success) {
+				this.ngRedux.dispatch({ type: DELETE_PORTRAIT, id });
+			}
+		});
 	}
 }

@@ -1,3 +1,5 @@
+import { DummyRecaptchaValidatorService } from '../app/services/recaptcha-validator.service';
+
 // The file contents for the current environment will overwrite these during build.
 // The build system defaults to the dev environment which uses `environment.ts`, but if you do
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
@@ -6,5 +8,9 @@
 export const environment = {
 	production: false,
 	recaptcha_site_key: '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',
-	backend_url: 'http://localhost:5000/api/'
+	recaptcha_validator: DummyRecaptchaValidatorService,
+	server_url: 'http://localhost:3000/api/',
+	crypto : {
+		password: 'd6F3Efeq',
+	}
 };

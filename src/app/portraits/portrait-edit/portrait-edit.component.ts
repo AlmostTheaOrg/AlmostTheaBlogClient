@@ -1,6 +1,4 @@
 import { Component, OnInit, Injector } from '@angular/core';
-import { ImageService } from '../../data/services';
-import { Image } from '../../data/models';
 import { PortraitActions } from '../portrait.actions';
 
 @Component({
@@ -9,25 +7,26 @@ import { PortraitActions } from '../portrait.actions';
 	styleUrls: ['./portrait-edit.component.css']
 })
 export class PortraitEditComponent {
-	public portrait: { id: string; name: string; image: string };
+	public portrait: { id: string; name: string; imageUrl: string, file?: any };
 	private close;
 
 	constructor(private injector: Injector, private portraitActions: PortraitActions) {
 		this.portrait = {
 			id: this.injector.get('id'),
 			name: this.injector.get('name'),
-			image: this.injector.get('imageSrc')
+			imageUrl: this.injector.get('imageUrl')
 		};
 
 		this.close = this.injector.get('close');
 	}
 
-	onSubmit() {
-		this.portraitActions.editPortrait(
-			this.portrait.id,
-			{ name: this.portrait.name, file: null}
-		);
-
-		this.close();
+	onSubmit(form) {
+		try {
+			const file = form.value.file ? form.value.file[0] : null;
+			this.portraitActions.editPortrait({ id: this.portrait.id, name: this.portrait.name, image: file });
+			this.close();
+		} catch (error) {
+			console.log(error);
+		}
 	}
 }

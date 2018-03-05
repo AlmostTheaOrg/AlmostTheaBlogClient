@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild, forwardRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProjectService } from '../../data/services';
 import { Project, Image } from '../../data/models';
 import { ProjectPhotoListViewModel } from '../../data/view-models/ProjectPhotoListViewModel';
 import { ModalCreator } from '../../modal/modal/modal-creator';

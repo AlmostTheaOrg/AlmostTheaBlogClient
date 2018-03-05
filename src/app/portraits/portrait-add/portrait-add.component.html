@@ -1,4 +1,4 @@
-<form (ngSubmit)="onSubmit()" #addPortrait="ngForm" class="flex align-center">
+<form (ngSubmit)="onSubmit(addPortrait)" #addPortrait="ngForm" class="flex align-center">
 	<div class="modal-wrapper">
 		<div class="input-group">
 			<label for="name">Name:</label>
@@ -11,13 +11,13 @@
 		<div class="input-group">
 			<label for="text">Image:</label>
 			<div class="input-field">
-				<input class="input" type="file" [ngModel]="portrait.file" name="file" #file="ngModel" requireFile/>
+				<input class="input" type="file" id="file" name="file" #file="ngModel" [(ngModel)]="portrait.file" requireFile/>
 			</div>
 		</div>
 
 		<div class="input-group">
 			<div class="input-field">
-				<input class="btn btn-success" type="submit" value="Add" [disabled]="!addPortrait.form.valid"/>
+				<input class="btn btn-success" type="submit" value="Add" [disabled]="!addPortrait.form.valid" />
 			</div>
 		</div>
 	</div>

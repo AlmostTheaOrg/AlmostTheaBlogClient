@@ -3,8 +3,17 @@ import { GET_PORTRAITS, EDIT_PORTRAIT, DELETE_PORTRAIT, ADD_PORTRAIT } from '../
 import { Image } from '../data/models/Image';
 import { GET_PROJECTS, GET_PROJECT, ADD_PROJECT, EDIT_PROJECT, DELETE_PROJECT } from '../projects/project.actions';
 import { IS_AUTHENTICATED, USER_GET, USER_LOGIN, USER_LOGOUT } from '../auth/auth.actions';
+import { Portrait } from '../data/models/Portrait';
 
-const initialState: IAppState = { projects: [], portraits: [], selectedProject: null, isAuthenticated: false, currentUser: null };
+export const GLOBAL_ERROR = 'GLOBAL_ERROR';
+const initialState: IAppState = {
+	projects: [],
+	portraits: [],
+	selectedProject: null,
+	isAuthenticated: false,
+	currentUser: null,
+	globalErrorMessage: ''
+};
 export function reducer(state: IAppState = initialState, action) {
 	switch (action.type) {
 		// Portraits actions.
@@ -36,6 +45,9 @@ export function reducer(state: IAppState = initialState, action) {
 			return setUser(state, action);
 		case USER_LOGOUT:
 			return setUser(state, action);
+		// Global Actions:
+		case GLOBAL_ERROR:
+			return setGlobalErrorMessage(state, action);
 		default:
 			return state;
 	}
@@ -61,6 +73,7 @@ function setUser(state: IAppState, action) {
 	});
 }
 
+// -----------------
 // Project actions.
 function getProjects(state: IAppState, action) {
 	return Object.assign({}, state, {
@@ -108,7 +121,7 @@ function getPortraits(state: IAppState, action) {
 }
 
 function addPortrait(state: IAppState, action) {
-	const portraits: Image[] = new Array(...state.portraits);
+	const portraits: Portrait[] = new Array(...state.portraits);
 	portraits.push(action.portrait);
 
 	return Object.assign({}, state, {
@@ -117,8 +130,8 @@ function addPortrait(state: IAppState, action) {
 }
 
 function editPortrait(state: IAppState, action) {
-	const portraits: Image[] = new Array(...state.portraits);
-	const index = portraits.findIndex(p => p.getId() === action.id);
+	const portraits: Portrait[] = new Array(...state.portraits);
+	const index = portraits.findIndex(p => p.id === action.portrait.id);
 	portraits[index] = action.portrait;
 	return Object.assign({}, state, {
 		portraits: portraits
@@ -127,6 +140,14 @@ function editPortrait(state: IAppState, action) {
 
 function deletePortrait(state: IAppState, action) {
 	return Object.assign({}, state, {
-		portraits: state.portraits.filter(p => p.getId() !== action.id)
+		portraits: state.portraits.filter(p => p.id !== action.id)
+	});
+}
+
+// -----------------
+// Global actions
+function setGlobalErrorMessage(state: IAppState, action) {
+	return Object.assign({}, state, {
+		globalErrorMessage: action.message
 	});
 }

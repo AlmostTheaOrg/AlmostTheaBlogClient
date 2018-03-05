@@ -5,8 +5,16 @@ import { Headers } from '@angular/http';
 
 export const RECAPTCHA_VALIDATION: InjectionToken<string> = new InjectionToken('RECAPTCHA_VALIDATION');
 
+export interface IRecaptchaValidator {
+	validate(token: string): Promise<boolean>;
+}
+
+export abstract class RecaptchaValidator implements IRecaptchaValidator {
+	abstract validate(token: string): Promise<boolean>;
+}
+
 @Injectable()
-export class RecaptchaValidator {
+export class HttpRecaptchaValidatorService implements RecaptchaValidator {
 	constructor(private http: Http, @Inject(RECAPTCHA_VALIDATION) private validationUrl: string) {
 	}
 
@@ -15,11 +23,19 @@ export class RecaptchaValidator {
 			.map(res => res.json())
 			.map(res => {
 				if (!res.success) {
-					return { valid: false };
+					return false;
 				}
 
-				return { valid: true };
+				return true;
 			})
 			.toPromise();
+	}
+}
+
+export class DummyRecaptchaValidatorService implements RecaptchaValidator {
+	validate(token: string): Promise<boolean> {
+		return new Promise((resolve) => {
+			resolve(true);
+		});
 	}
 }

@@ -1,8 +1,9 @@
-import { Image, Project } from '../data/models';
+import { Project } from '../data/models';
 import { User } from '../data/models/User';
+import { Portrait } from '../data/models/Portrait';
 
 export interface IAppState {
-	portraits: Image[];
+	portraits: Portrait[];
 
 	projects: Project[];
 
@@ -11,4 +12,6 @@ export interface IAppState {
 	isAuthenticated: boolean;
 
 	currentUser: User;
+
+	globalErrorMessage: string;
 }

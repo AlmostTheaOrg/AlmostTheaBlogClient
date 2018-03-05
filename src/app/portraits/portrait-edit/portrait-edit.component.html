@@ -1,19 +1,17 @@
-<form (ngSubmit)="onSubmit()" #editForm="ngForm" class="flex align-center">
+<form (ngSubmit)="onSubmit(editForm)" #editForm="ngForm" class="flex align-center">
   <div class="modal-wrapper">
-    <input type="hidden" name="id" [(ngModel)]="portrait.id" required />
-
     <div class="input-group">
       <label for="name">Name:</label>
       <div class="input-field">
-        <input class="input" type="text" name="name" [(ngModel)]="portrait.name" required />
+        <input class="input" type="text" name="name" [(ngModel)]="portrait.name" required minlength="3" maxlength="30" />
       </div>
     </div>
 
     <div class="input-group">
       <label for="text">Image:</label>
       <div class="input-field">
-				<img [src]="portrait.image" class="preview-image" alt="">
-        <input class="input" type="text" name="image" [(ngModel)]="portrait.image" required />
+				<img [src]="portrait.imageUrl" class="preview-image" alt="">
+				<input class="input" type="file" id="file" name="file" #file="ngModel" [(ngModel)]="portrait.file"/>
       </div>
     </div>
 

@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild, forwardRef } from '@angular/core';
 import { Project } from '../../data/models/Project';
-import { ProjectService } from '../../data/services/ProjectService';
 import { ProjectAddComponent } from '../project-add/project-add.component';
 import { ModalCreator } from '../../modal/modal/modal-creator';
 import { ModalComponent } from '../../modal/modal/modal.component';

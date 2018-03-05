@@ -183,6 +183,10 @@ re-captcha.ng-invalid[required] {
 	border-left: 0;
 }
 
+.form {
+	min-width: 300px;
+}
+
 .highlight {
 	color: indigo;
 }

@@ -9,24 +9,26 @@ import { PortraitActions } from '../portrait.actions';
 })
 export class PortraitAddComponent {
 	private close: () => void;
-	@ViewChild('fileInput') public fileInput: ElementRef;
-
-	portrait: { name: string, file: any } = { name: '', file: null };
+	portrait: { name: string, file?: any} = { name: '' };
 
 	constructor(private injector: Injector, private portraitActions: PortraitActions) {
 		this.close = this.injector.get('close');
 	}
 
-	onSubmit() {
-		// TODO: Validate.
-		const file = <File>this.fileInput.nativeElement.files[0];
-		if (!this.portrait.name || !file || !this.isImageType(file.type)) {
-			// TODO: Notify for error!
-			return;
-		}
+	onSubmit(form) {
+		try {
+			// TODO: Validate.
+			const file = form.value.file[0];
+			if (!this.portrait.name || !file || !this.isImageType(file.type)) {
+				// TODO: Notify for error!
+				return;
+			}
 
-		// this.portraitActions.addPortrait({ name: this.image.name, file: portraitImage });
-		this.close();
+			this.portraitActions.addPortrait({ name: this.portrait.name, image: file });
+			this.close();
+		} catch (error) {
+			console.log(error);
+		}
 	}
 
 	private isImageType(type: string) {
