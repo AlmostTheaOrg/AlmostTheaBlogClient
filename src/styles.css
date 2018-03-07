@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import url("https://fonts.googleapis.com/css?family=Comfortaa:700|Open+Sans:400,700");
+@import url("https://fonts.googleapis.com/css?family=Lato:700|Open+Sans:400,700");
 @font-face {
 	font-family: Dulcelin;
 	src: url(fonts/Dulcelin.otf);
@@ -12,7 +12,7 @@
 }
 
 html {
-	font-family: Dulcelin;
+	font-family: 'Dulcelin';
 	background-color: #ffffff;
 }
 

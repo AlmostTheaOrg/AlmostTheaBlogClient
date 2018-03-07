@@ -7,10 +7,12 @@ import { FileValidator } from './directives/file-input.directive';
 import { FileValueAccessorDirective } from './directives/file-control-value-accessor.directive';
 import { NotificationComponent } from './notification/notification.component';
 import { NotificationActions } from './notification/notification.actions';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
 	imports: [
 		CommonModule,
+		RouterModule,
 		BrowserAnimationsModule
 	],
 	declarations: [

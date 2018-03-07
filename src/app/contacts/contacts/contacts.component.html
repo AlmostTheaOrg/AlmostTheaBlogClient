@@ -3,7 +3,7 @@
 		<div class="input-group">
 			<label for="name">Name:</label>
 			<div class="input-field">
-				<input class="input" type="text" name="name" #name="ngModel" [(ngModel)]="contact.name" placeholder="e.g. Steven" minlength="3"
+				<input class="input" type="text" name="name" #name="ngModel" [(ngModel)]="contact.name" placeholder="Steven" minlength="3"
 				  maxlength="32" required />
 			</div>
 		</div>
@@ -30,7 +30,7 @@
 
 		<div class="input-group">
 			<div class="input-field">
-				<input class="btn btn-success" type="submit" value="Submit" [disabled]="!contactUs.form.valid" />
+				<input class="btn btn-success" id="submit" type="submit" value="Submit" [disabled]="!contactUs.form.valid" />
 			</div>
 		</div>
 	</form>
