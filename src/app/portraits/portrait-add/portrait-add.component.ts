@@ -1,5 +1,4 @@
 import { Component, OnInit, Injector, ElementRef, ViewChild } from '@angular/core';
-import { Image } from '../../data/models';
 import { PortraitActions } from '../portrait.actions';
 
 @Component({

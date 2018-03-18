@@ -7,7 +7,7 @@ import { select } from 'ng2-redux';
 import { Observable } from 'rxjs/Observable';
 import { PortraitActions } from '../portrait.actions';
 import { AuthActions } from '../../auth/auth.actions';
-import { Portrait } from '../../data/models/Portrait';
+import { Portrait } from '../../services/portrait.service';
 
 @Component({
 	selector: 'app-portraits',

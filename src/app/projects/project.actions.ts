@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { NgRedux } from 'ng2-redux';
 
 import { IAppState } from '../store/IAppState';
-import {  Image } from '../data/models';
 import { ProjectService } from '../services';
 import { AddProjectViewModel, EditProjectViewModel } from '../services/project.service';
 

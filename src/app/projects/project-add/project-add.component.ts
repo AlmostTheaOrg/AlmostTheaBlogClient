@@ -1,5 +1,4 @@
 import { Component, OnInit, Injector } from '@angular/core';
-import {  Image } from '../../data/models';
 import { ModalWindow } from '../../modal/modal/modal-window';
 import { ProjectActions } from '../project.actions';
 import { AddProjectViewModel } from '../../services/project.service';
