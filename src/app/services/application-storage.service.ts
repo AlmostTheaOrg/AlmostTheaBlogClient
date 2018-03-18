@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import CryptoJS = require('crypto-js');
+import * as CryptoJS from 'crypto-js';
 import { CryptoService } from './crypto.service';
 
 @Injectable()
