@@ -1,11 +1,10 @@
 import { IAppState } from './IAppState';
 import { GET_PORTRAITS, EDIT_PORTRAIT, DELETE_PORTRAIT, ADD_PORTRAIT } from '../portraits/portrait.actions';
-import { Image } from '../data/models/Image';
 import { GET_PROJECTS, GET_PROJECT, ADD_PROJECT, EDIT_PROJECT, DELETE_PROJECT } from '../projects/project.actions';
 import { IS_AUTHENTICATED, USER_GET, USER_LOGIN, USER_LOGOUT } from '../auth/auth.actions';
-import { Portrait } from '../data/models/Portrait';
 import { GLOBAL_ERROR } from '../app.actions';
 import { Project } from '../services/project.service';
+import { Portrait } from '../services/portrait.service';
 
 export const DEFAULT_SELECTED_PROJECT: Project = { id: '-1', name: 'empty', thumbnailUrl: 'empty', photos: [] };
 

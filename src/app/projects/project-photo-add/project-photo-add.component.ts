@@ -1,6 +1,5 @@
 import { Component, OnInit, Injector, OnDestroy } from '@angular/core';
 import { ModalWindow } from '../../modal/modal/modal-window';
-import { Image } from '../../data/models/Image';
 import { ProjectActions } from '../project.actions';
 import { Project } from '../../services/project.service';
 import { select } from 'ng2-redux';

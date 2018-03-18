@@ -1,6 +1,6 @@
 import { User } from '../data/models/User';
-import { Portrait } from '../data/models/Portrait';
 import { Project } from '../services/project.service';
+import { Portrait } from '../services/portrait.service';
 
 export interface IAppState {
 	portraits: Portrait[];
