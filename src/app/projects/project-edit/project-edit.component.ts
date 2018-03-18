@@ -10,15 +10,21 @@ import { Image } from '../../data/models/Image';
 	styleUrls: ['./project-edit.component.css']
 })
 export class ProjectEditComponent extends ModalWindow {
-	public project = { name: '', thumb: '' };
+	public project = { id: '', name: '', file: null };
 
 	constructor(injector: Injector,
 		private projectActions: ProjectActions) {
 		super(injector);
+		this.project.id = injector.get('id');
 		this.project.name = injector.get('name');
 	}
 
 	onSubmit() {
+		this.projectActions.editProject({
+			id: this.project.id,
+			name: this.project.name,
+			thumbnail: this.project.file ? this.project.file[0] : null
+		});
 		this.close();
 	}
 }

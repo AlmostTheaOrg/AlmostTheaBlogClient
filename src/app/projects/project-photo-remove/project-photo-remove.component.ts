@@ -1,7 +1,7 @@
 import { Component, OnInit, Injector } from '@angular/core';
 import { ModalWindow } from '../../modal/modal/modal-window';
-import { Project } from '../../data/models';
 import { ProjectActions } from '../project.actions';
+import { Project } from '../../services/project.service';
 
 @Component({
 	selector: 'app-project-photo-remove',
@@ -19,7 +19,7 @@ export class ProjectPhotoRemoveComponent extends ModalWindow {
 	}
 
 	onSubmit() {
-		this.projectActions.deleteProjectImage(this.project.getId(), this.photo.id);
+		this.projectActions.deletePhotoFromProject(this.project.id, this.photo.id);
 		this.close();
 	}
 }

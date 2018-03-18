@@ -5,9 +5,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { FileValidator } from './directives/file-input.directive';
 import { FileValueAccessorDirective } from './directives/file-control-value-accessor.directive';
-import { NotificationComponent } from './notification/notification.component';
-import { NotificationActions } from './notification/notification.actions';
 import { RouterModule } from '@angular/router';
+import { NotificationComponent } from './notification/notification.component';
 
 @NgModule({
 	imports: [
@@ -30,7 +29,6 @@ import { RouterModule } from '@angular/router';
 		FileValueAccessorDirective
 	],
 	providers: [
-		NotificationActions
 	]
 })
 export class SharedModule { }

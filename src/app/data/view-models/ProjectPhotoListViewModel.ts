@@ -1,5 +1,6 @@
 export class ProjectPhotoListViewModel {
-	constructor(public imageSrc: string,
+	constructor(public id: string,
+		public imageUrl: string,
 		public previous?: ProjectPhotoListViewModel,
 		public next?: ProjectPhotoListViewModel) {
 	}

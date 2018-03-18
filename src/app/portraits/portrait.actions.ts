@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { IAppState } from '../store/IAppState';
 import { NgRedux } from 'ng2-redux';
 import { PortraitService } from '../services';
-import { AddPortraitViewModel, EditPortraitViewModel } from '../services/portrait-service';
+import { AddPortraitViewModel, EditPortraitViewModel } from '../services/portrait.service';
 import { Portrait } from '../data/models/Portrait';
 
 export const GET_PORTRAITS = 'portrait/ALL';

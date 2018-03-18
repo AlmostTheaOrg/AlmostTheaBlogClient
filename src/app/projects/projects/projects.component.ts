@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild, forwardRef } from '@angular/core';
-import { Project } from '../../data/models/Project';
 import { ProjectAddComponent } from '../project-add/project-add.component';
 import { ModalCreator } from '../../modal/modal/modal-creator';
 import { ModalComponent } from '../../modal/modal/modal.component';
@@ -7,6 +6,7 @@ import { ProjectActions } from '../project.actions';
 import { Observable } from 'rxjs/Observable';
 import { select } from 'ng2-redux';
 import { AuthActions } from '../../auth/auth.actions';
+import { Project } from '../../services/project.service';
 
 @Component({
 	selector: 'app-projects',

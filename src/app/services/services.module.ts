@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { AuthenticationService, PortraitService, ProjectService } from './';
+import { AuthenticationService, PortraitService, ProjectService, UtilService } from './';
 import { RecaptchaValidator, RECAPTCHA_VALIDATION } from './recaptcha-validator.service';
 import { environment } from '../../environments/environment';
 import { CryptoService } from './crypto.service';
@@ -17,6 +17,7 @@ const settings = { siteKey: environment.recaptcha_site_key };
 	providers: [
 		CryptoService,
 		ApplicationStorageService,
+		UtilService,
 		AuthenticationService,
 		HttpService,
 		{

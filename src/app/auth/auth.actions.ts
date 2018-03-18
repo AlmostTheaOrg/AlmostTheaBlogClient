@@ -3,7 +3,7 @@ import { AuthenticationService } from '../services';
 import { IAppState } from '../store/IAppState';
 import { User } from '../data/models/User';
 import { Injectable } from '@angular/core';
-import { GLOBAL_ERROR } from '../store/reducer';
+import { GLOBAL_ERROR } from '../app.actions';
 
 export const IS_AUTHENTICATED = 'user/IS_AUTHENTICATED';
 export const USER_GET = 'user/GET';
@@ -17,8 +17,8 @@ export class AuthActions {
 	}
 
 	isAuthenticated() {
-		this.authService.isLogged().then(isLoggedIn => {
-			this.ngRedux.dispatch({ type: IS_AUTHENTICATED, isAuthenticated: isLoggedIn });
+		this.authService.isLogged().then(isAuthenticated => {
+			this.ngRedux.dispatch({ type: IS_AUTHENTICATED, isAuthenticated });
 		});
 	}
 
@@ -31,12 +31,12 @@ export class AuthActions {
 	login(user: User) {
 		this.authService.login(user).then(result => {
 			if (!result) {
-				this.ngRedux.dispatch({ type: GLOBAL_ERROR, message: 'Connection to server failed! Are you connected to Internet?' });
+				this.ngRedux.dispatch({ type: GLOBAL_ERROR, error: 'Connection to server failed! Are you connected to Internet?' });
 				return;
 			}
 
 			if (!result.success) {
-				this.ngRedux.dispatch({ type: GLOBAL_ERROR, message: result.message });
+				this.ngRedux.dispatch({ type: GLOBAL_ERROR, error: result.message });
 				return;
 			}
 

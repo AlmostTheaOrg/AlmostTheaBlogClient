@@ -2,10 +2,10 @@ import { Component, OnDestroy, OnInit, trigger, state, style, transition, animat
 import { select } from 'ng2-redux';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
-import { NotificationActions } from './notification.actions';
+import { AppActions } from '../../app.actions';
 
 @Component({
-	selector: 'notification',
+	selector: 'app-notification',
 	templateUrl: './notification.component.html',
 	styleUrls: ['./notification.component.css'],
 	animations: [
@@ -25,7 +25,7 @@ export class NotificationComponent implements OnInit, OnDestroy {
 
 	private subscription: Subscription;
 
-	constructor(private notificationActions: NotificationActions) { }
+	constructor(private appActions: AppActions) { }
 
 	error(message: string) {
 		this.display(message, 'error');
@@ -38,7 +38,7 @@ export class NotificationComponent implements OnInit, OnDestroy {
 	close() {
 		if (this.message) {
 			this.visibility = 'hidden';
-			this.notificationActions.cleanMessage();
+			this.appActions.clean();
 
 			setTimeout(() => {
 				this.message = '';

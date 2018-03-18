@@ -4,6 +4,7 @@ import { NgRedux } from 'ng2-redux';
 import { IAppState } from '../store/IAppState';
 import { Project, Image } from '../data/models';
 import { ProjectService } from '../services';
+import { AddProjectViewModel, EditProjectViewModel } from '../services/project.service';
 
 export const GET_PROJECTS = 'PROJECT/ALL';
 export const ADD_PROJECT = 'PROJECT/ADD';
@@ -16,35 +17,55 @@ export const DELETE_PROJECT = 'PROJECT/DELETE';
 @Injectable()
 export class ProjectActions {
 	constructor(private ngRedux: NgRedux<IAppState>, private projectService: ProjectService) {
-		// TODO: User HTTP backend service.
 	}
 
 	getProjects() {
-		this.ngRedux.dispatch({ type: GET_PROJECTS, projects: [] });
+		this.projectService.all().then(projects => {
+			this.ngRedux.dispatch({ type: GET_PROJECTS, projects });
+		});
 	}
 
-	addProject(project: any) {
-		this.ngRedux.dispatch({ type: ADD_PROJECT, project });
+	addProject(projectViewModel: AddProjectViewModel) {
+		this.projectService.add(projectViewModel).then(project => {
+			this.ngRedux.dispatch({ type: ADD_PROJECT, project });
+		});
 	}
 
 	getProject(name: string) {
-		const project: Project = new Project('a', new Image('', '')); // this.projectService.find(p => p.getName() === name);
-		this.ngRedux.dispatch({ type: GET_PROJECT, project });
+		this.projectService.find(p => p.name === name).then(projects => {
+			this.ngRedux.dispatch({ type: GET_PROJECT, project: projects[0] });
+		});
 	}
 
-	editProject(id: string, project: any) {
-		this.ngRedux.dispatch({ type: EDIT_PROJECT, id, project });
+	editProject(editProjectViewModel: EditProjectViewModel) {
+		this.projectService.edit(editProjectViewModel)
+			.then(project => {
+				this.ngRedux.dispatch({ type: EDIT_PROJECT, project });
+			});
 	}
 
-	deleteProject(id: string) {
-		this.ngRedux.dispatch({ type: DELETE_PROJECT, id });
+	deleteProject(projectId: string) {
+		this.projectService.delete(projectId).then((result: any) => {
+			if (result.error) {
+				// TODO: Notify for failure.
+				console.log(result.error);
+				return;
+			}
+			this.ngRedux.dispatch({ type: DELETE_PROJECT, id: projectId });
+		});
 	}
 
-	addProjectImage(id: string, image: File) {
-		this.ngRedux.dispatch({ type: ADD_PROJECT_IMAGE, id, image });
+	addPhotoToProject(projectId: string, photo: File) {
+		this.projectService.addPhotoToProject(projectId, photo)
+			.then(project => {
+				this.ngRedux.dispatch({ type: EDIT_PROJECT, project });
+			});
 	}
 
-	deleteProjectImage(projectId: string, imageId: string) {
-		this.ngRedux.dispatch({ type: ADD_PROJECT_IMAGE, projectId, imageId });
+	deletePhotoFromProject(projectId: string, photoId: string) {
+		this.projectService.deletePhotoFromProject(projectId, photoId)
+			.then(project => {
+				this.ngRedux.dispatch({ type: EDIT_PROJECT, project });
+			});
 	}
 }

@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild, forwardRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Project, Image } from '../../data/models';
 import { ProjectPhotoListViewModel } from '../../data/view-models/ProjectPhotoListViewModel';
 import { ModalCreator } from '../../modal/modal/modal-creator';
 import { ModalComponent } from '../../modal/modal/modal.component';
@@ -10,8 +9,11 @@ import { ProjectDeleteComponent } from '../project-delete/project-delete.compone
 import { ProjectPhotoRemoveComponent } from '../project-photo-remove/project-photo-remove.component';
 import { ProjectActions } from '../project.actions';
 import { select } from 'ng2-redux';
+import { skip } from 'rxjs/operator/skip';
 import { Observable } from 'rxjs/Observable';
 import { AuthActions } from '../../auth/auth.actions';
+import { Project } from '../../services/project.service';
+import { DEFAULT_SELECTED_PROJECT } from '../../store/reducer';
 
 @Component({
 	selector: 'app-project-details',
@@ -32,7 +34,7 @@ export class ProjectDetailsComponent extends ModalCreator implements OnInit {
 
 	public photos: Array<ProjectPhotoListViewModel> = [];
 
-	public selected: ProjectPhotoListViewModel = { imageSrc: '', previous: null, next: null };
+	public selected: ProjectPhotoListViewModel = { id: '', imageUrl: '', previous: null, next: null };
 
 	constructor(private route: ActivatedRoute,
 		private router: Router,
@@ -43,21 +45,23 @@ export class ProjectDetailsComponent extends ModalCreator implements OnInit {
 		this.route.params.subscribe(params => {
 			const projectName = params['name'];
 			this.projectActions.getProject(projectName);
+		});
 
-			this.project.subscribe(p => {
-				if (p === null) {
-					this.router.navigateByUrl('/projects');
-					return;
-				}
+		this.project.subscribe(project => {
+			if (!project) {
+				router.navigateByUrl('404');
+				return;
+			}
 
-				this.current = p;
+			if (project !== DEFAULT_SELECTED_PROJECT) {
+				this.current = project;
 				this.photos = this.getPhotos();
 				if (this.photos.length > 0) {
 					this.selected = this.photos[0];
 				} else {
-					this.selected = { imageSrc: '' };
+					this.selected = { imageUrl: '', id: '' };
 				}
-			});
+			}
 		});
 	}
 
@@ -78,7 +82,7 @@ export class ProjectDetailsComponent extends ModalCreator implements OnInit {
 	}
 
 	editProject() {
-		this.open(ProjectEditComponent, { name: this.current.getName() });
+		this.open(ProjectEditComponent, { id: this.current.id, name: this.current.name });
 	}
 
 	deleteProject() {
@@ -96,7 +100,7 @@ export class ProjectDetailsComponent extends ModalCreator implements OnInit {
 	}
 
 	showPrevious() {
-		if (this.selected.imageSrc === '') {
+		if (this.selected.imageUrl === '') {
 			return;
 		}
 
@@ -106,7 +110,7 @@ export class ProjectDetailsComponent extends ModalCreator implements OnInit {
 	}
 
 	showNext() {
-		if (this.selected.imageSrc === '') {
+		if (this.selected.imageUrl === '') {
 			return;
 		}
 
@@ -122,13 +126,14 @@ export class ProjectDetailsComponent extends ModalCreator implements OnInit {
 	hasPrevious() {
 		return !!this.selected.previous;
 	}
+
 	// Will return all images for a project (in their initial order).
 	private getPhotos(): Array<ProjectPhotoListViewModel> {
 		const photos = [];
-		let previous: { imageSrc: string; } = null;
+		let previous: { imageUrl: string; id: string } = null;
 
-		for (const projectPhoto of this.current.getImages()) {
-			const photoViewModel: ProjectPhotoListViewModel = { imageSrc: projectPhoto.getImageSrc() };
+		for (const projectPhoto of this.current.photos) {
+			const photoViewModel: ProjectPhotoListViewModel = { id: projectPhoto.id, imageUrl: projectPhoto.imageUrl };
 			if (previous !== null) {
 				photoViewModel.previous = previous;
 				photoViewModel.previous.next = photoViewModel;

@@ -154,7 +154,8 @@ form {
 }
 
 .input-group input,
-.input-group textarea {
+.input-group textarea,
+.input-group button {
 	font-size: 0.6em;
 	width: 100%;
 	box-sizing: border-box;

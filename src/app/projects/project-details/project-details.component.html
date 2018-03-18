@@ -27,7 +27,7 @@
 			<div *ngIf="hasPrevious()" class="previous" (click)="showPrevious()">
 				<i class="fa fa-chevron-left" aria-hidden="true"></i>
 			</div>
-			<img [attr.src]="selected.imageSrc" alt="">
+			<img [attr.src]="selected.imageUrl" alt="">
 			<div *ngIf="hasNext()" class="next" (click)="showNext()">
 				<i class="fa fa-chevron-right" aria-hidden="true"></i>
 			</div>
@@ -35,7 +35,7 @@
 		<div class="all">
 			<div *ngFor="let photo of photos">
 				<div class="listed" (click)="select(photo)">
-					<img [attr.src]="photo.imageSrc" alt="">
+					<img [attr.src]="photo.imageUrl" alt="">
 					<div class="background">
 						<span *ngIf="isAuthenticated | async" class="update-container">
 							<span href="javascript:void(0)" (click)="deletePhoto($event, photo)">

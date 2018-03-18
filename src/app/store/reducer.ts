@@ -4,12 +4,15 @@ import { Image } from '../data/models/Image';
 import { GET_PROJECTS, GET_PROJECT, ADD_PROJECT, EDIT_PROJECT, DELETE_PROJECT } from '../projects/project.actions';
 import { IS_AUTHENTICATED, USER_GET, USER_LOGIN, USER_LOGOUT } from '../auth/auth.actions';
 import { Portrait } from '../data/models/Portrait';
+import { GLOBAL_ERROR } from '../app.actions';
+import { Project } from '../services/project.service';
 
-export const GLOBAL_ERROR = 'GLOBAL_ERROR';
+export const DEFAULT_SELECTED_PROJECT: Project = { id: '-1', name: 'empty', thumbnailUrl: 'empty', photos: [] };
+
 const initialState: IAppState = {
 	projects: [],
 	portraits: [],
-	selectedProject: null,
+	selectedProject: DEFAULT_SELECTED_PROJECT,
 	isAuthenticated: false,
 	currentUser: null,
 	globalErrorMessage: ''
@@ -88,7 +91,7 @@ function getProject(state: IAppState, action) {
 }
 
 function addProject(state: IAppState, action) {
-	const projects = state.projects;
+	const projects = state.projects.slice();
 	projects.push(action.project);
 
 	return Object.assign({}, state, {
@@ -104,7 +107,7 @@ function editProject(state: IAppState, action) {
 
 function deleteProject(state: IAppState, action) {
 	const projects = Object.assign([], state.projects);
-	const index = projects.findIndex(p => p.getId() === action.id);
+	const index = projects.findIndex(p => p.id === action.id);
 	projects.splice(index, 1);
 
 	return Object.assign({}, state, {

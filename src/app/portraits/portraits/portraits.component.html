@@ -6,7 +6,7 @@
 
 	<section class="images">
 		<div *ngFor="let portrait of portraits | async" (click)="show(portrait)" class="portrait">
-			<a id="image-details" class="image card" href="javascript:void(0)">
+			<div class="image card">
 				<span *ngIf="isAuthenticated | async" class="update-container">
 					<span (click)="edit($event, portrait)">
 						<i class="fa fa-pencil fa-lg" aria-hidden="true"></i>
@@ -18,7 +18,7 @@
 
 				<img [src]="portrait.imageUrl" alt="Image">
 				<p>{{ portrait.name }}</p>
-			</a>
+			</div>
 		</div>
 	</section>
 </div>

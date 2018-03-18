@@ -1,24 +1,31 @@
-<form (ngSubmit)="onSubmit()" #addForm="ngForm" class="flex align-center">
-  <div class="modal-wrapper">
+<form (ngSubmit)="onSubmit(addForm)" #addForm="ngForm" class="flex align-center">
+	<div class="modal-wrapper">
+		<div class="input-group">
+			<label for="name">Name:</label>
+			<div class="input-field">
+				<input class="input" type="text" name="name" [(ngModel)]="project.name" placeholder="Macro" required />
+			</div>
+		</div>
 
-    <div class="input-group">
-      <label for="name">Name:</label>
-      <div class="input-field">
-        <input class="input" type="text" name="name" [(ngModel)]="project.name" placeholder="Macro" required />
-      </div>
-    </div>
+		<div class="input-group">
+			<label for="thumb">Thumbnail:</label>
+			<div class="input-field">
+				<input class="input" type="file" name="file" [(ngModel)]="project.thumbnail" requireFile />
+			</div>
+		</div>
 
-    <div class="input-group">
-      <label for="thumb">Thumbnail:</label>
-      <div class="input-field">
-        <input class="input" type="file" name="file" [(ngModel)]="project.file" requireFile />
-      </div>
-    </div>
-
-    <div class="input-group">
-      <div class="input-field">
-        <input class="btn btn-success" type="submit" value="Add" />
-      </div>
-    </div>
-  </div>
+		<div class="input-group">
+			<div class="input-field">
+				<button class="btn btn-success" type="submit" disable="disabled">
+					<div *ngIf="loading; else text">
+						Loading
+						<i class="fa fa-circle-o-notch fa-spin"></i>
+					</div>
+					<ng-template #text>
+						Add
+					</ng-template>
+				</button>
+			</div>
+		</div>
+	</div>
 </form>
