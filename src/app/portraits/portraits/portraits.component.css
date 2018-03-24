@@ -1,10 +1,13 @@
 .images {
+	line-height: 10px;
+	column-count: 3;
+	column-gap: 5px;
 	padding-top: 10px;
-	padding-left: 10px
+	padding-left: 10px;
 }
 
 .portrait {
-  width: 33.3%;
+	width: 100%;
   box-sizing: border-box;
 	display: inline-block;
 	padding-right: 10px;
@@ -12,8 +15,7 @@
 
 .image img {
   width: 100%;
-	height: 100%;
-	max-height: 250px;
+	height: auto;
 }
 
 .image.card {
@@ -21,6 +23,16 @@
   color: inherit;
 	position: relative;
 	cursor: pointer;
+	background: #fff;
+	margin-bottom: 10px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-ms-border-radius: 4px;
+	border-radius: 4px;
+	overflow: hidden;
+	-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07);
+	-moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07);
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07);
 }
 
 .image p {
@@ -29,12 +41,14 @@
   position: relative;
 }
 
-.image {
-  transition: opacity 500ms ease-out;
+.portrait:hover {
+  opacity: 0.7;
 }
 
-.image:hover {
-  opacity: 0.7;
+.image-description {
+	padding: 20px;
+	float: left;
+	line-height: 24px;
 }
 
 .add-image {
@@ -43,17 +57,13 @@
 }
 
 @media screen and (max-width: 780px) {
-  .portrait {
-    width: 50%;
-  }
+  .images {
+		column-count: 2;
+	}
 }
 
 @media screen and (max-width: 510px) {
-  .lightbox-target.selected img {
-    max-height: 100%;
-    max-width: 100%;
-  }
-  .portrait {
-    width: 100%;
-  }
+	.images {
+		column-count: 1;
+	}
 }
