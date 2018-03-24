@@ -11,6 +11,6 @@ export const environment = {
 	recaptcha_validator: HttpRecaptchaValidatorService,
 	server_url: 'http://localhost:3000/api/',
 	crypto : {
-		password: 'dsa213p',
+		password: '31nfoa',
 	}
 };
