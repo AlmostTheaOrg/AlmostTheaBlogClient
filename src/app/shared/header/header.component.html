@@ -12,22 +12,22 @@
 					<a href="javascript:void(0);" class="icon" (click)="response()">&#9776;</a>
 				</li>
 				<li>
-					<a routerLink="/" class="nav-link">Home</a>
+					<a routerLink="/" (click)="response()" class="nav-link">Home</a>
 				</li>
 				<li>
-					<a routerLink="/portraits" class="nav-link">Portraits</a>
+					<a routerLink="/portraits" (click)="response()" class="nav-link">Portraits</a>
 				</li>
 				<li>
-					<a routerLink="/projects" class="nav-link">Projects</a>
+					<a routerLink="/projects" (click)="response()" class="nav-link">Projects</a>
 				</li>
 				<li>
-					<a routerLink="/about" class="nav-link">About</a>
+					<a routerLink="/about" (click)="response()" class="nav-link">About</a>
 				</li>
 				<li>
-					<a routerLink="/contacts" class="nav-link">Contacts</a>
+					<a routerLink="/contacts" (click)="response()" class="nav-link">Contacts</a>
 				</li>
 				<li *ngIf="isAuthenticated | async">
-					<a routerLink="/feedback" class="nav-link">Feedback</a>
+					<a routerLink="/feedback" (click)="response()" class="nav-link">Feedback</a>
 				</li>
 			</ul>
 		</div>
