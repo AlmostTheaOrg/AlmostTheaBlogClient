@@ -72,7 +72,7 @@ export class ModalComponent {
 		this.currentComponent = component;
 	}
 
-  /**
+	/**
    * destroy
    */
 	public destroy() {

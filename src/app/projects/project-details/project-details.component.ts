@@ -9,7 +9,6 @@ import { ProjectDeleteComponent } from '../project-delete/project-delete.compone
 import { ProjectPhotoRemoveComponent } from '../project-photo-remove/project-photo-remove.component';
 import { ProjectActions } from '../project.actions';
 import { select } from 'ng2-redux';
-import { skip } from 'rxjs/operator/skip';
 import { Observable } from 'rxjs/Observable';
 import { AuthActions } from '../../auth/auth.actions';
 import { Project } from '../../services/project.service';

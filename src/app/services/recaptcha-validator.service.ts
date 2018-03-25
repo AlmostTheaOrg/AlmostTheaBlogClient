@@ -1,6 +1,5 @@
 import { Injectable, InjectionToken, Inject } from '@angular/core';
 import { Http } from '@angular/http';
-import 'rxjs/add/operator/toPromise';
 import { Headers } from '@angular/http';
 
 export const RECAPTCHA_VALIDATION: InjectionToken<string> = new InjectionToken('RECAPTCHA_VALIDATION');
