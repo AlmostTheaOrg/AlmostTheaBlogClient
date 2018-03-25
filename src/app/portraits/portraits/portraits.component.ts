@@ -8,7 +8,6 @@ import { Observable } from 'rxjs/Observable';
 import { PortraitActions } from '../portrait.actions';
 import { AuthActions } from '../../auth/auth.actions';
 import { Portrait } from '../../services/portrait.service';
-import 'rxjs/add/operator/do';
 import { Subscription } from 'rxjs/Subscription';
 import { SharedActions } from '../../shared/shared.actions';
 
@@ -40,9 +39,12 @@ export class PortraitsComponent extends ModalCreator implements OnInit, OnDestro
 		this.sharedActions.showSpinner();
 		this.portraitActions.getPortraits();
 		this.subscription = this.portraits
-			.subscribe(p => {
-				this.sharedActions.hideSpinner();
-				this._portraits = p;
+			.skip(1)
+			.subscribe(portraits => {
+				if (portraits) {
+					this.sharedActions.hideSpinner();
+					this._portraits = portraits;
+				}
 			});
 	}
 
