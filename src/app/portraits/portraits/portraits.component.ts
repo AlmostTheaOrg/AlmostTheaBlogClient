@@ -10,6 +10,7 @@ import { AuthActions } from '../../auth/auth.actions';
 import { Portrait } from '../../services/portrait.service';
 import 'rxjs/add/operator/do';
 import { Subscription } from 'rxjs/Subscription';
+import { SharedActions } from '../../shared/shared.actions';
 
 @Component({
 	selector: 'app-portraits',
@@ -29,16 +30,18 @@ export class PortraitsComponent extends ModalCreator implements OnInit, OnDestro
 	private subscription: Subscription;
 
 	constructor(
-		private imageRepository: PortraitActions,
 		private authActions: AuthActions,
-		private portraitActions: PortraitActions) {
+		private portraitActions: PortraitActions,
+		private sharedActions: SharedActions) {
 		super();
 	}
 
 	ngOnInit() {
+		this.sharedActions.showSpinner();
 		this.portraitActions.getPortraits();
 		this.subscription = this.portraits
 			.subscribe(p => {
+				this.sharedActions.hideSpinner();
 				this._portraits = p;
 			});
 	}

@@ -5,6 +5,7 @@ import { IS_AUTHENTICATED, USER_GET, USER_LOGIN, USER_LOGOUT } from '../auth/aut
 import { GLOBAL_ERROR } from '../app.actions';
 import { Project } from '../services/project.service';
 import { Portrait } from '../services/portrait.service';
+import { SHOULD_SHOW_SPINNER } from '../shared/shared.actions';
 
 export const DEFAULT_SELECTED_PROJECT: Project = { id: '-1', name: 'empty', thumbnailUrl: 'empty', photos: [] };
 
@@ -14,7 +15,8 @@ const initialState: IAppState = {
 	selectedProject: DEFAULT_SELECTED_PROJECT,
 	isAuthenticated: false,
 	currentUser: null,
-	globalErrorMessage: ''
+	globalErrorMessage: '',
+	shouldShowSpinner: false
 };
 export function reducer(state: IAppState = initialState, action) {
 	switch (action.type) {
@@ -50,6 +52,8 @@ export function reducer(state: IAppState = initialState, action) {
 		// Global Actions:
 		case GLOBAL_ERROR:
 			return setGlobalErrorMessage(state, action);
+		case SHOULD_SHOW_SPINNER:
+			return updateSpinner(state, action);
 		default:
 			return state;
 	}
@@ -151,5 +155,11 @@ function deletePortrait(state: IAppState, action) {
 function setGlobalErrorMessage(state: IAppState, action) {
 	return Object.assign({}, state, {
 		globalErrorMessage: action.message
+	});
+}
+
+function updateSpinner(state: IAppState, action) {
+	return Object.assign({}, state, {
+		shouldShowSpinner: action.shouldShowSpinner
 	});
 }

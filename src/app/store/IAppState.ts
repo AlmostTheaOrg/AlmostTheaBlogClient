@@ -14,4 +14,6 @@ export interface IAppState {
 	currentUser: User;
 
 	globalErrorMessage: string;
+
+	shouldShowSpinner: boolean;
 }
