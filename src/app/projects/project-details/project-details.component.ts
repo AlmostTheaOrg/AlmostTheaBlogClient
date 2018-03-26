@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, forwardRef } from '@angular/core';
+import { Component, OnInit, ViewChild, forwardRef, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectPhotoListViewModel } from '../../data/view-models/ProjectPhotoListViewModel';
 import { ModalCreator } from '../../modal/modal/modal-creator';
@@ -13,13 +13,15 @@ import { Observable } from 'rxjs/Observable';
 import { AuthActions } from '../../auth/auth.actions';
 import { Project } from '../../services/project.service';
 import { DEFAULT_SELECTED_PROJECT } from '../../store/reducer';
+import { Subscription } from 'rxjs/Subscription';
+import { SharedActions } from '../../shared/shared.actions';
 
 @Component({
 	selector: 'app-project-details',
 	templateUrl: './project-details.component.html',
 	styleUrls: ['./project-details.component.css']
 })
-export class ProjectDetailsComponent extends ModalCreator implements OnInit {
+export class ProjectDetailsComponent extends ModalCreator implements OnInit, OnDestroy {
 	@ViewChild(forwardRef(() => ModalComponent))
 	private readonly child;
 
@@ -35,10 +37,12 @@ export class ProjectDetailsComponent extends ModalCreator implements OnInit {
 
 	public selected: ProjectPhotoListViewModel = { id: '', imageUrl: '', previous: null, next: null };
 
+	private subscription: Subscription;
 	constructor(private route: ActivatedRoute,
 		private router: Router,
 		private authActions: AuthActions,
-		private projectActions: ProjectActions) {
+		private projectActions: ProjectActions,
+		private sharedActions: SharedActions) {
 		super();
 
 		this.route.params.subscribe(params => {
@@ -66,6 +70,14 @@ export class ProjectDetailsComponent extends ModalCreator implements OnInit {
 
 	ngOnInit() {
 		this.authActions.isAuthenticated();
+		this.sharedActions.showSpinner();
+		this.subscription = this.project.skip(1)
+			.do(() => this.sharedActions.hideSpinner())
+			.subscribe();
+	}
+
+	ngOnDestroy() {
+		this.subscription.unsubscribe();
 	}
 
 	public getModalComponent() {

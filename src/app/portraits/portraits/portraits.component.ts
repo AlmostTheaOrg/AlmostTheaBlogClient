@@ -36,16 +36,11 @@ export class PortraitsComponent extends ModalCreator implements OnInit, OnDestro
 	}
 
 	ngOnInit() {
-		this.sharedActions.showSpinner();
 		this.portraitActions.getPortraits();
-		this.subscription = this.portraits
-			.skip(1)
-			.subscribe(portraits => {
-				if (portraits) {
-					this.sharedActions.hideSpinner();
-					this._portraits = portraits;
-				}
-			});
+		this.sharedActions.showSpinner();
+		this.subscription = this.portraits.skip(1)
+			.do(() => this.sharedActions.hideSpinner())
+			.subscribe();
 	}
 
 	ngOnDestroy() {
