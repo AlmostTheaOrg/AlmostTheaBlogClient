@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FeedbackActions } from '../feedback.actions';
-import { Feedback } from '../../services/feeedback.service';
+import { Feedback } from '../../services/feedback.service';
 
 @Component({
 	selector: 'app-contacts',

@@ -1,6 +1,6 @@
 import { NgRedux } from 'ng2-redux';
 import { IAppState } from '../store/IAppState';
-import { FeedbackService, Feedback, AddFeedbackBindingModel } from '../services/feeedback.service';
+import { FeedbackService, Feedback, AddFeedbackBindingModel } from '../services/feedback.service';
 import { Injectable } from '@angular/core';
 
 export const FEEDBACK_ALL = 'FEEDBACK_ALL';

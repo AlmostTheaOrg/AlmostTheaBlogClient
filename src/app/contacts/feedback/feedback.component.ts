@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Feedback } from '../../services/feeedback.service';
+import { Feedback } from '../../services/feedback.service';
 import { Observable } from 'rxjs/Observable';
 import { select } from 'ng2-redux';
 import { FeedbackActions } from '../feedback.actions';

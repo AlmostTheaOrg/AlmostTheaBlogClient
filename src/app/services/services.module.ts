@@ -7,7 +7,7 @@ import { ApplicationStorageService } from './application-storage.service';
 import { HttpService } from './http.service';
 import { RECAPTCHA_SETTINGS, RecaptchaSettings, RecaptchaModule } from 'ng-recaptcha';
 import { CommonModule } from '@angular/common';
-import { FeedbackService } from './feeedback.service';
+import { FeedbackService } from './feedback.service';
 const settings = { siteKey: environment.recaptcha_site_key };
 
 @NgModule({
