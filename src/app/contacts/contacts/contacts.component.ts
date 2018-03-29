@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FeedbackActions } from '../feedback.actions';
+import { Feedback } from '../../services/feeedback.service';
 
 @Component({
 	selector: 'app-contacts',
@@ -6,17 +8,19 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./contacts.component.css']
 })
 export class ContactsComponent {
-	contact: {
+	feedback: {
 		name: string,
 		email?: string,
 		captcha?: '',
-		message: string
-	} = { name: '', message: '' };
+		content: string
+	} = { name: '', content: '' };
 
-	public resolved(str) {
+	constructor(private feedbackActions: FeedbackActions) { }
+
+	resolved(str) {
 	}
 
-	public onSubmit() {
-
+	onSubmit() {
+		this.feedbackActions.add(this.feedback);
 	}
 }

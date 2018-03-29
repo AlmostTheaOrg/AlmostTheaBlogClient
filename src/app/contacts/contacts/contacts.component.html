@@ -3,7 +3,7 @@
 		<div class="input-group">
 			<label for="name">Name:</label>
 			<div class="input-field">
-				<input class="input" type="text" name="name" #name="ngModel" [(ngModel)]="contact.name" placeholder="Steven" minlength="3"
+				<input class="input" type="text" name="name" #name="ngModel" [(ngModel)]="feedback.name" placeholder="Steven" minlength="3"
 				  maxlength="32" required />
 			</div>
 		</div>
@@ -11,7 +11,7 @@
 		<div class="input-group">
 			<label for="email">Email:</label>
 			<div class="input-field">
-				<input class="input" type="email" name="email" #email="ngModel" [(ngModel)]="contact.email" placeholder="Email for further discussion"
+				<input class="input" type="email" name="email" #email="ngModel" [(ngModel)]="feedback.email" placeholder="Email for further discussion"
 				/>
 			</div>
 		</div>
@@ -19,13 +19,13 @@
 		<div class="input-group">
 			<label for="text">Message:</label>
 			<div class="input-field">
-				<textarea class="input" id="message" name="message" #message="ngModel" [(ngModel)]="contact.message" minlength="30" maxlength="200"
+				<textarea class="input" id="message" name="message" #message="ngModel" [(ngModel)]="feedback.content" minlength="30" maxlength="200"
 				  placeholder="I was wondering ..." required rows="8" cols="30"></textarea>
 			</div>
 		</div>
 
 		<div class="input-group">
-			<re-captcha (resolved)="resolved($event)" name="captcha" #captcha="ngModel" [(ngModel)]="contact.captcha" required></re-captcha>
+			<re-captcha (resolved)="resolved($event)" name="captcha" #captcha="ngModel" [(ngModel)]="feedback.captcha" required></re-captcha>
 		</div>
 
 		<div class="input-group">

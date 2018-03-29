@@ -6,6 +6,7 @@ import { GLOBAL_ERROR } from '../app.actions';
 import { Project } from '../services/project.service';
 import { Portrait } from '../services/portrait.service';
 import { SHOULD_SHOW_SPINNER } from '../shared/shared.actions';
+import { FEEDBACK_ADD, FEEDBACK_DELETE, FEEDBACK_MARK, FEEDBACK_ALL } from '../contacts/feedback.actions';
 
 export const DEFAULT_SELECTED_PROJECT: Project = { id: '-1', name: 'empty', thumbnailUrl: 'empty', photos: [] };
 
@@ -16,7 +17,8 @@ const initialState: IAppState = {
 	isAuthenticated: false,
 	currentUser: null,
 	globalErrorMessage: '',
-	shouldShowSpinner: false
+	shouldShowSpinner: false,
+	feedbacks: []
 };
 export function reducer(state: IAppState = initialState, action) {
 	switch (action.type) {
@@ -49,6 +51,15 @@ export function reducer(state: IAppState = initialState, action) {
 			return setUser(state, action);
 		case USER_LOGOUT:
 			return setUser(state, action);
+		// Feedback Actions:
+		case FEEDBACK_ADD:
+			return addFeedback(state, action);
+		case FEEDBACK_MARK:
+			return markFeedback(state, action);
+		case FEEDBACK_ALL:
+			return allFeedback(state, action);
+		case FEEDBACK_DELETE:
+			return deleteFeedback(state, action);
 		// Global Actions:
 		case GLOBAL_ERROR:
 			return setGlobalErrorMessage(state, action);
@@ -148,6 +159,35 @@ function deletePortrait(state: IAppState, action) {
 	return Object.assign({}, state, {
 		portraits: state.portraits.filter(p => p.id !== action.id)
 	});
+}
+
+// -----------------
+// FeedbackActions
+function addFeedback(state: IAppState, action) {
+	const feedbacks = new Array(...state.feedbacks);
+	feedbacks.push(action.feedback);
+
+	return Object.assign({}, state, { feedbacks });
+}
+
+function markFeedback(state: IAppState, action) {
+	const feedbacks = new Array(...state.feedbacks);
+	const index = feedbacks.findIndex((f) => f.id === action.id);
+	feedbacks[index] = Object.assign({}, feedbacks[index], { isRead: true });
+
+	return Object.assign({}, state, { feedbacks });
+}
+
+function allFeedback(state: IAppState, action) {
+	return Object.assign({}, state, { feedbacks: action.feedbacks });
+}
+
+function deleteFeedback(state: IAppState, action) {
+	const feedbacks = new Array(...state.feedbacks);
+	const index = feedbacks.findIndex((f) => f.id === action.id);
+	feedbacks.splice(index, 1);
+
+	return Object.assign({}, state, { feedbacks });
 }
 
 // -----------------

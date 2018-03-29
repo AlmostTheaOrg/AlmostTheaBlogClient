@@ -1,72 +1,69 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Feedback } from '../../services/feeedback.service';
+import { Observable } from 'rxjs/Observable';
+import { select } from 'ng2-redux';
+import { FeedbackActions } from '../feedback.actions';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
 	selector: 'app-feedback',
 	templateUrl: './feedback.component.html',
 	styleUrls: ['./feedback.component.css']
 })
-export class FeedbackComponent {
-	public feedbacks = [
-		{
-			id: 1, name: 'Pesho', email: 'tudor@gmail.com', content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.' +
-				'Lorem ipsum dolor sit amet consectetur adipisicing elit.' +
-				'Lorem ipsum dolor sit amet consectetur adipisicing elit.' +
-				'Lorem ipsum dolor sit amet consectetur adipisicing elit.' +
-				'Lorem ipsum dolor sit amet consectetur adipisicing elit.' +
-				'Lorem ipsum dolor sit amet consectetur adipisicing elit.' +
-				'Lorem ipsum dolor sit amet consectetur adipisicing elit.' +
-				'Lorem ipsum dolor sit amet consectetur adipisicing elit.' +
-				'Lorem ipsum dolor sit amet consectetur adipisicing elit.' +
-				'Lorem ipsum dolor sit amet consectetur adipisicing elit.' +
-				'Lorem ipsum dolor sit amet consectetur adipisicing elit.' +
-				'Lorem ipsum dolor sit amet consectetur adipisicing elit.' +
-				'Lorem ipsum dolor sit amet consectetur adipisicing elit.' +
-				'Lorem ipsum dolor sit amet consectetur adipisicing elit.' +
-				'Lorem ipsum dolor sit amet consectetur adipisicing elit.' +
-				'Lorem ipsum dolor sit amet consectetur adipisicing elit.' +
-				'Lorem ipsum dolor sit amet consectetur adipisicing elit.'
-		},
-		{ id: 2, name: 'Gosho', email: 'gosho@gmail.com', content: 'Lorizzle ipsizzle dolizzle pizzle go to hizzle, fo shizzle.' },
-		{ id: 3, name: 'Maria', email: 'maria@gmail.com', content: 'Climb leg rub face on everything give attitude nap all day.' },
-		{ id: 4, name: 'Pesho', email: 'tudor@gmail.com', content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.' },
-		{ id: 5, name: 'Gosho', email: 'gosho@gmail.com', content: 'Lorizzle ipsizzle dolizzle pizzle go to hizzle, fo shizzle.' },
-		{ id: 6, name: 'Maria', email: 'maria@gmail.com', content: 'Climb leg rub face on everything give attitude nap all day.' },
-		{ id: 7, name: 'Pesho', email: 'tudor@gmail.com', content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.' },
-		{ id: 8, name: 'Gosho', email: 'gosho@gmail.com', content: 'Lorizzle ipsizzle dolizzle pizzle go to hizzle, fo shizzle.' },
-		{ id: 9, name: 'Maria', email: 'maria@gmail.com', content: 'Climb leg rub face on everything give attitude nap all day.' },
-		{ id: 10, name: 'Maria', email: 'maria@gmail.com', content: 'Climb leg rub face on everything give attitude nap all day.' },
-		{ id: 11, name: 'Maria', email: 'maria@gmail.com', content: 'Climb leg rub face on everything give attitude nap all day.' },
-		{ id: 12, name: 'Maria', email: 'maria@gmail.com', content: 'Climb leg rub face on everything give attitude nap all day.' },
-	];
+export class FeedbackComponent implements OnInit, OnDestroy {
 
-	public opened;
+	@select('feedbacks')
+	public feedbacks: Observable<Feedback[]>;
 
-	public selected = new Set();
+	public sortedFeedbacks: Feedback[];
+	public openedFeedback: Feedback;
+	public selectedFeedbacksIds = new Set<string>();
 
-	constructor() { }
-
-	select(feedback) {
-		this.opened = feedback;
+	private subscription: Subscription;
+	constructor(private feedbackActions: FeedbackActions) {
 	}
 
-	markOrUnmark(feedback) {
-		if (this.selected.has(feedback.id)) {
-			this.selected.delete(feedback.id);
+	ngOnInit() {
+		this.feedbackActions.getAll();
+
+		this.subscription = this.feedbacks.do(feedbacks => {
+			this.sortedFeedbacks = new Array<Feedback>(...feedbacks);
+			this.sortedFeedbacks.sort((a, b) => {
+				return b.datePosted.getTime() - a.datePosted.getTime();
+			});
+		}).subscribe();
+	}
+
+	ngOnDestroy() {
+		this.subscription.unsubscribe();
+	}
+
+	view(feedback) {
+		this.markAsRead(feedback);
+		this.openedFeedback = feedback;
+	}
+
+	selectOrDeselect(feedback) {
+		if (this.selectedFeedbacksIds.has(feedback.id)) {
+			this.selectedFeedbacksIds.delete(feedback.id);
 		} else {
-			this.selected.add(feedback.id);
+			this.selectedFeedbacksIds.add(feedback.id);
 		}
 	}
 
 	close() {
-		this.opened = null;
+		this.openedFeedback = null;
 	}
 
 	delete() {
-		if (this.opened && this.selected.has(this.opened.id)) {
+		if (this.openedFeedback && this.selectedFeedbacksIds.has(this.openedFeedback.id)) {
 			this.close();
 		}
 
-		this.feedbacks = this.feedbacks.filter(f => !this.selected.has(f.id));
-		this.selected.clear();
+		this.selectedFeedbacksIds.forEach(f => this.feedbackActions.delete(f));
+	}
+
+	markAsRead(feedback: Feedback) {
+		this.feedbackActions.markAsRead(feedback);
 	}
 }

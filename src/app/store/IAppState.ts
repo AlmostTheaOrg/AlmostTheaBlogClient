@@ -1,6 +1,7 @@
 import { User } from '../data/models/User';
 import { Project } from '../services/project.service';
 import { Portrait } from '../services/portrait.service';
+import { Feedback } from '../services/feeedback.service';
 
 export interface IAppState {
 	portraits: Portrait[];
@@ -16,4 +17,6 @@ export interface IAppState {
 	globalErrorMessage: string;
 
 	shouldShowSpinner: boolean;
+
+	feedbacks: Feedback[];
 }

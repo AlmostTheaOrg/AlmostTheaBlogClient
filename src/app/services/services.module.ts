@@ -7,6 +7,7 @@ import { ApplicationStorageService } from './application-storage.service';
 import { HttpService } from './http.service';
 import { RECAPTCHA_SETTINGS, RecaptchaSettings, RecaptchaModule } from 'ng-recaptcha';
 import { CommonModule } from '@angular/common';
+import { FeedbackService } from './feeedback.service';
 const settings = { siteKey: environment.recaptcha_site_key };
 
 @NgModule({
@@ -30,7 +31,8 @@ const settings = { siteKey: environment.recaptcha_site_key };
 		},
 		{ provide: RecaptchaValidator, useClass: environment.recaptcha_validator },
 		PortraitService,
-		ProjectService
+		ProjectService,
+		FeedbackService
 	]
 })
 export class ServicesModule {
