@@ -10,13 +10,9 @@ export class FeedbackService {
 	}
 
 	public add(feedback: AddFeedbackBindingModel) {
-		return this.authenticationService.user().then(user => {
-			const headers = this.utilService.getAuthorizationHeaders(user);
-
-			return this.httpService.post('feedback/add', feedback, headers)
-				.toPromise()
-				.then(res => res.json() as SimpleResponse);
-		});
+		return this.httpService.post('feedback/add', feedback)
+			.toPromise()
+			.then(res => res.json() as SimpleResponse);
 	}
 
 	public markAsRead(feedback: Feedback) {
