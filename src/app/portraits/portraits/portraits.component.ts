@@ -40,6 +40,7 @@ export class PortraitsComponent extends ModalCreator implements OnInit, OnDestro
 		this.sharedActions.showSpinner();
 		this.subscription = this.portraits.skip(1)
 			.do(() => this.sharedActions.hideSpinner())
+			.do(portraits => this._portraits = portraits)
 			.subscribe();
 	}
 
