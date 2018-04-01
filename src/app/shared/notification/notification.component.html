@@ -1,6 +1,10 @@
-<!-- <div [@visibilityChanged]="visibility" class="modal">
-	<div [attr.class]="modalClass">
-		<span (click)="close()" class="close">&times;</span>
-		<p>{{message}}</p>
+<div [ngClass]="modalClass">
+	<div class="notify-inner">
+		<p class="notify-text">
+			{{message}}
+		</p>
+		<a href="javascript:void(0)" class="close-btn" (click)="close()">
+			<i class="fa fa-times-circle-o close" (click)="close()" aria-hidden="true"></i>
+		</a>
 	</div>
-</div> -->
+</div>

@@ -20,7 +20,6 @@ import { IAppState } from './store/IAppState';
 import { store } from './store/store';
 import { environment } from '../environments/environment';
 import { AuthActions } from './auth/auth.actions';
-import { AppActions } from './app.actions';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { NotFoundComponent } from './not-found/not-found.component';
@@ -51,7 +50,6 @@ import { NotFoundComponent } from './not-found/not-found.component';
 	],
 	providers: [
 		AuthActions,
-		AppActions
 	],
 	bootstrap: [AppComponent]
 })

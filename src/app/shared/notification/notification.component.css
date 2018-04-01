@@ -1,49 +1,60 @@
-/* The Modal (background) */
-
-.modal {
-	position: fixed;
-	width: 100%;
-	margin: 10px;
+.notify {
+  z-index: 9000;
+  position: fixed;
+  top: -100px;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  -webkit-transition: all .5s ease;
+  transition: all .5s ease;
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+          box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+}
+.notify.is-active {
+  -webkit-transform: translateY(0);
+					transform: translateY(0);
+	top: 0;
 }
 
-/* Modal Content */
-
-.modal-content {
-	margin: auto;
-	padding: 5px;
-	font-size: 1.3em;
-	border-radius: 10px;
-	color: white;
-	width: 50%;
-	margin: 0 auto;
-	font-family: Arial, Helvetica, sans-serif;
-	z-index: 1;
+.notify-success {
+  background: #1fd489;
+  color: #fff;
 }
 
-.error {
-	background-color: red;
+.notify-danger {
+  background: #d41f56;
+  color: #fff;
 }
 
-.success {
-	background-color: green;
+.notify-info {
+  background: rgb(90, 192, 223);
+  color: #fff;
 }
 
-.modal-content p {
-	margin: 5px;
+.notify-warning {
+  background: rgb(240, 173, 78);
+  color: #fff;
 }
 
-/* The Close Button */
+.notify-inner {
+  padding: 1em 6%;
+  text-align: center;
+  line-height: 1.2;
+}
 
-.close {
-	color: #ffffff;
-	float: right;
-	font-size: 28px;
+.notify-text {
+	font-size: 1.5rem;
 	font-weight: bold;
+  width: 95%;
+  padding: 0 .5rem;
+  display: inline-block;
+  text-align: center;
+  margin: 0;
 }
 
-.close:hover,
-.close:focus {
-	color: #000;
-	text-decoration: none;
-	cursor: pointer;
+.close-btn {
+	color: inherit;
+	font-size: 1.5rem;
 }

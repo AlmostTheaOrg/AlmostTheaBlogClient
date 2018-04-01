@@ -2,55 +2,63 @@ import { Component, OnDestroy, OnInit, trigger, state, style, transition, animat
 import { select } from 'ng2-redux';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
-import { AppActions } from '../../app.actions';
+import { NotificationMessage, NotificationType } from '../shared.actions';
 
 @Component({
 	selector: 'app-notification',
 	templateUrl: './notification.component.html',
-	styleUrls: ['./notification.component.css'],
-	animations: [
-		trigger('visibilityChanged', [
-			state('shown', style({ opacity: 1 })),
-			state('hidden', style({ opacity: 0 })),
-			transition('* => *', animate('1s'))
-		])
-	]
+	styleUrls: ['./notification.component.css']
 })
 export class NotificationComponent implements OnInit, OnDestroy {
 	message: string;
-	modalClass: string;
-	visibility = 'hidden';
+	modalClass = 'notify';
 
-	@select('globalErrorMessage') globalErrorMessage: Observable<string>;
+	@select('notificationMessage')
+	notificationMessage: Observable<NotificationMessage>;
 
 	private subscription: Subscription;
 
-	constructor(private appActions: AppActions) { }
+	constructor() { }
 
-	error(message: string) {
-		this.display(message, 'error');
+	danger(message: string) {
+		this.display(message, 'danger');
 	}
 
 	success(message: string) {
 		this.display(message, 'success');
 	}
 
-	close() {
-		if (this.message) {
-			this.visibility = 'hidden';
-			this.appActions.clean();
+	info(message: string) {
+		this.display(message, 'info');
+	}
 
-			setTimeout(() => {
-				this.message = '';
-				this.modalClass = 'modal-content';
-			}, 1000);
-		}
+	warning(message: string) {
+		this.display(message, 'warning');
+	}
+
+	close() {
+		this.modalClass = 'notify';
 	}
 
 	ngOnInit() {
-		this.subscription = this.globalErrorMessage.subscribe(message => {
-			if (message) {
-				this.error(message);
+		this.subscription = this.notificationMessage.subscribe(message => {
+			if (message.message) {
+				switch (message.type) {
+					case NotificationType.Success:
+						this.success(message.message);
+						break;
+					case NotificationType.Danger:
+						this.danger(message.message);
+						break;
+					case NotificationType.Info:
+						this.info(message.message);
+						break;
+					case NotificationType.Warning:
+						this.warning(message.message);
+						break;
+				}
+			} else {
+				this.close();
 			}
 		});
 	}
@@ -59,13 +67,8 @@ export class NotificationComponent implements OnInit, OnDestroy {
 		this.subscription.unsubscribe();
 	}
 
-	private display(message: string, type: 'error' | 'success') {
-		this.modalClass = 'modal-content ' + type;
+	private display(message: string, type: 'danger' | 'success' | 'warning' | 'info') {
+		this.modalClass = `notify notify-${type} is-active`;
 		this.message = message;
-		this.visibility = 'shown';
-
-		setTimeout(() => {
-			this.close();
-		}, 4000);
 	}
 }

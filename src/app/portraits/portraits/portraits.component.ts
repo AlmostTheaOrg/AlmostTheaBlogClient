@@ -48,7 +48,7 @@ export class PortraitsComponent extends ModalCreator implements OnInit, OnDestro
 		this.subscription.unsubscribe();
 	}
 
-	public getModalComponent() {
+	getModalComponent() {
 		return this.child;
 	}
 

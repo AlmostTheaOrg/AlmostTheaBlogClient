@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthActions } from '../../auth/auth.actions';
 import { select } from 'ng2-redux';
 import { Observable } from 'rxjs/Observable';
+import { SharedActions } from '../shared.actions';
 
 @Component({
 	selector: 'app-footer',
@@ -12,7 +13,8 @@ import { Observable } from 'rxjs/Observable';
 export class FooterComponent implements OnInit {
 	constructor(
 		private router: Router,
-		private authActions: AuthActions) { }
+		private authActions: AuthActions,
+		private sharedActions: SharedActions) { }
 
 	@select('isAuthenticated')
 	public isAuthenticated: Observable<boolean>;
@@ -24,5 +26,6 @@ export class FooterComponent implements OnInit {
 	logout() {
 		this.authActions.logout();
 		this.router.navigateByUrl('/');
+		this.sharedActions.showSuccess('Logout successful!');
 	}
 }

@@ -2,11 +2,11 @@ import { IAppState } from './IAppState';
 import { GET_PORTRAITS, EDIT_PORTRAIT, DELETE_PORTRAIT, ADD_PORTRAIT } from '../portraits/portrait.actions';
 import { GET_PROJECTS, GET_PROJECT, ADD_PROJECT, EDIT_PROJECT, DELETE_PROJECT } from '../projects/project.actions';
 import { IS_AUTHENTICATED, USER_GET, USER_LOGIN, USER_LOGOUT } from '../auth/auth.actions';
-import { GLOBAL_ERROR } from '../app.actions';
 import { Project } from '../services/project.service';
 import { Portrait } from '../services/portrait.service';
 import { SHOULD_SHOW_SPINNER } from '../shared/shared.actions';
 import { FEEDBACK_ADD, FEEDBACK_DELETE, FEEDBACK_MARK, FEEDBACK_ALL } from '../contacts/feedback.actions';
+import { NotificationType, NOTIFICATION_MESSAGE } from '../shared/shared.actions';
 
 export const DEFAULT_SELECTED_PROJECT: Project = { id: '-1', name: 'empty', thumbnailUrl: 'empty', photos: [] };
 
@@ -16,7 +16,7 @@ const initialState: IAppState = {
 	selectedProject: DEFAULT_SELECTED_PROJECT,
 	isAuthenticated: false,
 	currentUser: null,
-	globalErrorMessage: '',
+	notificationMessage: { message: '', type: NotificationType.Info},
 	shouldShowSpinner: false,
 	feedbacks: []
 };
@@ -61,8 +61,8 @@ export function reducer(state: IAppState = initialState, action) {
 		case FEEDBACK_DELETE:
 			return deleteFeedback(state, action);
 		// Global Actions:
-		case GLOBAL_ERROR:
-			return setGlobalErrorMessage(state, action);
+		case NOTIFICATION_MESSAGE:
+			return setNotificationMessage(state, action);
 		case SHOULD_SHOW_SPINNER:
 			return updateSpinner(state, action);
 		default:
@@ -192,9 +192,9 @@ function deleteFeedback(state: IAppState, action) {
 
 // -----------------
 // Global actions
-function setGlobalErrorMessage(state: IAppState, action) {
+function setNotificationMessage(state: IAppState, action) {
 	return Object.assign({}, state, {
-		globalErrorMessage: action.message
+		notificationMessage: {message: action.message, type: action.notificationType}
 	});
 }
 
