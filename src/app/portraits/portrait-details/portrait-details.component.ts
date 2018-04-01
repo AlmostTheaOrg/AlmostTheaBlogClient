@@ -19,7 +19,6 @@ export class PortraitDetailsComponent {
 	constructor(private injector: Injector) {
 		this.portraits = this.injector.get('portraits');
 		this.index = this.portraits.indexOf(this.injector.get('portrait'));
-		console.log(this.index);
 		this.close = this.injector.get('close');
 	}
 
