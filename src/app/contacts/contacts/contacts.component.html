@@ -30,7 +30,7 @@
 
 		<div class="input-group">
 			<div class="input-field">
-				<input class="btn btn-success" id="submit" type="submit" value="Submit" [disabled]="!contactUs.form.valid" />
+				<button class="btn btn-success btn-loader" [class.loading]="loading" id="submit" type="submit" value="Submit" [disabled]="!contactUs.form.valid" >Submit</button>
 			</div>
 		</div>
 	</form>

@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { RecaptchaModule } from 'ng-recaptcha';
 import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 import { FeedbackActions } from './feedback.actions';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
 	imports: [
@@ -13,6 +14,7 @@ import { FeedbackActions } from './feedback.actions';
 		FormsModule,
 		RecaptchaModule.forRoot(),
 		RecaptchaFormsModule,
+		SharedModule,
 	],
 	declarations: [ContactsComponent, FeedbackComponent],
 	providers: [

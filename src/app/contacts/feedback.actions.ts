@@ -28,10 +28,12 @@ export class FeedbackActions {
 	}
 
 	add(feedback: AddFeedbackBindingModel) {
-		this.feedbackService.add(feedback).then((res: any) => {
+		return this.feedbackService.add(feedback).then((res: any) => {
 			if (res.success) {
 				this.ngRedux.dispatch({ type: FEEDBACK_ADD, feedback: res.feedback });
 			}
+
+			return res;
 		});
 	}
 

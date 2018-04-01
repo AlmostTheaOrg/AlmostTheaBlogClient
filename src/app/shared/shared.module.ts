@@ -23,7 +23,7 @@ import { SharedActions } from './shared.actions';
 		FileValidator,
 		FileValueAccessorDirective,
 		SpinnerComponent
-	],
+		],
 	exports: [
 		HeaderComponent,
 		FooterComponent,

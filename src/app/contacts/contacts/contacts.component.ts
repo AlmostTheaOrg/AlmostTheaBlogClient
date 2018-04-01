@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FeedbackActions } from '../feedback.actions';
 import { Feedback } from '../../services/feedback.service';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-contacts',
@@ -14,13 +15,24 @@ export class ContactsComponent {
 		captcha?: '',
 		content: string
 	} = { name: '', content: '' };
+	loading: boolean;
 
-	constructor(private feedbackActions: FeedbackActions) { }
+	constructor(private feedbackActions: FeedbackActions,
+		private router: Router) { }
 
 	resolved(str) {
 	}
 
 	onSubmit() {
-		this.feedbackActions.add(this.feedback);
+		this.loading = true;
+		this.feedbackActions.add(this.feedback).then(() => {
+			this.loading = false;
+			console.log('loading is done');
+			this.router.navigateByUrl('/');
+			// TODO: Display thankful message.
+		}).catch(err => {
+			this.loading = false;
+			// TODO: Display error message.
+		});
 	}
 }
