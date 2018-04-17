@@ -14,10 +14,9 @@ import { SharedActions } from '../../shared/shared.actions';
 	styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-	public user = { username: '', password: '', captcha: '' };
-	public isRecaptchaValid = false;
-
-	private isLoggingIn = false;
+	user = { username: '', password: '', captcha: '' };
+	isRecaptchaValid = false;
+	loading = false;
 
 	@select('isAuthenticated')
 	private isAuthenticated: Observable<boolean>;
@@ -29,9 +28,10 @@ export class LoginComponent {
 		private sharedActions: SharedActions) { }
 
 	public onSubmit(loginForm: HTMLFormElement) {
-		this.isLoggingIn = true;
+		this.loading = true;
 		this.authActions.login({ username: this.user.username, password: this.user.password })
 			.then(res => {
+				this.loading = false;
 				if (!res) {
 					this.sharedActions.showDanger('Connection to server failed! Are you connected to Internet?');
 				} else if (!res.success) {
@@ -44,6 +44,7 @@ export class LoginComponent {
 				loginForm.reset();
 			})
 			.catch(error => {
+				this.loading = false;
 				this.sharedActions.showDanger(error.message);
 			});
 	}

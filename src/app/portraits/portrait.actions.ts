@@ -22,22 +22,26 @@ export class PortraitActions {
 	}
 
 	addPortrait(portraitViewModel: AddPortraitViewModel) {
-		this.portraitsService.add(portraitViewModel).then((portrait: any) => {
+		return this.portraitsService.add(portraitViewModel).then((portrait: Portrait) => {
 			this.ngRedux.dispatch({ type: ADD_PORTRAIT, portrait });
+			return portrait;
 		});
 	}
 
 	editPortrait(portraitEditViewModel: EditPortraitViewModel) {
-		this.portraitsService.edit(portraitEditViewModel).then(portrait => {
+		return this.portraitsService.edit(portraitEditViewModel).then((portrait: Portrait) => {
 			this.ngRedux.dispatch({ type: EDIT_PORTRAIT, portrait });
+			return portrait;
 		});
 	}
 
 	deletePortrait(id: string) {
-		this.portraitsService.delete(id).then((result) => {
+		return this.portraitsService.delete(id).then((result) => {
 			if (result.success) {
 				this.ngRedux.dispatch({ type: DELETE_PORTRAIT, id });
 			}
+
+			return !!result.success;
 		});
 	}
 }

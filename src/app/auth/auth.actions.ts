@@ -30,7 +30,7 @@ export class AuthActions {
 	login(user: User) {
 		return this.authService.login(user)
 			.then(result => {
-				if (!result) {
+				if (result) {
 					this.ngRedux.dispatch({ type: USER_LOGIN, user: user, isAuthenticated: true });
 				}
 

@@ -1,5 +1,6 @@
 import { Component, OnInit, Injector } from '@angular/core';
 import { PortraitActions } from '../portrait.actions';
+import { SharedActions } from '../../shared/shared.actions';
 
 @Component({
 	selector: 'app-portrait-edit',
@@ -7,10 +8,13 @@ import { PortraitActions } from '../portrait.actions';
 	styleUrls: ['./portrait-edit.component.css']
 })
 export class PortraitEditComponent {
-	public portrait: { id: string; name: string; imageUrl: string, file?: any };
+	portrait: { id: string; name: string; imageUrl: string, file?: any };
+	loading: boolean;
 	private close;
 
-	constructor(private injector: Injector, private portraitActions: PortraitActions) {
+	constructor(private injector: Injector,
+		private portraitActions: PortraitActions,
+		private sharedActions: SharedActions) {
 		this.portrait = {
 			id: this.injector.get('id'),
 			name: this.injector.get('name'),
@@ -21,12 +25,17 @@ export class PortraitEditComponent {
 	}
 
 	onSubmit(form) {
-		try {
-			const file = form.value.file ? form.value.file[0] : null;
-			this.portraitActions.editPortrait({ id: this.portrait.id, name: this.portrait.name, image: file });
-			this.close();
-		} catch (error) {
-			console.log(error);
-		}
+		const file = form.value.file ? form.value.file[0] : null;
+		this.loading = true;
+		this.portraitActions.editPortrait({ id: this.portrait.id, name: this.portrait.name, image: file })
+			.then(p => {
+				this.loading = false;
+				this.sharedActions.showInfo('Portrait edited successfully!');
+				this.close();
+			})
+			.catch(error => {
+				this.loading = false;
+				this.sharedActions.showWarning('Portrait edit failed!');
+			});
 	}
 }

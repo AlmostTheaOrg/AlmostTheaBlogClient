@@ -1,5 +1,6 @@
 import { Component, OnInit, Injector } from '@angular/core';
 import { PortraitActions } from '../portrait.actions';
+import { SharedActions } from '../../shared/shared.actions';
 
 @Component({
 	selector: 'app-portrait-delete',
@@ -7,10 +8,14 @@ import { PortraitActions } from '../portrait.actions';
 	styleUrls: ['./portrait-delete.component.css']
 })
 export class PortraitDeleteComponent {
-	public image;
+	image;
+	loading: boolean;
+
 	private close;
 
-	constructor(private injector: Injector, private portraitActions: PortraitActions) {
+	constructor(private injector: Injector,
+		private portraitActions: PortraitActions,
+		private sharedActions: SharedActions) {
 		this.image = {
 			id: this.injector.get('id'),
 			name: this.injector.get('name')
@@ -22,7 +27,16 @@ export class PortraitDeleteComponent {
 	onSubmit(event: Event) {
 		event.preventDefault();
 
-		this.portraitActions.deletePortrait(this.image.id);
-		this.close();
+		this.loading = true;
+		this.portraitActions.deletePortrait(this.image.id)
+			.then(success => {
+				this.loading = true;
+				this.sharedActions.showInfo('Portrait was deleted successfully!');
+				this.close();
+			})
+			.catch(error => {
+				this.sharedActions.showWarning('Portrait delete failed!');
+				this.loading = false;
+			});
 	}
 }

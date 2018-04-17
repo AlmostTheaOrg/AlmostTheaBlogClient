@@ -21,7 +21,7 @@
 
 			<div class="input-group">
 				<div class="input-field">
-					<input class="btn btn-success" type="submit" [disabled]="!loginForm.form.valid || !isRecaptchaValid" value="Login" />
+					<button class="btn btn-success btn-loader" [class.loading]="loading" type="submit" [disabled]="!loginForm.form.valid || !isRecaptchaValid">Login</button>
 				</div>
 			</div>
 		</form>

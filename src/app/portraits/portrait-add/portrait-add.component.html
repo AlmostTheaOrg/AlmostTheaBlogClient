@@ -4,7 +4,7 @@
 			<label for="name">Name:</label>
 			<div class="input-field">
 				<input class="input" type="text" id="name" name="name" #name="ngModel" [(ngModel)]="portrait.name" placeholder="Thea" required
-				  minlength="4" maxlength="32" />
+				 minlength="4" maxlength="32" />
 			</div>
 		</div>
 
@@ -17,7 +17,7 @@
 
 		<div class="input-group">
 			<div class="input-field">
-				<input class="btn btn-success" type="submit" value="Add" [disabled]="!addPortrait.form.valid" />
+				<button class="btn btn-success btn-loader" [class.loading]="loading" type="submit" [disabled]="!addPortrait.form.valid">Add</button>
 			</div>
 		</div>
 	</div>

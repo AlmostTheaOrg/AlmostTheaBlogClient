@@ -4,7 +4,7 @@
 			<label for="name">Name:</label>
 			<div class="input-field">
 				<input class="input" type="text" name="name" #name="ngModel" [(ngModel)]="feedback.name" placeholder="Steven" minlength="3"
-				  maxlength="32" required />
+				 maxlength="32" required />
 			</div>
 		</div>
 
@@ -20,7 +20,7 @@
 			<label for="text">Message:</label>
 			<div class="input-field">
 				<textarea class="input" id="message" name="message" #message="ngModel" [(ngModel)]="feedback.content" minlength="30" maxlength="200"
-				  placeholder="I was wondering ..." required rows="8" cols="30"></textarea>
+				 placeholder="I was wondering ..." required rows="8" cols="30"></textarea>
 			</div>
 		</div>
 
@@ -30,7 +30,7 @@
 
 		<div class="input-group">
 			<div class="input-field">
-				<button class="btn btn-success btn-loader" [class.loading]="loading" id="submit" type="submit" value="Submit" [disabled]="!contactUs.form.valid" >Submit</button>
+				<button class="btn btn-success btn-loader" [class.loading]="loading" id="submit" type="submit" value="Submit" [disabled]="!contactUs.form.valid">Submit</button>
 			</div>
 		</div>
 	</form>

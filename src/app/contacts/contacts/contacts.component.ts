@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FeedbackActions } from '../feedback.actions';
 import { Feedback } from '../../services/feedback.service';
 import { Router } from '@angular/router';
+import { RecaptchaValidator } from '../../services/recaptcha-validator.service';
 
 @Component({
 	selector: 'app-contacts',
@@ -18,9 +19,14 @@ export class ContactsComponent {
 	loading: boolean;
 
 	constructor(private feedbackActions: FeedbackActions,
-		private router: Router) { }
+		private router: Router,
+		private recaptchaValidator: RecaptchaValidator) { }
 
-	resolved(str) {
+	resolved(response) {
+		this.recaptchaValidator.validate(response)
+			.then(result => {
+				console.log('recaptcha', result);
+			});
 	}
 
 	onSubmit() {

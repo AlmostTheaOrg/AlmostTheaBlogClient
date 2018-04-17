@@ -1,5 +1,6 @@
 import { Component, OnInit, Injector, ElementRef, ViewChild } from '@angular/core';
 import { PortraitActions } from '../portrait.actions';
+import { SharedActions } from '../../shared/shared.actions';
 
 @Component({
 	selector: 'app-portrait-add',
@@ -8,26 +9,34 @@ import { PortraitActions } from '../portrait.actions';
 })
 export class PortraitAddComponent {
 	private close: () => void;
-	portrait: { name: string, file?: any} = { name: '' };
+	portrait: { name: string, file?: any } = { name: '' };
+	loading: boolean;
 
-	constructor(private injector: Injector, private portraitActions: PortraitActions) {
+	constructor(private injector: Injector,
+		private portraitActions: PortraitActions,
+		private sharedActions: SharedActions) {
 		this.close = this.injector.get('close');
 	}
 
 	onSubmit(form) {
-		try {
-			// TODO: Validate.
-			const file = form.value.file[0];
-			if (!this.portrait.name || !file || !this.isImageType(file.type)) {
-				// TODO: Notify for error!
-				return;
-			}
-
-			this.portraitActions.addPortrait({ name: this.portrait.name, image: file });
-			this.close();
-		} catch (error) {
-			console.log(error);
+		// TODO: Validate.
+		const file = form.value.file[0];
+		if (!this.portrait.name || !file || !this.isImageType(file.type)) {
+			// TODO: Notify for error!
+			return;
 		}
+
+		this.loading = true;
+		this.portraitActions.addPortrait({ name: this.portrait.name, image: file })
+			.then(p => {
+				this.sharedActions.showInfo('Portrait was added successfully!');
+				this.close();
+				this.loading = false;
+			})
+			.catch((error: any) => {
+				this.sharedActions.showWarning('Portrait add failed!');
+				this.loading = false;
+			});
 	}
 
 	private isImageType(type: string) {

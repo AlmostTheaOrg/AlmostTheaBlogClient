@@ -1,24 +1,24 @@
 <form (ngSubmit)="onSubmit(editForm)" #editForm="ngForm" class="flex align-center">
-  <div class="modal-wrapper">
-    <div class="input-group">
-      <label for="name">Name:</label>
-      <div class="input-field">
-        <input class="input" type="text" name="name" [(ngModel)]="portrait.name" required minlength="3" maxlength="30" />
-      </div>
-    </div>
+	<div class="modal-wrapper">
+		<div class="input-group">
+			<label for="name">Name:</label>
+			<div class="input-field">
+				<input class="input" type="text" name="name" [(ngModel)]="portrait.name" required minlength="3" maxlength="30" />
+			</div>
+		</div>
 
-    <div class="input-group">
-      <label for="text">Image:</label>
-      <div class="input-field">
+		<div class="input-group">
+			<label for="text">Image:</label>
+			<div class="input-field">
 				<img [src]="portrait.imageUrl" class="preview-image" alt="">
-				<input class="input" type="file" id="file" name="file" #file="ngModel" [(ngModel)]="portrait.file"/>
-      </div>
-    </div>
+				<input class="input" type="file" id="file" name="file" #file="ngModel" [(ngModel)]="portrait.file" />
+			</div>
+		</div>
 
-    <div class="input-group">
-      <div class="input-field">
-        <input type="submit" [disabled]="!editForm.form.valid" class="btn btn-warning" value="Edit" />
-      </div>
-    </div>
-  </div>
+		<div class="input-group">
+			<div class="input-field">
+				<button type="submit" [disabled]="!editForm.form.valid" class="btn btn-warning btn-loader" [class.loading]="loading">Edit</button>
+			</div>
+		</div>
+	</div>
 </form>
