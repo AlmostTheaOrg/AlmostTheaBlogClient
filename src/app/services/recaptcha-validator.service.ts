@@ -1,8 +1,6 @@
-import { Injectable, InjectionToken, Inject } from '@angular/core';
-import { Http } from '@angular/http';
+import { Injectable } from '@angular/core';
 import { Headers } from '@angular/http';
-
-export const RECAPTCHA_VALIDATION: InjectionToken<string> = new InjectionToken('RECAPTCHA_VALIDATION');
+import { HttpService } from './http.service';
 
 export interface IRecaptchaValidator {
 	validate(token: string): Promise<boolean>;
@@ -14,19 +12,13 @@ export abstract class RecaptchaValidator implements IRecaptchaValidator {
 
 @Injectable()
 export class HttpRecaptchaValidatorService implements RecaptchaValidator {
-	constructor(private http: Http, @Inject(RECAPTCHA_VALIDATION) private validationUrl: string) {
+	constructor(private httpService: HttpService) {
 	}
 
-	validate(token: string) {
-		return this.http.post(this.validationUrl + 'validate', { response: token })
+	validate(response: string) {
+		return this.httpService.post('validate', { response: response })
 			.map(res => res.json())
-			.map(res => {
-				if (!res.success) {
-					return false;
-				}
-
-				return true;
-			})
+			.map(res => res.success)
 			.toPromise();
 	}
 }

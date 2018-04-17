@@ -17,6 +17,7 @@ export class ContactsComponent {
 		content: string
 	} = { name: '', content: '' };
 	loading: boolean;
+	isRecaptchaValid: boolean;
 
 	constructor(private feedbackActions: FeedbackActions,
 		private router: Router,
@@ -24,8 +25,8 @@ export class ContactsComponent {
 
 	resolved(response) {
 		this.recaptchaValidator.validate(response)
-			.then(result => {
-				console.log('recaptcha', result);
+			.then((result) => {
+				this.isRecaptchaValid = result;
 			});
 	}
 
