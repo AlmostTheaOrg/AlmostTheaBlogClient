@@ -2,16 +2,16 @@ import {
 	createStore,
 	applyMiddleware,
 	compose,
-	GenericStoreEnhancer
+	StoreEnhancer
 } from 'redux';
 import { reducer } from './reducer';
 import { IAppState } from './IAppState';
 import freezeState from './deepFreeze';
 
 declare var window: any;
-const devToolsExtension: GenericStoreEnhancer = (window.devToolsExtension)
+const devToolsExtension: StoreEnhancer = (window.devToolsExtension)
 	? window.devToolsExtension() : (f) => f;
 
-export const store = createStore<IAppState>(
+export const store = createStore(
 	reducer,
-	compose(applyMiddleware(freezeState), devToolsExtension) as GenericStoreEnhancer);
+	compose(applyMiddleware(freezeState), devToolsExtension) as StoreEnhancer);
