@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpService } from './http.service';
 import { AuthenticationService, UtilService } from '.';
+import { HttpService } from './http.service';
 
 @Injectable()
 export class FeedbackService {
@@ -19,8 +19,8 @@ export class FeedbackService {
 		return this.authenticationService.user().then(user => {
 			const headers = this.utilService.getAuthorizationHeaders(user);
 
-			feedback = Object.assign({}, feedback, { isRead: true });
-			return this.httpService.put(`feedback/edit/${feedback.id}`, feedback, headers)
+			const body = { isRead: true };
+			return this.httpService.put(`feedback/edit/${feedback.id}`, body, headers)
 				.toPromise()
 				.then(res => res.json() as SimpleResponse);
 		});

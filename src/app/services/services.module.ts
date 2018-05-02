@@ -1,13 +1,14 @@
-import { NgModule } from '@angular/core';
-import { AuthenticationService, PortraitService, ProjectService, UtilService } from './';
-import { RecaptchaValidator, HttpRecaptchaValidatorService } from './recaptcha-validator.service';
-import { environment } from '../../environments/environment';
-import { CryptoService } from './crypto.service';
-import { ApplicationStorageService } from './application-storage.service';
-import { HttpService } from './http.service';
-import { RECAPTCHA_SETTINGS, RecaptchaSettings, RecaptchaModule } from 'ng-recaptcha';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { RECAPTCHA_SETTINGS, RecaptchaModule } from 'ng-recaptcha';
+import { environment } from '../../environments/environment';
+import { AuthenticationService, PortraitService, ProjectService, UtilService } from './';
+import { ApplicationStorageService } from './application-storage.service';
+import { AuthenticationGuardService } from './authentication.guard.service';
+import { CryptoService } from './crypto.service';
 import { FeedbackService } from './feedback.service';
+import { HttpService } from './http.service';
+import { HttpRecaptchaValidatorService, RecaptchaValidator } from './recaptcha-validator.service';
 const settings = { siteKey: environment.recaptcha_site_key };
 
 @NgModule({
@@ -20,6 +21,7 @@ const settings = { siteKey: environment.recaptcha_site_key };
 		ApplicationStorageService,
 		UtilService,
 		AuthenticationService,
+		AuthenticationGuardService,
 		HttpService,
 		{
 			provide: RECAPTCHA_SETTINGS,
