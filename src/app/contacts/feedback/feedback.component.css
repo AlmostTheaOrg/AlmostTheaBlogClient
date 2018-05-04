@@ -108,6 +108,7 @@
 }
 
 .feedback-content {
+	word-wrap: break-word;
 	flex-grow: 1;
 	overflow-y: auto;
 	margin-top: 20px;

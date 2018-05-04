@@ -12,7 +12,11 @@ export class FeedbackService {
 	public add(feedback: AddFeedbackBindingModel) {
 		return this.httpService.post('feedback/add', feedback)
 			.toPromise()
-			.then(res => res.json() as SimpleResponse);
+			.then(res => res.json())
+			.then(res => Object.assign({}, res.feedback, {
+				id: res.feedback._id,
+				datePosted: new Date(res.feedback.datePosted)
+			}));
 	}
 
 	public markAsRead(feedback: Feedback) {

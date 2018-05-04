@@ -16,7 +16,7 @@ const initialState: IAppState = {
 	selectedProject: DEFAULT_SELECTED_PROJECT,
 	isAuthenticated: false,
 	currentUser: null,
-	notificationMessage: { message: '', type: NotificationType.Info},
+	notificationMessage: { message: '', type: NotificationType.Info },
 	shouldShowSpinner: false,
 	feedbacks: []
 };
@@ -194,7 +194,7 @@ function deleteFeedback(state: IAppState, action) {
 // Global actions
 function setNotificationMessage(state: IAppState, action) {
 	return Object.assign({}, state, {
-		notificationMessage: {message: action.message, type: action.notificationType}
+		notificationMessage: { message: action.message, type: action.notificationType }
 	});
 }
 

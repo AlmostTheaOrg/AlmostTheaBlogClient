@@ -5,7 +5,7 @@
 			<li class="feedback flex" *ngFor="let feedback of sortedFeedbacks">
 				<form class="select-box-container">
 					<label [attr.for]="feedback.id"></label>
-					<input [attr.id]="feedback.id" class="select-box" type="radio" (click)="selectOrDeselect(feedback)">
+					<input [attr.id]="feedback.id" [checked]="selectedFeedbacksIds.has(feedback.id)" class="select-box" type="radio" (click)="selectOrDeselect(feedback)">
 				</form>
 				<h4 (click)="view(feedback)">{{feedback.name}}</h4>
 				<span *ngIf="feedback.isRead">
