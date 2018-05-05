@@ -3,6 +3,7 @@ import { FeedbackActions } from '../feedback.actions';
 import { Feedback } from '../../services/feedback.service';
 import { Router } from '@angular/router';
 import { RecaptchaValidator } from '../../services/recaptcha-validator.service';
+import { SharedActions } from '../../shared/shared.actions';
 
 @Component({
 	selector: 'app-contacts',
@@ -20,6 +21,7 @@ export class ContactsComponent {
 	isRecaptchaValid: boolean;
 
 	constructor(private feedbackActions: FeedbackActions,
+		private sharedActions: SharedActions,
 		private router: Router,
 		private recaptchaValidator: RecaptchaValidator) { }
 
@@ -34,12 +36,11 @@ export class ContactsComponent {
 		this.loading = true;
 		this.feedbackActions.add(this.feedback).then(() => {
 			this.loading = false;
-			console.log('loading is done');
 			this.router.navigateByUrl('/');
-			// TODO: Display thankful message.
+			this.sharedActions.showSuccess('Thank you for your feedback!');
 		}).catch(err => {
 			this.loading = false;
-			// TODO: Display error message.
+			this.sharedActions.showDanger('There was an error submitting your feedback. Please try again later!');
 		});
 	}
 }
