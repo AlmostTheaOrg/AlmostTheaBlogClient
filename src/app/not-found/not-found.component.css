@@ -5,7 +5,28 @@ img {
 }
 
 div.one-pager {
-  background: linear-gradient(135deg, #00C4FF, #9D1BB2)
+	background: linear-gradient(270deg, #eda5f9, #fb7474);
+	background-size: 400% 400%;
+
+	-webkit-animation: Gradify 13s ease infinite;
+	-moz-animation: Gradify 13s ease infinite;
+	animation: Gradify 13s ease infinite;
+}
+
+@-webkit-keyframes Gradify {
+	0%{background-position:0% 50%}
+	50%{background-position:100% 50%}
+	100%{background-position:0% 50%}
+}
+@-moz-keyframes Gradify {
+	0%{background-position:0% 50%}
+	50%{background-position:100% 50%}
+	100%{background-position:0% 50%}
+}
+@keyframes Gradify {
+	0%{background-position:0% 50%}
+	50%{background-position:100% 50%}
+	100%{background-position:0% 50%}
 }
 
 h2 {
