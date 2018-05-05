@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthActions } from '../../auth/auth.actions';
 import { select } from 'ng2-redux/lib/decorators/select';
+import { Constants } from '../shared.constants';
 
 @Component({
 	selector: 'app-header',
@@ -13,7 +14,8 @@ export class HeaderComponent implements OnInit {
 	@select('isAuthenticated')
 	public isAuthenticated;
 
-	constructor(private authActions: AuthActions) { }
+	constructor(private authActions: AuthActions,
+		public constants: Constants) { }
 
 	ngOnInit() {
 		this.authActions.isAuthenticated();

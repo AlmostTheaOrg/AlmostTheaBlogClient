@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { NotificationComponent } from './notification/notification.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { SharedActions } from './shared.actions';
+import { Constants } from './shared.constants';
 
 @NgModule({
 	imports: [
@@ -33,7 +34,8 @@ import { SharedActions } from './shared.actions';
 		SpinnerComponent
 	],
 	providers: [
-		SharedActions
+		SharedActions,
+		Constants
 	]
 })
 export class SharedModule { }

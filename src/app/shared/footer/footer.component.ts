@@ -4,6 +4,7 @@ import { AuthActions } from '../../auth/auth.actions';
 import { select } from 'ng2-redux';
 import { Observable } from 'rxjs/Observable';
 import { SharedActions } from '../shared.actions';
+import { Constants } from '../shared.constants';
 
 @Component({
 	selector: 'app-footer',
@@ -14,7 +15,8 @@ export class FooterComponent implements OnInit {
 	constructor(
 		private router: Router,
 		private authActions: AuthActions,
-		private sharedActions: SharedActions) { }
+		private sharedActions: SharedActions,
+		public constants: Constants) { }
 
 	@select('isAuthenticated')
 	public isAuthenticated: Observable<boolean>;
