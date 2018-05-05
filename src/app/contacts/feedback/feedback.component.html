@@ -1,45 +1,51 @@
 <div class="container one-pager flex one-pager-limit">
-	<section class="feedbacks content">
-		<button class="btn btn-danger" [disabled]="!selectedFeedbacksIds.size" (click)="delete()">Delete</button>
-		<ul class="feedback-list scroll">
-			<li class="feedback flex" *ngFor="let feedback of sortedFeedbacks">
-				<form class="select-box-container">
-					<label [attr.for]="feedback.id"></label>
-					<input [attr.id]="feedback.id" [checked]="selectedFeedbacksIds.has(feedback.id)" class="select-box" type="radio" (click)="selectOrDeselect(feedback)">
-				</form>
-				<h4 (click)="view(feedback)">{{feedback.name}}</h4>
-				<span *ngIf="feedback.isRead">
-					<i class="fa fa-check-circle"></i>
-				</span>
-			</li>
-		</ul>
-	</section>
-
-	<section class="opened content">
-		<div class="opened-feedback col" *ngIf="openedFeedback">
-			<i class="fa fa-times-circle-o close" (click)="close()" aria-hidden="true"></i>
-
-			<div class="feedback-property">
-				<span>Name:</span>
-				<h4>{{openedFeedback.name}}</h4>
-			</div>
-
-			<div class="feedback-property">
-				<span>Email:</span>
-				<h4>{{openedFeedback.email}}</h4>
-			</div>
-
-			<div class="feedback-property">
-				<span>Date sent:</span>
-				<h4>{{openedFeedback.datePosted.toLocaleString()}}</h4>
-			</div>
-
-			<div class="separator"></div>
-			<div class="feedback-content scroll">
-				<p>
-					{{openedFeedback.content}}
-				</p>
-			</div>
+		<div  class="feedback-message" *ngIf="!(feedbacks && feedbacks.length) else feedbacksView">
+			<h3>There are no feedbacks published!</h3>
 		</div>
-	</section>
-</div>
+
+		<ng-template #feedbacksView>
+			<section class="feedbacks content">
+				<button class="btn btn-danger" [disabled]="!selectedFeedbacksIds.size" (click)="delete()">Delete</button>
+				<ul class="feedback-list scroll">
+					<li class="feedback flex" *ngFor="let feedback of sortedFeedbacks">
+						<form class="select-box-container">
+							<label [attr.for]="feedback.id"></label>
+							<input [attr.id]="feedback.id" [checked]="selectedFeedbacksIds.has(feedback.id)" class="select-box" type="radio" (click)="selectOrDeselect(feedback)">
+						</form>
+						<h4 (click)="view(feedback)">{{feedback.name}}</h4>
+						<span *ngIf="feedback.isRead">
+							<i class="fa fa-check-circle"></i>
+						</span>
+					</li>
+				</ul>
+			</section>
+
+			<section class="opened content">
+				<div class="opened-feedback col" *ngIf="openedFeedback">
+					<i class="fa fa-times-circle-o close" (click)="close()" aria-hidden="true"></i>
+
+					<div class="feedback-property">
+						<span>Name:</span>
+						<h4>{{openedFeedback.name}}</h4>
+					</div>
+
+					<div class="feedback-property">
+						<span>Email:</span>
+						<h4>{{openedFeedback.email}}</h4>
+					</div>
+
+					<div class="feedback-property">
+						<span>Date sent:</span>
+						<h4>{{openedFeedback.datePosted.toLocaleString()}}</h4>
+					</div>
+
+					<div class="separator"></div>
+					<div class="feedback-content scroll">
+						<p>
+							{{openedFeedback.content}}
+						</p>
+					</div>
+				</div>
+			</section>
+		</ng-template>
+	</div>
