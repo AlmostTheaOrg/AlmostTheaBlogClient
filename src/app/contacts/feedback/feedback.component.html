@@ -1,5 +1,5 @@
 <div class="container one-pager flex one-pager-limit">
-		<div  class="feedback-message" *ngIf="!(feedbacks && feedbacks.length | async) else feedbacksView">
+		<div  class="feedback-message" *ngIf="!(feedbacks | async).length else feedbacksView">
 			<h3>There are no feedbacks published!</h3>
 		</div>
 
