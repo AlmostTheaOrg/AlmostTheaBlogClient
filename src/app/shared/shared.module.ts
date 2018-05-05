@@ -7,7 +7,6 @@ import { FileValidator } from './directives/file-input.directive';
 import { FileValueAccessorDirective } from './directives/file-control-value-accessor.directive';
 import { RouterModule } from '@angular/router';
 import { NotificationComponent } from './notification/notification.component';
-import { SpinnerComponent } from './spinner/spinner.component';
 import { SharedActions } from './shared.actions';
 import { Constants } from './shared.constants';
 
@@ -23,7 +22,6 @@ import { Constants } from './shared.constants';
 		NotificationComponent,
 		FileValidator,
 		FileValueAccessorDirective,
-		SpinnerComponent
 		],
 	exports: [
 		HeaderComponent,
@@ -31,7 +29,6 @@ import { Constants } from './shared.constants';
 		NotificationComponent,
 		FileValidator,
 		FileValueAccessorDirective,
-		SpinnerComponent
 	],
 	providers: [
 		SharedActions,

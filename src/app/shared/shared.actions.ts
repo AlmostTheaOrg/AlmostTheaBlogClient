@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { NgRedux } from 'ng2-redux';
 import { IAppState } from '../store/IAppState';
 
-export const SHOULD_SHOW_SPINNER = 'SHOULD_SHOW_SPINNER';
 export const NOTIFICATION_MESSAGE = 'NOTIFICATION_MESSAGE';
 
 @Injectable()
@@ -34,14 +33,6 @@ export class SharedActions {
 
 	showDanger(content: string) {
 		this.showMessage(NotificationType.Danger, content);
-	}
-
-	showSpinner() {
-		this.ngRedux.dispatch({ type: SHOULD_SHOW_SPINNER, shouldShowSpinner: true });
-	}
-
-	hideSpinner() {
-		this.ngRedux.dispatch({ type: SHOULD_SHOW_SPINNER, shouldShowSpinner: false });
 	}
 }
 

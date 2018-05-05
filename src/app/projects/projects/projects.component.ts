@@ -16,6 +16,8 @@ import { Subscription } from 'rxjs/Subscription';
 	styleUrls: ['./projects.component.css']
 })
 export class ProjectsComponent extends ModalCreator implements OnInit, OnDestroy {
+	public loading: boolean;
+
 	@select('projects')
 	public projects: Observable<Project[]>;
 
@@ -26,17 +28,17 @@ export class ProjectsComponent extends ModalCreator implements OnInit, OnDestroy
 	private readonly child;
 	private subscription: Subscription;
 
+
 	constructor(private authActions: AuthActions,
-		private projectActions: ProjectActions,
-		private sharedActions: SharedActions) {
+		private projectActions: ProjectActions) {
 		super();
 	}
 
 	ngOnInit() {
 		this.projectActions.getProjects();
-		this.sharedActions.showSpinner();
-		this.subscription = this.projects.skip(1)
-			.do(() => this.sharedActions.hideSpinner())
+		this.loading = true;
+		this.subscription = this.projects
+			.do((data) => this.loading = !data)
 			.subscribe();
 		this.authActions.isAuthenticated();
 	}

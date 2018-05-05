@@ -1,28 +1,31 @@
 <div class="container one-pager">
-	<section *ngIf="isAuthenticated | async" class="add-image">
-		<a class="btn btn-success" (click)="add()" href="javascript:void(0)">
-			<i class="fa fa-plus" aria-hidden="true"></i>
-			Add
-		</a>
-	</section>
+	<div class="loader" *ngIf="loading else portraitsView"></div>
+	<ng-template #portraitsView>
+		<section *ngIf="isAuthenticated | async" class="add-image">
+			<a class="btn btn-success" (click)="add()" href="javascript:void(0)">
+				<i class="fa fa-plus" aria-hidden="true"></i>
+				Add
+			</a>
+		</section>
 
-	<section class="images">
-		<div *ngFor="let portrait of portraits | async" (click)="show(portrait)" class="portrait">
-			<div class="image card">
-				<span *ngIf="isAuthenticated | async" class="update-container">
-					<span (click)="edit($event, portrait)">
-						<i class="fa fa-pencil fa-lg" aria-hidden="true"></i>
+		<section class="images">
+			<div *ngFor="let portrait of portraits | async" (click)="show(portrait)" class="portrait">
+				<div class="image card">
+					<span *ngIf="isAuthenticated | async" class="update-container">
+						<span (click)="edit($event, portrait)">
+							<i class="fa fa-pencil fa-lg" aria-hidden="true"></i>
+						</span>
+						<span href="javascript:void(0)" (click)="delete($event, portrait)">
+							<i class="fa fa-trash-o fa-lg" aria-hidden="true"></i>
+						</span>
 					</span>
-					<span href="javascript:void(0)" (click)="delete($event, portrait)">
-						<i class="fa fa-trash-o fa-lg" aria-hidden="true"></i>
-					</span>
-				</span>
 
-				<img [src]="portrait.imageUrl" alt="Image">
-				<p class="image-description">{{ portrait.name }}</p>
+					<img [src]="portrait.imageUrl" alt="Image">
+					<p class="image-description">{{ portrait.name }}</p>
+				</div>
 			</div>
-		</div>
-	</section>
+		</section>
+	</ng-template>
 </div>
 
 <section>

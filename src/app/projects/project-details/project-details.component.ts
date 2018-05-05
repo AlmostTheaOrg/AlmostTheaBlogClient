@@ -31,18 +31,16 @@ export class ProjectDetailsComponent extends ModalCreator implements OnInit, OnD
 	@select('isAuthenticated')
 	public isAuthenticated;
 
-	private current: Project;
-
+	public loading: boolean;
 	public photos: Array<ProjectPhotoListViewModel> = [];
-
 	public selected: ProjectPhotoListViewModel = { id: '', imageUrl: '', previous: null, next: null };
 
 	private subscription: Subscription;
+	private current: Project;
 	constructor(private route: ActivatedRoute,
 		private router: Router,
 		private authActions: AuthActions,
-		private projectActions: ProjectActions,
-		private sharedActions: SharedActions) {
+		private projectActions: ProjectActions) {
 		super();
 
 		this.route.params.subscribe(params => {
@@ -70,9 +68,9 @@ export class ProjectDetailsComponent extends ModalCreator implements OnInit, OnD
 
 	ngOnInit() {
 		this.authActions.isAuthenticated();
-		this.sharedActions.showSpinner();
-		this.subscription = this.project.skip(1)
-			.do(() => this.sharedActions.hideSpinner())
+		this.loading = true;
+		this.subscription = this.project
+			.do((data) => this.loading = !data)
 			.subscribe();
 	}
 

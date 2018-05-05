@@ -1,26 +1,31 @@
 <div class="container one-pager">
-	<section *ngIf="isAuthenticated | async" class="add-project">
-		<a class="btn btn-success" (click)="addProject()">
-			<i class="fa fa-plus" aria-hidden="true"></i> Add
-		</a>
-	</section>
+	<div *ngIf="loading else projectsView" class="loader">
 
-	<section id="projects">
-		<figure *ngFor="let project of projects | async" class="projects-gallery">
-			<a class="gallery-item" [routerLink]="['/projects', project.name]">
-				<div class="thumbnail-wrapper">
-					<img [attr.src]="project.thumbnailUrl" alt="Gallery Thumbnail" />
+	</div>
+	<ng-template #projectsView>
+		<section *ngIf="isAuthenticated | async" class="add-project">
+			<a class="btn btn-success" (click)="addProject()">
+				<i class="fa fa-plus" aria-hidden="true"></i> Add
+			</a>
+		</section>
 
-					<div class="overlay">
-						<div class="text">
-							{{ project.name }}
-							<br> {{ project.photos.length }} Photos
+		<section id="projects">
+			<figure *ngFor="let project of projects | async" class="projects-gallery">
+				<a class="gallery-item" [routerLink]="['/projects', project.name]">
+					<div class="thumbnail-wrapper">
+						<img [attr.src]="project.thumbnailUrl" alt="Gallery Thumbnail" />
+
+						<div class="overlay">
+							<div class="text">
+								{{ project.name }}
+								<br> {{ project.photos.length }} Photos
+							</div>
 						</div>
 					</div>
-				</div>
-			</a>
-		</figure>
-	</section>
+				</a>
+			</figure>
+		</section>
+	</ng-template>
 </div>
 
 <section>

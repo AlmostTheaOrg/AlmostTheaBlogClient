@@ -23,6 +23,8 @@ export class PortraitsComponent extends ModalCreator implements OnInit, OnDestro
 	@select('isAuthenticated')
 	public isAuthenticated: Observable<boolean>;
 
+	public loading: boolean;
+
 	@ViewChild(ModalComponent)
 	private readonly child;
 	private _portraits: Portrait[];
@@ -30,16 +32,15 @@ export class PortraitsComponent extends ModalCreator implements OnInit, OnDestro
 
 	constructor(
 		private authActions: AuthActions,
-		private portraitActions: PortraitActions,
-		private sharedActions: SharedActions) {
+		private portraitActions: PortraitActions) {
 		super();
 	}
 
 	ngOnInit() {
 		this.portraitActions.getPortraits();
-		this.sharedActions.showSpinner();
+		this.loading = true;
 		this.subscription = this.portraits.skip(1)
-			.do(() => this.sharedActions.hideSpinner())
+			.do((data) => this.loading = !data)
 			.do(portraits => this._portraits = portraits)
 			.subscribe();
 	}

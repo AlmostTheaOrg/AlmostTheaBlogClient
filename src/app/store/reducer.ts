@@ -4,7 +4,6 @@ import { GET_PROJECTS, GET_PROJECT, ADD_PROJECT, EDIT_PROJECT, DELETE_PROJECT } 
 import { IS_AUTHENTICATED, USER_GET, USER_LOGIN, USER_LOGOUT } from '../auth/auth.actions';
 import { Project } from '../services/project.service';
 import { Portrait } from '../services/portrait.service';
-import { SHOULD_SHOW_SPINNER } from '../shared/shared.actions';
 import { FEEDBACK_ADD, FEEDBACK_DELETE, FEEDBACK_MARK, FEEDBACK_ALL } from '../contacts/feedback.actions';
 import { NotificationType, NOTIFICATION_MESSAGE } from '../shared/shared.actions';
 
@@ -17,7 +16,6 @@ const initialState: IAppState = {
 	isAuthenticated: false,
 	currentUser: null,
 	notificationMessage: { message: '', type: NotificationType.Info },
-	shouldShowSpinner: false,
 	feedbacks: []
 };
 export function reducer(state: IAppState = initialState, action) {
@@ -63,8 +61,6 @@ export function reducer(state: IAppState = initialState, action) {
 		// Global Actions:
 		case NOTIFICATION_MESSAGE:
 			return setNotificationMessage(state, action);
-		case SHOULD_SHOW_SPINNER:
-			return updateSpinner(state, action);
 		default:
 			return state;
 	}
@@ -195,11 +191,5 @@ function deleteFeedback(state: IAppState, action) {
 function setNotificationMessage(state: IAppState, action) {
 	return Object.assign({}, state, {
 		notificationMessage: { message: action.message, type: action.notificationType }
-	});
-}
-
-function updateSpinner(state: IAppState, action) {
-	return Object.assign({}, state, {
-		shouldShowSpinner: action.shouldShowSpinner
 	});
 }

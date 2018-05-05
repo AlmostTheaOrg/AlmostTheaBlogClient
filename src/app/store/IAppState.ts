@@ -16,8 +16,5 @@ export interface IAppState {
 	currentUser: User;
 
 	notificationMessage: NotificationMessage;
-
-	shouldShowSpinner: boolean;
-
 	feedbacks: Feedback[];
 }
