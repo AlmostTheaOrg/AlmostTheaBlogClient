@@ -61,6 +61,7 @@ export class FeedbackComponent implements OnInit, OnDestroy {
 		}
 
 		this.selectedFeedbacksIds.forEach(f => this.feedbackActions.delete(f));
+		this.selectedFeedbacksIds.clear();
 	}
 
 	markAsRead(feedback: Feedback) {
