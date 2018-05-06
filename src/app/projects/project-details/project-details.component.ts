@@ -40,6 +40,7 @@ export class ProjectDetailsComponent extends ModalCreator implements OnInit, OnD
 	constructor(private route: ActivatedRoute,
 		private router: Router,
 		private authActions: AuthActions,
+		private sharedActions: SharedActions,
 		private projectActions: ProjectActions) {
 		super();
 
@@ -91,15 +92,20 @@ export class ProjectDetailsComponent extends ModalCreator implements OnInit, OnD
 	}
 
 	editProject() {
-		this.open(ProjectEditComponent, { id: this.current.id, name: this.current.name });
+		this.open(ProjectEditComponent, this.current);
 	}
 
 	deleteProject() {
 		this.open(ProjectDeleteComponent, { project: this.current });
 	}
 
-	deletePhoto(event: Event, photo: { imageSrc: string }) {
+	deletePhoto(event: Event, photo: { imageUrl: string }) {
 		event.stopPropagation();
+
+		if (this.current.thumbnailUrl === photo.imageUrl) {
+			this.sharedActions.showWarning('No, rebel! You can\'t delete the thumbnail for this project!');
+			return;
+		}
 
 		this.open(ProjectPhotoRemoveComponent, { photo: photo, project: this.current });
 	}

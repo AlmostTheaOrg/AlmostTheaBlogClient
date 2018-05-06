@@ -1,16 +1,16 @@
-<form (ngSubmit)="onSubmit()" #addForm="ngForm" class="flex align-center">
-  <div class="modal-wrapper">
-    <div class="input-group">
-      <label for="image">Image:</label>
-      <div class="input-field">
-        <input class="input" type="file" name="image" [(ngModel)]="image.files"  requireFile/>
-      </div>
-    </div>
+<form (ngSubmit)="onSubmit()" #addPhoto="ngForm" class="flex align-center">
+	<div class="modal-wrapper">
+		<div class="input-group">
+			<label for="image">Image:</label>
+			<div class="input-field">
+				<input class="input" type="file" name="image" [(ngModel)]="image.files" requireFile/>
+			</div>
+		</div>
 
-    <div class="input-group">
-      <div class="input-field">
-        <input class="btn btn-success" type="submit" value="Add" />
-      </div>
-    </div>
-  </div>
+		<div class="input-group">
+			<div class="input-field">
+				<button class="btn btn-success btn-loader" [class.loading]="loading" [disabled]="!addPhoto.form.valid" type="submit">Add</button>
+			</div>
+		</div>
+	</div>
 </form>

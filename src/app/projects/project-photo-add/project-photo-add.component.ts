@@ -1,42 +1,48 @@
-import { Component, OnInit, Injector, OnDestroy } from '@angular/core';
-import { ModalWindow } from '../../modal/modal/modal-window';
-import { ProjectActions } from '../project.actions';
-import { Project } from '../../services/project.service';
+import { Component, Injector } from '@angular/core';
 import { select } from 'ng2-redux';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
+import { ModalWindow } from '../../modal/modal/modal-window';
+import { Project } from '../../services/project.service';
+import { SharedActions } from '../../shared/shared.actions';
+import { ProjectActions } from '../project.actions';
 
 @Component({
 	selector: 'app-project-photo-add',
 	templateUrl: './project-photo-add.component.html',
 	styleUrls: ['./project-photo-add.component.css']
 })
-export class ProjectPhotoAddComponent extends ModalWindow implements OnInit, OnDestroy {
+export class ProjectPhotoAddComponent extends ModalWindow {
 	public image = { files: null };
+	public loading: boolean;
 	private project: Project;
 
 	@select('selectedProject')
 	private selectedProject: Observable<Project>;
 	private subscription: Subscription;
 
-	constructor(injector: Injector, private projectActions: ProjectActions) {
+	constructor(injector: Injector,
+		private projectActions: ProjectActions,
+		private sharedActions: SharedActions) {
 		super(injector);
 		this.project = injector.get('project');
 	}
 
 	onSubmit() {
-		this.projectActions.addPhotoToProject(this.project.id, this.image.files[0]);
+		this.loading = true;
+		this.projectActions.addPhotoToProject(this.project.id, this.image.files[0])
+			.then(() => {
+				this.complete();
+				this.sharedActions.showInfo('Photo was added successfully!');
+			})
+			.catch(() => {
+				this.complete();
+				this.sharedActions.showDanger('Photo add failed!');
+			});
 	}
 
-	ngOnInit() {
-		this.subscription = this.selectedProject.subscribe((selectedProject) => {
-			if (selectedProject && this.project.photos.length < selectedProject.photos.length) {
-				this.close();
-			}
-		});
-	}
-
-	ngOnDestroy() {
-		this.subscription.unsubscribe();
+	private complete() {
+		this.close();
+		this.loading = false;
 	}
 }

@@ -38,7 +38,6 @@ export class ProjectService {
 	addPhotoToProject(projectId: string, photo: File): Promise<Project> {
 		return this.authenticationService.user().then(user => {
 			const formData: FormData = new FormData();
-			console.log(photo);
 			formData.append('photo', photo, photo.name);
 
 			const headers = this.utilService.getAuthorizationHeaders(user);
@@ -50,7 +49,6 @@ export class ProjectService {
 	deletePhotoFromProject(projectId: string, photoId: string) {
 		return this.authenticationService.user().then(user => {
 			const headers = this.utilService.getAuthorizationHeaders(user);
-			console.log(headers);
 
 			return this.mapToProject(this.httpService.put(`project/delete/${projectId}/photo/${photoId}`, {}, headers));
 		});

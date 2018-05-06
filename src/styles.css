@@ -237,3 +237,7 @@ button:not(.disabled).sending:before {
   100% { transform: rotate(360deg); }
 }
 
+.preview-image {
+	max-width: 300px;
+	max-width: 300px;
+}

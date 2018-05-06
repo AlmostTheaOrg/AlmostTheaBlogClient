@@ -1,24 +1,25 @@
-<form (ngSubmit)="onSubmit()" #addForm="ngForm" class="flex align-center">
-  <div class="modal-wrapper">
+<form (ngSubmit)="onSubmit()" #editProject="ngForm" class="flex align-center">
+	<div class="modal-wrapper">
 
-    <div class="input-group">
-      <label for="name">Name:</label>
-      <div class="input-field">
-        <input class="input" type="text" name="name" [(ngModel)]="project.name" placeholder="Thea" required />
-      </div>
-    </div>
+		<div class="input-group">
+			<label for="name">Name:</label>
+			<div class="input-field">
+				<input class="input" type="text" name="name" [(ngModel)]="project.name" placeholder="Thea" required />
+			</div>
+		</div>
 
-    <div class="input-group">
-      <label for="name">Thumbnail:</label>
-      <div class="input-field">
-        <input class="input" type="file" name="thumb" [(ngModel)]="project.file"required />
-      </div>
-    </div>
+		<div class="input-group">
+			<label for="name">Thumbnail:</label>
+			<div class="input-field">
+				<img [src]="project.thumbnailUrl" class="preview-image" alt="">
+				<input class="input" type="file" name="thumb" [(ngModel)]="project.file" />
+			</div>
+		</div>
 
-    <div class="input-group">
-      <div class="input-field">
-        <input class="btn btn-warning" type="submit" value="Edit" />
-      </div>
-    </div>
-  </div>
+		<div class="input-group">
+			<div class="input-field">
+				<button class="btn btn-warning btn-loader" [class.loading]="loading" [disabled]="!editProject.form.valid" type="submit">Edit</button>
+			</div>
+		</div>
+	</div>
 </form>

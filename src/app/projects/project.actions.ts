@@ -25,7 +25,7 @@ export class ProjectActions {
 	}
 
 	addProject(projectViewModel: AddProjectViewModel) {
-		this.projectService.add(projectViewModel).then(project => {
+		return this.projectService.add(projectViewModel).then(project => {
 			this.ngRedux.dispatch({ type: ADD_PROJECT, project });
 		});
 	}
@@ -37,17 +37,15 @@ export class ProjectActions {
 	}
 
 	editProject(editProjectViewModel: EditProjectViewModel) {
-		this.projectService.edit(editProjectViewModel)
+		return this.projectService.edit(editProjectViewModel)
 			.then(project => {
 				this.ngRedux.dispatch({ type: EDIT_PROJECT, project });
 			});
 	}
 
 	deleteProject(projectId: string) {
-		this.projectService.delete(projectId).then((result: any) => {
+		return this.projectService.delete(projectId).then((result: any) => {
 			if (result.error) {
-				// TODO: Notify for failure.
-				console.log(result.error);
 				return;
 			}
 			this.ngRedux.dispatch({ type: DELETE_PROJECT, id: projectId });
@@ -55,14 +53,14 @@ export class ProjectActions {
 	}
 
 	addPhotoToProject(projectId: string, photo: File) {
-		this.projectService.addPhotoToProject(projectId, photo)
+		return this.projectService.addPhotoToProject(projectId, photo)
 			.then(project => {
 				this.ngRedux.dispatch({ type: EDIT_PROJECT, project });
 			});
 	}
 
 	deletePhotoFromProject(projectId: string, photoId: string) {
-		this.projectService.deletePhotoFromProject(projectId, photoId)
+		return this.projectService.deletePhotoFromProject(projectId, photoId)
 			.then(project => {
 				this.ngRedux.dispatch({ type: EDIT_PROJECT, project });
 			});

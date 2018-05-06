@@ -16,15 +16,7 @@
 
 		<div class="input-group">
 			<div class="input-field">
-				<button class="btn btn-success" type="submit" disable="disabled">
-					<div *ngIf="loading; else text">
-						Loading
-						<i class="fa fa-circle-o-notch fa-spin"></i>
-					</div>
-					<ng-template #text>
-						Add
-					</ng-template>
-				</button>
+				<button class="btn btn-success btn-loader" [class.loading]="loading" type="submit" [disabled]="!addForm.form.valid">Add</button>
 			</div>
 		</div>
 	</div>
