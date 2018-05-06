@@ -68,11 +68,12 @@ export class ContactsComponent {
 	}
 
 	isNameCharacterAllowed(event: KeyboardEvent) {
-		return this.isAlphabet(event.keyCode);
+		console.log(event.keyCode);
+		return this.isAlphabet(event.keyCode) || event.keyCode === 32 || event.keyCode === 9;
 	}
 
 	isEmailCharacterAllowed(event: KeyboardEvent) {
-		return this.isAlphanumeric(event.keyCode);
+		return this.isAlphanumeric(event.keyCode) || event.keyCode === 190 || event.keyCode === 9;
 	}
 
 	private isAlphabet(key: number) {
