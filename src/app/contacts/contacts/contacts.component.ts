@@ -68,7 +68,6 @@ export class ContactsComponent {
 	}
 
 	isNameCharacterAllowed(event: KeyboardEvent) {
-		console.log(event.keyCode);
 		return this.isAlphabet(event.keyCode) || event.keyCode === 32 || event.keyCode === 9;
 	}
 
