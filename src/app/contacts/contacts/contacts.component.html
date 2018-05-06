@@ -1,26 +1,26 @@
 <div class="container one-pager flex-center">
-	<form (ngSubmit)="onSubmit()" #contactUs="ngForm">
+	<form class="feedback" (ngSubmit)="onSubmit()" #contactUs="ngForm">
 		<div class="input-group">
 			<label for="name">Name:</label>
 			<div class="input-field">
-				<input class="input" type="text" name="name" #name="ngModel" [(ngModel)]="feedback.name" placeholder="Steven" minlength="3"
-				 maxlength="32" required />
+				<input class="input" (keydown)="isNameCharacterAllowed($event)" type="text" name="name" #name="ngModel" [(ngModel)]="feedback.name"
+				 placeholder="Steven" minlength="3" maxlength="32" required (blur)="validateName()" />
 			</div>
 		</div>
 
 		<div class="input-group">
 			<label for="email">Email:</label>
 			<div class="input-field">
-				<input class="input" type="email" name="email" #email="ngModel" [(ngModel)]="feedback.email" placeholder="Email for further discussion"
-				/>
+				<input class="input" (keydown)="isEmailCharacterAllowed($event)" type="email" name="email" #email="ngModel" [(ngModel)]="feedback.email"
+				 placeholder="Email for further discussion" (blur)="validateEmail()" />
 			</div>
 		</div>
 
 		<div class="input-group">
 			<label for="text">Message:</label>
 			<div class="input-field">
-				<textarea class="input" id="message" name="message" #message="ngModel" [(ngModel)]="feedback.content" minlength="30" maxlength="200"
-				 placeholder="I was wondering ..." required rows="8" cols="30"></textarea>
+				<textarea class="input" id="message" name="message" #message="ngModel" [(ngModel)]="feedback.content" minlength="10" maxlength="500"
+				 placeholder="I was wondering ..." required rows="8" cols="30" (blur)="validateMessage()"></textarea>
 			</div>
 		</div>
 

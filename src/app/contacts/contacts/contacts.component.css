@@ -10,3 +10,12 @@ form {
 #submit {
 	font-family: inherit;
 }
+
+.alert-danger {
+	font-size: 1rem;
+	color: #d9534f;
+}
+
+.hidden {
+	opacity: 0;
+}
