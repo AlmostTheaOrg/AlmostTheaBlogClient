@@ -1,25 +1,23 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ProjectsComponent } from './projects/projects.component';
-import { ProjectDetailsComponent } from './project-details/project-details.component';
-import { ProjectAddComponent } from './project-add/project-add.component';
+import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
-import { ProjectEditComponent } from './project-edit/project-edit.component';
+import { ProjectAddComponent } from './project-add/project-add.component';
 import { ProjectDeleteComponent } from './project-delete/project-delete.component';
+import { ProjectDetailsComponent } from './project-details/project-details.component';
+import { ProjectEditComponent } from './project-edit/project-edit.component';
 import { ProjectPhotoAddComponent } from './project-photo-add/project-photo-add.component';
 import { ProjectPhotoRemoveComponent } from './project-photo-remove/project-photo-remove.component';
 import { ProjectActions } from './project.actions';
-import { ModalModule } from '../modal/modal.module';
+import { ProjectsComponent } from './projects/projects.component';
 
 @NgModule({
 	imports: [
 		CommonModule,
 		RouterModule,
 		FormsModule,
-		SharedModule,
-		ModalModule
+		SharedModule
 	],
 	providers: [
 		ProjectActions

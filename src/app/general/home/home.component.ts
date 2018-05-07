@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Constants } from '../../shared/shared.constants';
-import { SharedActions } from '../../shared/shared.actions';
 
 @Component({
 	selector: 'app-home',
@@ -8,6 +7,6 @@ import { SharedActions } from '../../shared/shared.actions';
 	styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-	constructor(public constants: Constants, public sharedActions: SharedActions) {
-	 }
+	constructor(public constants: Constants) {
+	}
 }

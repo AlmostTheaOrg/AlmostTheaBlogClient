@@ -1,8 +1,8 @@
-import { Component, OnInit, Injector } from '@angular/core';
-import { ModalWindow } from '../../modal/modal/modal-window';
-import { ProjectActions } from '../project.actions';
+import { Component, Injector } from '@angular/core';
 import { Project } from '../../services/project.service';
+import { ModalWindow } from '../../shared/modal/modal-window';
 import { SharedActions } from '../../shared/shared.actions';
+import { ProjectActions } from '../project.actions';
 
 @Component({
 	selector: 'app-project-photo-remove',

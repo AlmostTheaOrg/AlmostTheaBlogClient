@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, forwardRef, OnDestroy } from '@angular/core';
 import { ProjectAddComponent } from '../project-add/project-add.component';
-import { ModalCreator } from '../../modal/modal/modal-creator';
-import { ModalComponent } from '../../modal/modal/modal.component';
+import { ModalCreator } from '../../shared/modal/modal-creator';
+import { ModalComponent } from '../../shared/modal/modal.component';
 import { ProjectActions } from '../project.actions';
 import { Observable } from 'rxjs/Observable';
 import { select } from 'ng2-redux';

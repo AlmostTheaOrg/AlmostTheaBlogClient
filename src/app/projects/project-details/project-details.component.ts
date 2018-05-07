@@ -1,20 +1,20 @@
-import { Component, OnInit, ViewChild, forwardRef, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild, forwardRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProjectPhotoListViewModel } from '../../data/view-models/ProjectPhotoListViewModel';
-import { ModalCreator } from '../../modal/modal/modal-creator';
-import { ModalComponent } from '../../modal/modal/modal.component';
-import { ProjectPhotoAddComponent } from '../project-photo-add/project-photo-add.component';
-import { ProjectEditComponent } from '../project-edit/project-edit.component';
-import { ProjectDeleteComponent } from '../project-delete/project-delete.component';
-import { ProjectPhotoRemoveComponent } from '../project-photo-remove/project-photo-remove.component';
-import { ProjectActions } from '../project.actions';
 import { select } from 'ng2-redux';
 import { Observable } from 'rxjs/Observable';
-import { AuthActions } from '../../auth/auth.actions';
-import { Project } from '../../services/project.service';
-import { DEFAULT_SELECTED_PROJECT } from '../../store/reducer';
 import { Subscription } from 'rxjs/Subscription';
+import { AuthActions } from '../../auth/auth.actions';
+import { DEFAULT_SELECTED_PROJECT } from '../../data/store/reducer';
+import { ProjectPhotoListViewModel } from '../../data/view-models/ProjectPhotoListViewModel';
+import { Project } from '../../services/project.service';
+import { ModalCreator } from '../../shared/modal/modal-creator';
+import { ModalComponent } from '../../shared/modal/modal.component';
 import { SharedActions } from '../../shared/shared.actions';
+import { ProjectDeleteComponent } from '../project-delete/project-delete.component';
+import { ProjectEditComponent } from '../project-edit/project-edit.component';
+import { ProjectPhotoAddComponent } from '../project-photo-add/project-photo-add.component';
+import { ProjectPhotoRemoveComponent } from '../project-photo-remove/project-photo-remove.component';
+import { ProjectActions } from '../project.actions';
 
 @Component({
 	selector: 'app-project-details',

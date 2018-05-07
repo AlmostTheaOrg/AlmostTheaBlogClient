@@ -1,11 +1,11 @@
+import { IS_AUTHENTICATED, USER_GET, USER_LOGIN, USER_LOGOUT } from '../../auth/auth.actions';
+import { FEEDBACK_ADD, FEEDBACK_ALL, FEEDBACK_DELETE, FEEDBACK_MARK } from '../../contacts/feedback.actions';
+import { ADD_PORTRAIT, DELETE_PORTRAIT, EDIT_PORTRAIT, GET_PORTRAITS } from '../../portraits/portrait.actions';
+import { ADD_PROJECT, DELETE_PROJECT, EDIT_PROJECT, GET_PROJECT, GET_PROJECTS } from '../../projects/project.actions';
+import { Portrait } from '../../services/portrait.service';
+import { Project } from '../../services/project.service';
+import { NOTIFICATION_MESSAGE, NotificationType } from '../../shared/shared.actions';
 import { IAppState } from './IAppState';
-import { GET_PORTRAITS, EDIT_PORTRAIT, DELETE_PORTRAIT, ADD_PORTRAIT } from '../portraits/portrait.actions';
-import { GET_PROJECTS, GET_PROJECT, ADD_PROJECT, EDIT_PROJECT, DELETE_PROJECT } from '../projects/project.actions';
-import { IS_AUTHENTICATED, USER_GET, USER_LOGIN, USER_LOGOUT } from '../auth/auth.actions';
-import { Project } from '../services/project.service';
-import { Portrait } from '../services/portrait.service';
-import { FEEDBACK_ADD, FEEDBACK_DELETE, FEEDBACK_MARK, FEEDBACK_ALL } from '../contacts/feedback.actions';
-import { NotificationType, NOTIFICATION_MESSAGE } from '../shared/shared.actions';
 
 export const DEFAULT_SELECTED_PROJECT: Project = { id: '-1', name: 'empty', thumbnailUrl: 'empty', photos: [] };
 

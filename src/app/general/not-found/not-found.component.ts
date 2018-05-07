@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Constants } from '../shared/shared.constants';
+import { Constants } from '../../shared/shared.constants';
 
 @Component({
 	selector: 'app-not-found',

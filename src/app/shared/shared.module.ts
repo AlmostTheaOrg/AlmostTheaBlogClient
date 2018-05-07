@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { NotificationComponent } from './notification/notification.component';
 import { SharedActions } from './shared.actions';
 import { Constants } from './shared.constants';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
 	imports: [
@@ -22,6 +23,7 @@ import { Constants } from './shared.constants';
 		NotificationComponent,
 		FileValidator,
 		FileValueAccessorDirective,
+		ModalComponent
 		],
 	exports: [
 		HeaderComponent,
@@ -29,6 +31,7 @@ import { Constants } from './shared.constants';
 		NotificationComponent,
 		FileValidator,
 		FileValueAccessorDirective,
+		ModalComponent
 	],
 	providers: [
 		SharedActions,

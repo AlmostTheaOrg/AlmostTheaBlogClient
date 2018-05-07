@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { IAppState } from '../store/IAppState';
 import { NgRedux } from 'ng2-redux';
+import { IAppState } from '../data/store/IAppState';
 import { PortraitService } from '../services';
 import { AddPortraitViewModel, EditPortraitViewModel, Portrait } from '../services/portrait.service';
 

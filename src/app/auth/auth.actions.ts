@@ -1,8 +1,8 @@
-import { NgRedux } from 'ng2-redux';
-import { AuthenticationService } from '../services';
-import { IAppState } from '../store/IAppState';
-import { User } from '../data/models/User';
 import { Injectable } from '@angular/core';
+import { NgRedux } from 'ng2-redux';
+import { User } from '../data/models/User';
+import { IAppState } from '../data/store/IAppState';
+import { AuthenticationService } from '../services';
 
 export const IS_AUTHENTICATED = 'user/IS_AUTHENTICATED';
 export const USER_GET = 'user/GET';

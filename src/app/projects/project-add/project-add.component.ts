@@ -1,9 +1,8 @@
-import { Component, OnInit, Injector } from '@angular/core';
-import { ModalWindow } from '../../modal/modal/modal-window';
-import { ProjectActions } from '../project.actions';
+import { Component, Injector } from '@angular/core';
 import { AddProjectViewModel } from '../../services/project.service';
-import { select } from 'ng2-redux';
+import { ModalWindow } from '../../shared/modal/modal-window';
 import { SharedActions } from '../../shared/shared.actions';
+import { ProjectActions } from '../project.actions';
 
 @Component({
 	selector: 'app-project-add',

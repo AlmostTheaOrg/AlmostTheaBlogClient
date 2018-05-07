@@ -1,12 +1,11 @@
-import { Component, OnInit, Injector, OnDestroy } from '@angular/core';
+import { Component, Injector } from '@angular/core';
 import { Router } from '@angular/router';
-import { ModalWindow } from '../../modal/modal/modal-window';
-import { ProjectActions } from '../project.actions';
-import { Project } from '../../services/project.service';
-import { Observable } from 'rxjs/Observable';
 import { select } from 'ng2-redux';
-import { Subscription } from 'rxjs/Subscription';
+import { Observable } from 'rxjs/Observable';
+import { Project } from '../../services/project.service';
+import { ModalWindow } from '../../shared/modal/modal-window';
 import { SharedActions } from '../../shared/shared.actions';
+import { ProjectActions } from '../project.actions';
 
 @Component({
 	selector: 'app-project-delete',

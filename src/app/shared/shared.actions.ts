@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from 'ng2-redux';
-import { IAppState } from '../store/IAppState';
+import { IAppState } from '../data/store/IAppState';
 
 export const NOTIFICATION_MESSAGE = 'NOTIFICATION_MESSAGE';
 

@@ -1,24 +1,16 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { PortraitsComponent } from './portraits/portraits.component';
 import { SharedModule } from '../shared/shared.module';
-import {
-	PortraitAddComponent,
-	PortraitDetailsComponent,
-	PortraitEditComponent,
-	PortraitDeleteComponent
-} from './';
-
+import { PortraitAddComponent, PortraitDeleteComponent, PortraitDetailsComponent, PortraitEditComponent } from './';
 import { PortraitActions } from './portrait.actions';
-import { ModalModule } from '../modal/modal.module';
+import { PortraitsComponent } from './portraits/portraits.component';
 
 @NgModule({
 	imports: [
 		CommonModule,
 		FormsModule,
-		SharedModule,
-		ModalModule
+		SharedModule
 	],
 	providers: [
 		PortraitActions
