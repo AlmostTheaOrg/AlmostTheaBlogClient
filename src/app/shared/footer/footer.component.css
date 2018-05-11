@@ -2,7 +2,6 @@ footer {
 	position: fixed;
 	bottom: 0;
 	width: 100%;
-	padding-top: 10px;
 	margin: 0 auto;
 	font-family: B52;
 	font-size: 13px;
@@ -18,12 +17,19 @@ footer {
 	align-items: center;
 	text-align: left;
 	flex-direction: column;
+	padding-top: 10px;
 	padding-bottom: 10px;
 }
 
 .copyright {
 	flex-grow: 1;
 	text-align: center;
+}
+
+.social-media {
+	padding-bottom: 5px;
+	display: block;
+	height: auto;
 }
 
 .social-media a {
@@ -48,10 +54,7 @@ footer {
 	padding-top: 0px;
 }
 
-.social-media {
-	display: block;
-	height: auto;
-}
+
 
 .copyright p:first-of-type {
 	padding-right: 0px;
