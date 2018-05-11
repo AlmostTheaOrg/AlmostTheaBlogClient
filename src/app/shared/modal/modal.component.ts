@@ -5,9 +5,7 @@ import {
 	ProjectEditComponent,
 	ProjectPhotoAddComponent,
 	ProjectDeleteComponent,
-	ProjectDetailsComponent,
 	ProjectPhotoRemoveComponent,
-	ProjectsComponent
 } from '../../projects';
 
 @Component({
@@ -21,9 +19,7 @@ import {
 		ProjectEditComponent,
 		ProjectPhotoAddComponent,
 		ProjectDeleteComponent,
-		ProjectDetailsComponent,
 		ProjectPhotoRemoveComponent,
-		ProjectsComponent
 	],
 	templateUrl: './modal.component.html',
 	styleUrls: ['./modal.component.css']
