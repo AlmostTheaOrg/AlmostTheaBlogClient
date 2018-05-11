@@ -1,9 +1,9 @@
 <app-header>
 </app-header>
 
-<main>
+<main [@fadeAnimation]="getRouterOutletState(o)">
 	<app-notification></app-notification>
-	<router-outlet></router-outlet>
+  <router-outlet #o="outlet"></router-outlet>
 </main>
 
 <app-footer>
