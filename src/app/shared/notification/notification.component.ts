@@ -1,7 +1,6 @@
-import { Component, OnDestroy, OnInit, trigger, state, style, transition, animate } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { select } from 'ng2-redux';
-import { Observable } from 'rxjs/Observable';
-import { Subscription } from 'rxjs/Subscription';
+import { Observable, Subscription } from 'rxjs';
 import { NotificationMessage, NotificationType } from '../shared.actions';
 
 @Component({

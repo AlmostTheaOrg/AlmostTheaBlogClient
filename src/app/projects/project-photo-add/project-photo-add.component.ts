@@ -1,7 +1,6 @@
 import { Component, Injector } from '@angular/core';
 import { select } from 'ng2-redux';
-import { Observable } from 'rxjs/Observable';
-import { Subscription } from 'rxjs/Subscription';
+import { Observable, Subscription } from 'rxjs';
 import { Project } from '../../services/project.service';
 import { ModalWindow } from '../../shared/modal/modal-window';
 import { SharedActions } from '../../shared/shared.actions';

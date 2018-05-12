@@ -1,9 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Feedback } from '../../services/feedback.service';
-import { Observable } from 'rxjs/Observable';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { select } from 'ng2-redux';
+import { Observable, Subscription } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { Feedback } from '../../services/feedback.service';
 import { FeedbackActions } from '../feedback.actions';
-import { Subscription } from 'rxjs/Subscription';
 
 @Component({
 	selector: 'app-feedback',
@@ -26,12 +26,12 @@ export class FeedbackComponent implements OnInit, OnDestroy {
 	ngOnInit() {
 		this.feedbackActions.getAll();
 
-		this.subscription = this.feedbacks.do(feedbacks => {
+		this.subscription = this.feedbacks.pipe(tap(feedbacks => {
 			this.sortedFeedbacks = new Array<Feedback>(...feedbacks);
 			this.sortedFeedbacks.sort((a, b) => {
 				return b.datePosted.getTime() - a.datePosted.getTime();
 			});
-		}).subscribe();
+		})).subscribe();
 	}
 
 	ngOnDestroy() {

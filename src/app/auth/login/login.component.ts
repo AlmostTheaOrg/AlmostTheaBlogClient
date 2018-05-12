@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
-import { User } from '../../data/models';
 import { Router } from '@angular/router';
-import { AuthActions } from '../auth.actions';
-import { RecaptchaValidator } from '../../services/recaptcha-validator.service';
 import { select } from 'ng2-redux';
-import { Observable } from 'rxjs/Observable';
-import { Subscription } from 'rxjs/Subscription';
+import { Observable } from 'rxjs';
+import { RecaptchaValidator } from '../../services/recaptcha-validator.service';
 import { SharedActions } from '../../shared/shared.actions';
+import { AuthActions } from '../auth.actions';
 
 @Component({
 	selector: 'app-login',
