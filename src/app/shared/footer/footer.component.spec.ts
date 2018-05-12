@@ -8,6 +8,8 @@ import { AppModule } from '../../app.module';
 import { Observable } from 'rxjs/Observable';
 import { NgRedux } from 'ng2-redux';
 import { AuthenticationService } from '../../services';
+import { SharedActions } from '../shared.actions';
+import { Constants } from '../shared.constants';
 
 // Mock out the NgRedux class with just enough to test what we want.
 class MockRedux extends NgRedux<any> {
@@ -19,7 +21,8 @@ class MockRedux extends NgRedux<any> {
 
 class MockAuthenticationService extends AuthenticationService {
 	constructor() {
-		super(null, null);
+		const storage: any = { get: () => { } };
+		super(null, storage);
 	}
 }
 
@@ -34,7 +37,9 @@ describe('FooterComponent', () => {
 				RouterTestingModule,
 			],
 			providers: [
-				{ provide: AuthActions, useValue: new AuthActions(new MockRedux(), new MockAuthenticationService()) }
+				{ provide: AuthActions, useValue: new AuthActions(new MockRedux(), new MockAuthenticationService()) },
+				{ provide: SharedActions, useValue: { showSuccess: () => { } } },
+				{ provide: Constants, useValue: {} }
 			],
 			declarations: [FooterComponent]
 		})

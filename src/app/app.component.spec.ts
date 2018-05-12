@@ -1,27 +1,23 @@
-import { TestBed, async } from '@angular/core/testing';
-
-import { AppComponent } from './app.component';
-import { RouterModule } from '@angular/router';
-import { SharedModule } from './shared/shared.module';
-import { FormsModule } from '@angular/forms';
-import { FooterComponent } from './shared/footer/footer.component';
-import { HeaderComponent } from './shared/header/header.component';
-import { AuthActions } from './auth/auth.actions';
-import { NgReduxModule } from 'ng2-redux';
-
 import { APP_BASE_HREF } from '@angular/common';
+import { Component } from '@angular/core';
+import { TestBed, async } from '@angular/core/testing';
+import { RouterModule } from '@angular/router';
+import { AppComponent } from './app.component';
+import { AuthActions } from './auth/auth.actions';
 import { AuthenticationService } from './services';
 import { HttpService } from './services/http.service';
-import { Http } from '@angular/http';
 
 describe('AppComponent', () => {
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
 			imports: [
-				SharedModule,
 				RouterModule.forRoot([])
 			],
 			declarations: [
+				AppHeaderMockComponent,
+				AppFooterMockComponent,
+				AppNotificationMockComponent,
+				AppRouterOutletMockComponent,
 				AppComponent
 			],
 			providers: [
@@ -40,3 +36,31 @@ describe('AppComponent', () => {
 		expect(app).toBeTruthy();
 	}));
 });
+
+@Component({
+	selector: 'app-header',
+	template: ''
+})
+class AppHeaderMockComponent {
+}
+
+@Component({
+	selector: 'app-footer',
+	template: ''
+})
+class AppFooterMockComponent {
+}
+
+@Component({
+	selector: 'app-notification',
+	template: ''
+})
+class AppNotificationMockComponent {
+}
+
+@Component({
+	selector: 'router-outlet',
+	template: ''
+})
+class AppRouterOutletMockComponent {
+}
