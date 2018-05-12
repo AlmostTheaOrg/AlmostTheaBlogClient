@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FeedbackActions } from '../feedback.actions';
 import { Feedback } from '../../services/feedback.service';
 import { Router } from '@angular/router';
-import { RecaptchaValidator } from '../../services/recaptcha-validator.service';
+import { HttpRecaptchaValidatorService } from '../../services/recaptcha-validator.service';
 import { SharedActions } from '../../shared/shared.actions';
 import { Form } from '@angular/forms';
 
@@ -27,7 +27,7 @@ export class ContactsComponent {
 	constructor(private feedbackActions: FeedbackActions,
 		private sharedActions: SharedActions,
 		private router: Router,
-		private recaptchaValidator: RecaptchaValidator) { }
+		private recaptchaValidator: HttpRecaptchaValidatorService) { }
 
 	resolved(response) {
 		this.recaptchaValidator.validate(response).then(result => {

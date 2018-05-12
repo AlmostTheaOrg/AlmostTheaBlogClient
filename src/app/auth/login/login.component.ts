@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { select } from 'ng2-redux';
 import { Observable } from 'rxjs';
-import { RecaptchaValidator } from '../../services/recaptcha-validator.service';
+import { HttpRecaptchaValidatorService } from '../../services/recaptcha-validator.service';
 import { SharedActions } from '../../shared/shared.actions';
 import { AuthActions } from '../auth.actions';
 
@@ -21,7 +21,7 @@ export class LoginComponent {
 
 	constructor(
 		private router: Router,
-		private recaptchaValidator: RecaptchaValidator,
+		private recaptchaValidator: HttpRecaptchaValidatorService,
 		private authActions: AuthActions,
 		private sharedActions: SharedActions) { }
 

@@ -8,7 +8,7 @@ import { AuthenticationGuardService } from './authentication.guard.service';
 import { CryptoService } from './crypto.service';
 import { FeedbackService } from './feedback.service';
 import { HttpService } from './http.service';
-import { HttpRecaptchaValidatorService, RecaptchaValidator } from './recaptcha-validator.service';
+import { HttpRecaptchaValidatorService } from './recaptcha-validator.service';
 const settings = { siteKey: environment.recaptcha_site_key };
 
 @NgModule({
@@ -27,10 +27,7 @@ const settings = { siteKey: environment.recaptcha_site_key };
 			provide: RECAPTCHA_SETTINGS,
 			useValue: settings,
 		},
-		{
-			provide: RecaptchaValidator,
-			useClass: HttpRecaptchaValidatorService
-		},
+		HttpRecaptchaValidatorService,
 		PortraitService,
 		ProjectService,
 		FeedbackService
