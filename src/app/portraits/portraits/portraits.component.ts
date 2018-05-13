@@ -1,13 +1,15 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Output, Input, ViewChild, OnInit, OnDestroy } from '@angular/core';
+import { PortraitAddComponent, PortraitDetailsComponent, PortraitEditComponent, PortraitDeleteComponent } from '../index';
+
+import { ModalComponent } from '../../shared/modal/modal.component';
+import { ModalCreator } from '../../shared/modal/modal-creator';
 import { select } from 'ng2-redux';
-import { Observable, Subscription } from 'rxjs';
-import { skip, tap } from 'rxjs/operators';
+import { Observable } from 'rxjs/Observable';
+import { PortraitActions } from '../portrait.actions';
 import { AuthActions } from '../../auth/auth.actions';
 import { Portrait } from '../../services/portrait.service';
-import { ModalCreator } from '../../shared/modal/modal-creator';
-import { ModalComponent } from '../../shared/modal/modal.component';
-import { PortraitAddComponent, PortraitDeleteComponent, PortraitDetailsComponent, PortraitEditComponent } from '../index';
-import { PortraitActions } from '../portrait.actions';
+import { Subscription } from 'rxjs/Subscription';
+import { SharedActions } from '../../shared/shared.actions';
 
 @Component({
 	selector: 'app-portraits',
@@ -37,10 +39,9 @@ export class PortraitsComponent extends ModalCreator implements OnInit, OnDestro
 	ngOnInit() {
 		this.portraitActions.getPortraits();
 		this.loading = true;
-		this.subscription = this.portraits
-			.pipe(skip(1))
-			.pipe(tap((data) => this.loading = !data))
-			.pipe(tap(portraits => this._portraits = portraits))
+		this.subscription = this.portraits.skip(1)
+			.do((data) => this.loading = !data)
+			.do(portraits => this._portraits = portraits)
 			.subscribe();
 	}
 

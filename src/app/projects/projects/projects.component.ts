@@ -1,13 +1,14 @@
-import { Component, OnDestroy, OnInit, ViewChild, forwardRef } from '@angular/core';
-import { select } from 'ng2-redux';
-import { Observable, Subscription } from 'rxjs';
-import { tap } from 'rxjs/operators';
-import { AuthActions } from '../../auth/auth.actions';
-import { Project } from '../../services/project.service';
+import { Component, OnInit, ViewChild, forwardRef, OnDestroy } from '@angular/core';
+import { ProjectAddComponent } from '../project-add/project-add.component';
 import { ModalCreator } from '../../shared/modal/modal-creator';
 import { ModalComponent } from '../../shared/modal/modal.component';
-import { ProjectAddComponent } from '../project-add/project-add.component';
 import { ProjectActions } from '../project.actions';
+import { Observable } from 'rxjs/Observable';
+import { select } from 'ng2-redux';
+import { AuthActions } from '../../auth/auth.actions';
+import { Project } from '../../services/project.service';
+import { SharedActions } from '../../shared/shared.actions';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
 	selector: 'app-projects',
@@ -37,7 +38,7 @@ export class ProjectsComponent extends ModalCreator implements OnInit, OnDestroy
 		this.projectActions.getProjects();
 		this.loading = true;
 		this.subscription = this.projects
-			.pipe(tap((data) => this.loading = !data))
+			.do((data) => this.loading = !data)
 			.subscribe();
 		this.authActions.isAuthenticated();
 	}

@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit, ViewChild, forwardRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { select } from 'ng2-redux';
-import { Observable, Subscription } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
 import { AuthActions } from '../../auth/auth.actions';
 import { DEFAULT_SELECTED_PROJECT } from '../../data/store/reducer';
 import { ProjectPhotoListViewModel } from '../../data/view-models/ProjectPhotoListViewModel';
@@ -71,7 +71,7 @@ export class ProjectDetailsComponent extends ModalCreator implements OnInit, OnD
 		this.authActions.isAuthenticated();
 		this.loading = true;
 		this.subscription = this.project
-		.pipe(tap((data) => this.loading = !data))
+			.do((data) => this.loading = !data)
 			.subscribe();
 	}
 

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { AuthenticationService } from './authentication.service';
 import { HttpService } from './http.service';
+import { AuthenticationService } from './authentication.service';
 import { UtilService } from './util.service';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class ProjectService {

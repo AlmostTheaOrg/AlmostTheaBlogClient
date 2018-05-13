@@ -1,6 +1,6 @@
 import { Component, OnInit, Injector, HostListener } from '@angular/core';
 import { Portrait } from '../../services/portrait.service';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
 	selector: 'app-portrait-details',

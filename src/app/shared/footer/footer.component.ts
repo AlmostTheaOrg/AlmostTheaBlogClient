@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { select } from 'ng2-redux';
-import { Observable } from 'rxjs';
 import { AuthActions } from '../../auth/auth.actions';
+import { select } from 'ng2-redux';
+import { Observable } from 'rxjs/Observable';
 import { SharedActions } from '../shared.actions';
 import { Constants } from '../shared.constants';
 
